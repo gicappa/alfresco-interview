@@ -1,4 +1,5 @@
-# Alfresco FizzBuzz exercise
+![Alfresco](https://github.com/gicappa/alfresco-interview/blob/main/docs/images/logo.png?raw=true)
+# FizzBuzz Exercise
 ## The problem
 This is a simple variation on the well known http://codingdojo.org/kata/FizzBuzz/ kata exercise.
 
