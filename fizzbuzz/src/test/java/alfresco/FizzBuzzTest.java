@@ -45,4 +45,10 @@ class FizzBuzzTest {
         assertThat(fizzBuzz.generate(25)).isEqualTo("buzz");
     }
 
+    @Test
+    @DisplayName("Given 15 in input it returns the string 'fizzbuzz'")
+    void it_prints_buzz_when_the_number_is_a_multiple_of_fifteen() {
+        assertThat(fizzBuzz.generate(30)).isEqualTo("fizzbuzz");
+    }
+
 }
