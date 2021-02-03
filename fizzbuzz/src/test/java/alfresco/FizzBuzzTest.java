@@ -22,8 +22,14 @@ class FizzBuzzTest {
     }
 
     @Test
-    @DisplayName("Given 3 in input generates a the string 'fizz'")
+    @DisplayName("Given 3 in input it returns the string 'fizz'")
     void it_prints_fizz_when_the_number_is_three() {
         assertThat(fizzBuzz.generate(3)).isEqualTo("fizz");
+    }
+
+    @Test
+    @DisplayName("Given 5 in input it returns the string 'buzz'")
+    void it_prints_buzz_when_the_number_is_five() {
+        assertThat(fizzBuzz.generate(5)).isEqualTo("buzz");
     }
 }
