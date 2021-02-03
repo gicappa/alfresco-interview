@@ -2,6 +2,6 @@ package alfresco;
 
 public class FizzBuzz {
     public String generate(int number) {
-        return null;
+        return String.valueOf(number);
     }
 }
