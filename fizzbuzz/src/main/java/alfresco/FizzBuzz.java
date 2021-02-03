@@ -17,18 +17,18 @@ public class FizzBuzz {
     public String generate(int number) {
         String result = "";
 
-        if (mutipleOf(number, 15)) {
-            result = "fizzbuzz";
-        } else if (mutipleOf(number, 3)) {
-            result = "fizz";
-        } else if (mutipleOf(number, 5)) {
-            result = "buzz";
+        if (multipleOf(number, 3)) {
+            result += "fizz";
+        }
+
+        if (multipleOf(number, 5)) {
+            result += "buzz";
         }
 
         return result.isBlank() ? String.valueOf(number) : result;
     }
 
-    private boolean mutipleOf(int number, int i) {
+    private boolean multipleOf(int number, int i) {
         return number % i == 0;
     }
 }
