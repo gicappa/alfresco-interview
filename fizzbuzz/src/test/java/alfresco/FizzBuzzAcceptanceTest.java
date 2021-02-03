@@ -1,5 +1,6 @@
 package alfresco;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,29 +9,31 @@ import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Disabled("Disabling since the feature is completed")
+@Disabled("WIP: green when the feature is completed")
 class FizzBuzzAcceptanceTest {
 
-    String stdout;
+    private String stdout;
 
     /**
      * This is the acceptance test of the fizzbuzz application.
      * The test verifies that launching the application with an
-     * argument it returns the desired output.
+     * argument it returns the output desired in step 1.
      */
     @Test
-    @DisplayName("Acceptance test for the fizzbuzz application")
+    @DisplayName("Step 1: Acceptance test for the fizzbuzz application")
     void it_launches_the_application() {
         int exit = run("java -cp target/classes alfresco.App 20");
 
         assertThat(exit).isZero();
 
-        assertThat(stdout).isEqualTo("1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz 16 17 fizz 19 buzz");
+        assertThat(stdout)
+                .isEqualTo("1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz 16 17 fizz 19 buzz");
     }
 
     /**
      * Run a process launching a command. It waits for the command to
      * complete and returns its exit code.
+     * It also records the standard output in the field `stdout`
      *
      * @param command to be launched
      * @return the exit code of the command execution
@@ -46,4 +49,11 @@ class FizzBuzzAcceptanceTest {
             throw new RuntimeException(e);
         }
     }
+
+    // clean up of the gathered standard output
+    @AfterEach
+    void after() {
+        stdout = null;
+    }
+
 }
