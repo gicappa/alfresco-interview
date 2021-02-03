@@ -15,19 +15,17 @@ public class FizzBuzz {
      * @return the string computed on the rules applied to the input
      */
     public String generate(int number) {
+        String result = "";
+
         if (mutipleOf(number, 15)) {
-            return "fizzbuzz";
+            result = "fizzbuzz";
+        } else if (mutipleOf(number, 3)) {
+            result = "fizz";
+        } else if (mutipleOf(number, 5)) {
+            result = "buzz";
         }
 
-        if (mutipleOf(number, 3)) {
-            return "fizz";
-        }
-
-        if (mutipleOf(number, 5)) {
-            return "buzz";
-        }
-
-        return String.valueOf(number);
+        return result.isBlank() ? String.valueOf(number) : result;
     }
 
     private boolean mutipleOf(int number, int i) {
