@@ -48,6 +48,11 @@
         <version>3.7.7</version>
         <scope>test</scope>
       </dependency>
+      <dependency>
+        <groupId>org.concordion</groupId>
+        <artifactId>concordion</artifactId>
+        <version>3.0.1</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -72,6 +77,16 @@
       <artifactId>assertj-core</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.concordion</groupId>
+      <artifactId>concordion</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -83,6 +98,15 @@
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${surefire-plugin.version}</version>
+        <configuration>
+          <systemPropertyVariables>
+            <concordion.output.dir>target/concordion</concordion.output.dir>
+          </systemPropertyVariables>
+          <includes>
+            <include>**/*Fixture.java</include>
+            <include>**/*Test.java</include>
+          </includes>
+        </configuration>
       </plugin>
     </plugins>
   </build>

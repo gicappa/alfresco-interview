@@ -1,33 +1,28 @@
 package alfresco;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.concordion.api.ExpectedToFail;
+import org.concordion.integration.junit4.ConcordionRunner;
+import org.junit.After;
+import org.junit.runner.RunWith;
 
 import java.io.IOException;
 
+import static java.lang.String.format;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Disabled("WIP: green when the feature is completed")
-class FizzBuzzAcceptanceTest {
+@RunWith(ConcordionRunner.class)
+public class FizzBuzzStep1Fixture {
 
+    // Contains the standard output of the fizzbuzz application
     private String stdout;
 
-    /**
-     * This is the acceptance test of the fizzbuzz application.
-     * The test verifies that launching the application with an
-     * argument it returns the output desired in step 1.
-     */
-    @Test
-    @DisplayName("Step 1: Acceptance test for the fizzbuzz application")
-    void it_launches_the_application() {
-        int exit = run("java -cp target/classes alfresco.App 20");
+    public String fizzBuzzIt(String end) {
+        int exit = run(
+                format("java -cp target/classes alfresco.App %s", end));
 
         assertThat(exit).isZero();
 
-        assertThat(stdout)
-                .isEqualTo("1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz 16 17 fizz 19 buzz");
+        return stdout;
     }
 
     /**
@@ -51,9 +46,8 @@ class FizzBuzzAcceptanceTest {
     }
 
     // clean up of the gathered standard output
-    @AfterEach
-    void after() {
+    @After
+    public void after() {
         stdout = null;
     }
-
 }

@@ -5,7 +5,7 @@ This is a simple variation on the well known http://codingdojo.org/kata/FizzBuzz
 
 Please write code delivering the requirements of the steps that follow and execute them one by one - do one at a time please, and don’t be tempted to read the following one :).
 
-The code should be developed using TDD so test first, be as simple as possible and self explanatory and automatable with a build file of your choice.
+The code should be developed using TDD so test first, be as simple as possible,  self-explanatory and automatable with a build system of your choice.
 
 ## Step 1
 ### Requirements
