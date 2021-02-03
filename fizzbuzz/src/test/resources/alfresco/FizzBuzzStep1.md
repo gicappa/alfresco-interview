@@ -11,7 +11,7 @@ Write code that produces the following output for each number in a contiguous ra
 Being careful to avoid trailing spaces.
 
 
-### [Example](- "example c:status=ExpectedToFail")
+### [Example](- "example")
 Running the program with a range from 1-[20](- "#end") should produce the following result:
 
 

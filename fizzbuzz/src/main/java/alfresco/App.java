@@ -2,6 +2,8 @@ package alfresco;
 
 import java.util.stream.IntStream;
 
+import static java.util.stream.Collectors.joining;
+
 /**
  * The fizz buzz app prints out a series of numbers
  */
@@ -9,7 +11,8 @@ public class App {
     private final FizzBuzz fizzBuzz;
 
     public static void main(String[] args) {
-        System.out.print(args[0]);
+        var app = new App(new FizzBuzz());
+        app.generate(Integer.valueOf(args[0]));
     }
 
     public App(FizzBuzz fizzBuzz) {
@@ -17,7 +20,9 @@ public class App {
     }
 
     public void generate(Integer rangeEnd) {
-        IntStream.rangeClosed(1, rangeEnd)
-                .forEach(fizzBuzz::generate);
+        System.out.println(
+                IntStream.rangeClosed(1, rangeEnd)
+                        .mapToObj(fizzBuzz::generate)
+                        .collect(joining(" ")));
     }
 }
