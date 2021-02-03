@@ -15,7 +15,7 @@ public class FizzBuzz {
      * @return the string computed on the rules applied to the input
      */
     public String generate(int number) {
-        if (number == 3) {
+        if (number % 3 == 0) {
             return "fizz";
         }
 

@@ -32,4 +32,11 @@ class FizzBuzzTest {
     void it_prints_buzz_when_the_number_is_five() {
         assertThat(fizzBuzz.generate(5)).isEqualTo("buzz");
     }
+
+    @Test
+    @DisplayName("Given a multiple of 3 in input it returns the string 'fizz'")
+    void it_prints_fizz_when_the_number_is_a_multiple_of_three() {
+        assertThat(fizzBuzz.generate(27)).isEqualTo("fizz");
+    }
+
 }
