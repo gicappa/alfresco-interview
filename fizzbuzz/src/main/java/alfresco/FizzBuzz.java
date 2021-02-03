@@ -17,12 +17,12 @@ public class FizzBuzz {
     public String generate(int number) {
         String result = "";
 
-        if (mutipleOf(number, 15)) {
-            result = "fizzbuzz";
-        } else if (mutipleOf(number, 3)) {
-            result = "fizz";
-        } else if (mutipleOf(number, 5)) {
-            result = "buzz";
+        if (mutipleOf(number, 3)) {
+            result += "fizz";
+        }
+
+        if (mutipleOf(number, 5)) {
+            result += "buzz";
         }
 
         return result.isBlank() ? String.valueOf(number) : result;
