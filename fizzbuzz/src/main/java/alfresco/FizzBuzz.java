@@ -22,6 +22,7 @@ public class FizzBuzz {
         }
 
         if (multipleOf(number, 5)) {
+
             result += "buzz";
         }
 
