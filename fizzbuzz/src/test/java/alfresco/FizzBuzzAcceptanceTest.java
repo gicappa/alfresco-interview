@@ -1,5 +1,6 @@
 package alfresco;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,6 +8,7 @@ import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Disabled("Disabling since the feature is completed")
 class FizzBuzzAcceptanceTest {
 
     String stdout;
