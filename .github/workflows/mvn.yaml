@@ -1,4 +1,4 @@
-name: fizzbuzz CI/CD 
+name: FizzBuzz CI/CD
 
 on: [push]
 
