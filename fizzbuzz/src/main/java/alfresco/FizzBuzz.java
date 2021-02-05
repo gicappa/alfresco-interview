@@ -22,14 +22,18 @@ public class FizzBuzz {
         }
 
         if (multipleOf(number, 5)) {
-
             result += "buzz";
         }
 
         return result.isBlank() ? String.valueOf(number) : result;
     }
 
-    private boolean multipleOf(int number, int i) {
-        return number % i == 0;
+    /**
+     * @param number the number to be checked
+     * @param divider the divider to be checked
+     * @return true if number is a multiple of divider
+     */
+    private boolean multipleOf(int number, int divider) {
+        return number % divider == 0;
     }
 }
