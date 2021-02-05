@@ -21,7 +21,7 @@ public class FizzBuzzStep1Fixture {
      * @return the output of the fizzbuzz app launched
      */
     public String fizzBuzzIt(String rangeEnd) {
-        int exit = command.run("java -cp target/classes alfresco.App %s", rangeEnd);
+        int exit = command.run("java -cp target/classes alfresco.FizzBuzzApp %s", rangeEnd);
 
         assertThat(exit).isZero();
 

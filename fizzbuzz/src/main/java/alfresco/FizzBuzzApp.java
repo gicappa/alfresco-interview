@@ -7,15 +7,15 @@ import static java.util.stream.Collectors.joining;
 /**
  * The fizz buzz app prints out a series of numbers
  */
-public class App {
+public class FizzBuzzApp {
     private final FizzBuzz fizzBuzz;
 
     public static void main(String[] args) {
-        var app = new App(new FizzBuzz());
+        var app = new FizzBuzzApp(new FizzBuzz());
         app.generate(Integer.valueOf(args[0]));
     }
 
-    public App(FizzBuzz fizzBuzz) {
+    public FizzBuzzApp(FizzBuzz fizzBuzz) {
         this.fizzBuzz = fizzBuzz;
     }
 
