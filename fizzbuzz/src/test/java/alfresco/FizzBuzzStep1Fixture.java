@@ -8,10 +8,19 @@ import org.junit.runner.RunWith;
 import static java.lang.String.format;
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Concordion will use this file to launch the fizzBuzzIt
+ * method. This is the acceptance test.
+ */
 @RunWith(ConcordionRunner.class)
 public class FizzBuzzStep1Fixture {
 
     private SystemCommand command;
+
+    @Before
+    public void before() {
+        command = new SystemCommand();
+    }
 
     /**
      * The method fizzBuzzIt is called by the specification defined
@@ -21,21 +30,12 @@ public class FizzBuzzStep1Fixture {
      * @return the output of the fizzbuzz app launched
      */
     public String fizzBuzzIt(String rangeEnd) {
-        int exit = command.run("java -cp target/classes alfresco.FizzBuzzApp %s", rangeEnd);
+        var result =
+                command.run("java -cp target/classes alfresco.FizzBuzzApp %s", rangeEnd);
 
-        assertThat(exit).isZero();
+        assertThat(result.getExitValue()).isZero();
 
-        return command.getStdout();
+        return result.getStdout();
     }
 
-    @Before
-    public void before() {
-        command = new SystemCommand();
-    }
-
-    @After
-    public void after() {
-        command.clearStderr();
-        command.clearStdout();
-    }
 }

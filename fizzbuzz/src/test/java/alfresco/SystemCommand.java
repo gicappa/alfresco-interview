@@ -10,9 +10,6 @@ import static java.lang.String.format;
  */
 public class SystemCommand {
 
-    private String stdout = "";
-    private String stderr = "";
-
     /**
      * Run a process launching a command. It waits for the command to
      * complete and returns its exit code.
@@ -22,45 +19,52 @@ public class SystemCommand {
      * @return the exit code of the command execution
      * @throws RuntimeException the command can be invalid
      */
-    public int run(String command, String... args) {
+    public Result run(String command, String... args) {
         try {
             Process process = Runtime.getRuntime().exec(format(command, args));
             process.waitFor();
 
-            stdout = new String(process.getInputStream().readAllBytes());
-            stderr = new String(process.getErrorStream().readAllBytes());
 
-            return process.exitValue();
+            return new Result(process);
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
-    /**
-     * Deletes the content of the standard output
-     */
-    public void clearStdout() {
-        stdout = "";
-    }
+    public static class Result {
+        private final String stdout;
+        private final String stderr;
+        private final int exitValue;
 
-    /**
-     * Deletes the content of the standard error
-     */
-    public void clearStderr() {
-        stderr = "";
-    }
+        public Result(Process process) {
+            try {
+                stdout = new String(process.getInputStream().readAllBytes());
+                stderr = new String(process.getErrorStream().readAllBytes());
+                exitValue = process.exitValue();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
-    /**
-     * @return the content of the standard output
-     */
-    public String getStdout() {
-        return stdout;
-    }
+        /**
+         * @return the content of the standard output
+         */
+        public String getStdout() {
+            return stdout;
+        }
 
-    /**
-     * @return the content of the standard error
-     */
-    public String getStderr() {
-        return stderr;
+        /**
+         * @return the content of the standard error
+         */
+        public String getStderr() {
+            return stderr;
+        }
+
+        /**
+         * @return the exit value of the command
+         */
+        public int getExitValue() {
+            return exitValue;
+        }
     }
 }
