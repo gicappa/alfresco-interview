@@ -17,9 +17,24 @@ public class FizzBuzzApp {
      *
      * @param args number of fizz buzz element to generate
      */
-    public static void main(String[] args) {
-        new FizzBuzzApp(new FizzBuzz())
-                .generate(parseInt(args[0]));
+    public static void main(String... args) {
+        try {
+
+            if (args.length != 1) {
+                printUsageAndExit();
+            }
+
+            new FizzBuzzApp(new FizzBuzz())
+                    .generate(parseInt(args[0]));
+
+        } catch (Exception e) {
+            printUsageAndExit();
+        }
+    }
+
+    private static void printUsageAndExit() {
+        System.err.println("usage: java alfresco.FizzBuzzApp <number of fizzbuzz generation>");
+        System.exit(1);
     }
 
     /**
