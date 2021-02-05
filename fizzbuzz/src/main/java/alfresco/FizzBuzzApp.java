@@ -12,9 +12,14 @@ public class FizzBuzzApp {
 
     private final FizzBuzz fizzBuzz;
 
+    /**
+     * Entry point of the Application.
+     *
+     * @param args number of fizz buzz element to generate
+     */
     public static void main(String[] args) {
-        var app = new FizzBuzzApp(new FizzBuzz());
-        app.generate(parseInt(args[0]));
+        new FizzBuzzApp(new FizzBuzz())
+                .generate(parseInt(args[0]));
     }
 
     /**
