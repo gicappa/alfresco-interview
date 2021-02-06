@@ -1,5 +1,6 @@
-package alfresco;
+package alfresco.step1;
 
+import alfresco.SystemCommand;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.After;
 import org.junit.Before;
@@ -31,7 +32,7 @@ public class FizzBuzzStep1Fixture {
      */
     public String fizzBuzzIt(String rangeEnd) {
         var result =
-                command.run("java -cp target/classes alfresco.FizzBuzzApp %s", rangeEnd);
+                command.run("java -cp target/classes alfresco.step1.FizzBuzzApp %s", rangeEnd);
 
         assertThat(result.getExitValue()).isZero();
 

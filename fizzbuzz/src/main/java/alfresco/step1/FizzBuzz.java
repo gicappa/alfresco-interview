@@ -1,4 +1,4 @@
-package alfresco;
+package alfresco.step1;
 
 /**
  * The fizzbuzz generator takes an integer as an input and returns

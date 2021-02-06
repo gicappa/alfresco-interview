@@ -1,4 +1,4 @@
-package alfresco;
+package alfresco.step1;
 
 import java.util.stream.IntStream;
 
