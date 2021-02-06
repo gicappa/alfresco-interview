@@ -20,12 +20,22 @@ public class FizzBuzz {
         result = new DivisorRule(3, "fizz").apply(number, result);
         result = new DivisorRule(5, "buzz").apply(number, result);
         result = new ContainsDigitRule(3, "alfresco").apply(number, result);
-
-        if (result.isBlank()) {
-            result = String.valueOf(number);
-        }
+        result = new BaseRule().apply(number, result);
 
         return result;
+    }
+
+    static class BaseRule {
+        /**
+         * Apply the rule to the number
+         *
+         * @param number to be parsed
+         * @param result the result coming from the previous rules
+         * @return the result with the applied rules
+         */
+        String apply(int number, String result) {
+            return result.isBlank() ? String.valueOf(number) : result;
+        }
     }
 
 }
