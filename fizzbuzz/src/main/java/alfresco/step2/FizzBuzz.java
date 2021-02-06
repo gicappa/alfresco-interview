@@ -17,7 +17,7 @@ public class FizzBuzz {
     public String generate(int number) {
         String result = "";
 
-        result = new Rule().apply(number, result);
+        result = new Rule(3, "fizz").apply(number, result);
 
         if (multipleOf(number, 5)) {
             result += "buzz";
@@ -44,9 +44,17 @@ public class FizzBuzz {
     }
 
     class Rule {
+        private final int divisor;
+        private final String word;
+
+        Rule(int divisor, String word) {
+            this.divisor = divisor;
+            this.word = word;
+        }
+
         String apply(int number, String result) {
-            if (multipleOf(number, 3)) {
-                result += "fizz";
+            if (multipleOf(number, divisor)) {
+                result += word;
             }
             return result;
         }
