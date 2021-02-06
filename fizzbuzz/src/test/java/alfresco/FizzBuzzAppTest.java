@@ -3,6 +3,8 @@ package alfresco;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -31,33 +33,19 @@ class FizzBuzzAppTest {
         verify(mockFizzBuzz, times(20)).generate(anyInt());
     }
 
-    @Test
-    @DisplayName("it displays usage when no args are passed")
-    void it_prints_the_usage_when_no_args_are_passed() {
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "java -cp target/classes alfresco.FizzBuzzApp",
+            "java -cp target/classes alfresco.FizzBuzzApp 1 2 3",
+            "java -cp target/classes alfresco.FizzBuzzApp blah"
+    })
+    @DisplayName("it displays usage when no number or while are passed")
+    void it_prints_the_usage_when_no_args_are_passed(String cmdString) {
         var result =
-                command.run("java -cp target/classes alfresco.FizzBuzzApp");
+                command.run(cmdString);
 
         assertThat(result.getExitValue()).isEqualTo(1);
         assertThat(result.getStderr()).contains("usage");
     }
 
-    @Test
-    @DisplayName("it displays usage when no args are passed")
-    void it_prints_the_usage_when_more_than_one_arg_is_passed() {
-        var result =
-                command.run("java -cp target/classes alfresco.FizzBuzzApp 1 2 3");
-
-        assertThat(result.getExitValue()).isEqualTo(1);
-        assertThat(result.getStderr()).contains("usage");
-    }
-
-    @Test
-    @DisplayName("it displays usage when no args are passed")
-    void it_prints_the_usage_when_a_invalid_number_arg_is_passed() {
-        var result =
-                command.run("java -cp target/classes alfresco.FizzBuzzApp blah");
-
-        assertThat(result.getExitValue()).isEqualTo(1);
-        assertThat(result.getStderr()).contains("usage");
-    }
 }
