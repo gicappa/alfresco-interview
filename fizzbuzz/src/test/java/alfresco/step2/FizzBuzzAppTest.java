@@ -38,9 +38,9 @@ class FizzBuzzAppTest {
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "java -cp target/classes alfresco.step2.FizzBuzzApp",
-            "java -cp target/classes alfresco.step2.FizzBuzzApp 1 2 3",
-            "java -cp target/classes alfresco.step2.FizzBuzzApp blah"
+            "java -cp target/classes alfresco.step2.FizzBuzzMain",
+            "java -cp target/classes alfresco.step2.FizzBuzzMain 1 2 3",
+            "java -cp target/classes alfresco.step2.FizzBuzzMain blah"
     })
     @DisplayName("it displays usage when no number or while are passed")
     void it_prints_the_usage_when_no_args_are_passed(String cmdString) {

@@ -30,7 +30,7 @@ public class FizzBuzzStep2Fixture {
      */
     public String fizzBuzzIt(String rangeEnd) {
         var result =
-                command.run("java -cp target/classes alfresco.step2.FizzBuzzApp %s", rangeEnd);
+                command.run("java -cp target/classes alfresco.step2.FizzBuzzMain %s", rangeEnd);
 
         assertThat(result.getExitValue()).isZero();
 

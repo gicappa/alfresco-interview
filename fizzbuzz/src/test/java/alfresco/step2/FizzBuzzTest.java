@@ -1,13 +1,8 @@
 package alfresco.step2;
 
-import alfresco.step2.rules.ContainsDigitRule;
-import alfresco.step2.rules.DivisorRule;
-import alfresco.step2.rules.ToStringRule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,10 +12,7 @@ class FizzBuzzTest {
 
     @BeforeEach
     void before() {
-        fizzBuzz = new FizzBuzzIt(List.of(new DivisorRule(3, "fizz"),
-                new DivisorRule(5, "buzz"),
-                new ContainsDigitRule(3, "alfresco"),
-                new ToStringRule()));
+        fizzBuzz = new FizzBuzzIt(new AppContext().getRules());
     }
 
     @Test

@@ -1,13 +1,7 @@
 package alfresco.step2;
 
-import alfresco.step2.rules.ContainsDigitRule;
-import alfresco.step2.rules.DivisorRule;
-import alfresco.step2.rules.ToStringRule;
-
-import java.util.List;
 import java.util.stream.IntStream;
 
-import static java.lang.Integer.parseInt;
 import static java.util.stream.Collectors.joining;
 
 /**
@@ -18,40 +12,10 @@ public class FizzBuzzApp {
     private final FizzBuzzIt fizzBuzz;
 
     /**
-     * Entry point of the Application.
-     *
-     * @param args number of fizz buzz element to generate
+     * @param appContext context to wire and create collaborators
      */
-    public static void main(String... args) {
-        try {
-
-            if (args.length != 1) {
-                printUsageAndExit();
-            }
-
-            List<Rule> rules = List.of(new DivisorRule(3, "fizz"),
-                    new DivisorRule(5, "buzz"),
-                    new ContainsDigitRule(3, "alfresco"),
-                    new ToStringRule());
-
-            new FizzBuzzApp(new FizzBuzzIt(rules))
-                    .generate(parseInt(args[0]));
-
-        } catch (Exception e) {
-            printUsageAndExit();
-        }
-    }
-
-    private static void printUsageAndExit() {
-        System.err.println("usage: java alfresco.FizzBuzzApp <number of fizzbuzz generation>");
-        System.exit(1);
-    }
-
-    /**
-     * @param fizzBuzzIt collaborator that encodes numbers
-     */
-    public FizzBuzzApp(FizzBuzzIt fizzBuzzIt) {
-        this.fizzBuzz = fizzBuzzIt;
+    public FizzBuzzApp(AppContext appContext) {
+        this.fizzBuzz = appContext.getFizzBuzzIt();
     }
 
     /**
