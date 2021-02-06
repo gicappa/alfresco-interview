@@ -17,10 +17,6 @@ public class FizzBuzz {
     public String generate(int number) {
         String result = "";
 
-        if (String.valueOf(number).contains("3")) {
-            return "alfresco";
-        }
-
         if (multipleOf(number, 3)) {
             result += "fizz";
         }
@@ -29,11 +25,19 @@ public class FizzBuzz {
             result += "buzz";
         }
 
-        return result.isBlank() ? String.valueOf(number) : result;
+        if (String.valueOf(number).contains("3")) {
+            result = "alfresco";
+        }
+
+        if (result.isBlank()) {
+            result = String.valueOf(number);
+        }
+
+        return result;
     }
 
     /**
-     * @param number the number to be checked
+     * @param number  the number to be checked
      * @param divider the divider to be checked
      * @return true if number is a multiple of divider
      */
