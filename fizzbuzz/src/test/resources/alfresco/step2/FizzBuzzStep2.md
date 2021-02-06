@@ -5,7 +5,7 @@ Please enhance your existing FizzBuzz solution to perform the following requirem
 
 - If the number contains a three you must output the text ‘alfresco’, any other rule is skipped.
 
-### [Example](- "example c:status=ExpectedToFail")
+### [Example](- "example")
 Running the program with a range from 1-[20](- "#end") should produce the following result:
 
 

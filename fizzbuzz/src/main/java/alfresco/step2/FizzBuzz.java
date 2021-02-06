@@ -17,6 +17,10 @@ public class FizzBuzz {
     public String generate(int number) {
         String result = "";
 
+        if (String.valueOf(number).contains("3")) {
+            return "alfresco";
+        }
+
         if (multipleOf(number, 3)) {
             result += "fizz";
         }
