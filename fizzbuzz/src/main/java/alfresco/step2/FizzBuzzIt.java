@@ -1,9 +1,5 @@
 package alfresco.step2;
 
-import alfresco.step2.rules.ContainsDigitRule;
-import alfresco.step2.rules.DivisorRule;
-import alfresco.step2.rules.ToStringRule;
-
 import java.util.List;
 
 /**
@@ -13,10 +9,11 @@ import java.util.List;
  */
 public class FizzBuzzIt {
 
-    List<Rule> rules = List.of(new DivisorRule(3, "fizz"),
-            new DivisorRule(5, "buzz"),
-            new ContainsDigitRule(3, "alfresco"),
-            new ToStringRule());
+    private final List<Rule> rules;
+
+    FizzBuzzIt(List<Rule> rules) {
+        this.rules = rules;
+    }
 
     /**
      * Generate is the method that applies the rules of the fizzbuzz

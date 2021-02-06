@@ -1,5 +1,10 @@
 package alfresco.step2;
 
+import alfresco.step2.rules.ContainsDigitRule;
+import alfresco.step2.rules.DivisorRule;
+import alfresco.step2.rules.ToStringRule;
+
+import java.util.List;
 import java.util.stream.IntStream;
 
 import static java.lang.Integer.parseInt;
@@ -24,7 +29,12 @@ public class FizzBuzzApp {
                 printUsageAndExit();
             }
 
-            new FizzBuzzApp(new FizzBuzzIt())
+            List<Rule> rules = List.of(new DivisorRule(3, "fizz"),
+                    new DivisorRule(5, "buzz"),
+                    new ContainsDigitRule(3, "alfresco"),
+                    new ToStringRule());
+
+            new FizzBuzzApp(new FizzBuzzIt(rules))
                     .generate(parseInt(args[0]));
 
         } catch (Exception e) {
@@ -38,10 +48,10 @@ public class FizzBuzzApp {
     }
 
     /**
-     * @param fizzBuzz collaborator that encodes numbers
+     * @param fizzBuzzIt collaborator that encodes numbers
      */
-    public FizzBuzzApp(FizzBuzzIt fizzBuzz) {
-        this.fizzBuzz = fizzBuzz;
+    public FizzBuzzApp(FizzBuzzIt fizzBuzzIt) {
+        this.fizzBuzz = fizzBuzzIt;
     }
 
     /**
