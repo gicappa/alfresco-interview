@@ -31,16 +31,7 @@ public class FizzBuzz {
         return result;
     }
 
-    /**
-     * @param number  the number to be checked
-     * @param divider the divider to be checked
-     * @return true if number is a multiple of divider
-     */
-    private boolean multipleOf(int number, int divider) {
-        return number % divider == 0;
-    }
-
-    class Rule {
+    static class Rule {
         private final int divisor;
         private final String word;
 
@@ -49,11 +40,32 @@ public class FizzBuzz {
             this.word = word;
         }
 
+        /**
+         * Apply the rule to the number
+         *
+         * @param number to be parsed
+         * @param result the result coming from the previous rules
+         * @return the result with the applied rules
+         */
         String apply(int number, String result) {
-            if (multipleOf(number, divisor)) {
-                result += word;
-            }
-            return result;
+            return result + translate(number);
         }
+
+        private String translate(int number) {
+            if (multipleOf(number, divisor))
+                return word;
+
+            return "";
+        }
+
+        /**
+         * @param number  the number to be checked
+         * @param divider the divider to be checked
+         * @return true if number is a multiple of divider
+         */
+        private boolean multipleOf(int number, int divider) {
+            return number % divider == 0;
+        }
+
     }
 }
