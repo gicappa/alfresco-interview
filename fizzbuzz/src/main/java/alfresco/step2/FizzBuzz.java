@@ -19,10 +19,7 @@ public class FizzBuzz {
 
         result = new DivisorRule(3, "fizz").apply(number, result);
         result = new DivisorRule(5, "buzz").apply(number, result);
-
-        if (String.valueOf(number).contains("3")) {
-            result = "alfresco";
-        }
+        result = new ContainsDigitRule(3, "alfresco").apply(number, result);
 
         if (result.isBlank()) {
             result = String.valueOf(number);
