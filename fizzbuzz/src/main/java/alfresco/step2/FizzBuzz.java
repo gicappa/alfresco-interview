@@ -1,5 +1,9 @@
 package alfresco.step2;
 
+import alfresco.step2.rules.ContainsDigitRule;
+import alfresco.step2.rules.DivisorRule;
+import alfresco.step2.rules.ToStringRule;
+
 /**
  * The fizzbuzz generator takes an integer as an input and returns
  * a string as an output. It encodes the output string according to
@@ -20,22 +24,8 @@ public class FizzBuzz {
         result = new DivisorRule(3, "fizz").apply(number, result);
         result = new DivisorRule(5, "buzz").apply(number, result);
         result = new ContainsDigitRule(3, "alfresco").apply(number, result);
-        result = new BaseRule().apply(number, result);
+        result = new ToStringRule().apply(number, result);
 
         return result;
     }
-
-    static class BaseRule {
-        /**
-         * Apply the rule to the number
-         *
-         * @param number to be parsed
-         * @param result the result coming from the previous rules
-         * @return the result with the applied rules
-         */
-        String apply(int number, String result) {
-            return result.isBlank() ? String.valueOf(number) : result;
-        }
-    }
-
 }

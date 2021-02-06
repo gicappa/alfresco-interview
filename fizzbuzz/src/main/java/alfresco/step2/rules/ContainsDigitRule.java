@@ -1,16 +1,18 @@
-package alfresco.step2;
+package alfresco.step2.rules;
+
+import alfresco.step2.Rule;
 
 /**
  * The ContainsRule is meant to substitute a the result
  * with a specific string if the number contains a
  * certain digit.
  */
-public class ContainsDigitRule {
+public class ContainsDigitRule implements Rule {
 
     private final int digit;
     private final String word;
 
-    ContainsDigitRule(int digit, String word) {
+    public ContainsDigitRule(int digit, String word) {
         this.digit = digit;
         this.word = word;
     }
@@ -22,7 +24,7 @@ public class ContainsDigitRule {
      * @param result the result coming from the previous rules
      * @return the result with the applied rules
      */
-    String apply(int number, String result) {
+    public String apply(int number, String result) {
         if (str(number).contains(str(digit))) {
             return word;
         }

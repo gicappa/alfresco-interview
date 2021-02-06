@@ -1,4 +1,6 @@
-package alfresco.step2;
+package alfresco.step2.rules;
+
+import alfresco.step2.Rule;
 
 /**
  * The rule is applied when the number passed
@@ -7,12 +9,12 @@ package alfresco.step2;
  * If the rule is matched the result is returned
  * with an additional special word in it.
  */
-class DivisorRule {
+public class DivisorRule implements Rule {
 
     private final int divisor;
     private final String word;
 
-    DivisorRule(int divisor, String word) {
+    public DivisorRule(int divisor, String word) {
         this.divisor = divisor;
         this.word = word;
     }
@@ -24,7 +26,7 @@ class DivisorRule {
      * @param result the result coming from the previous rules
      * @return the result with the applied rules
      */
-    String apply(int number, String result) {
+    public String apply(int number, String result) {
         return result + translate(number);
     }
 
