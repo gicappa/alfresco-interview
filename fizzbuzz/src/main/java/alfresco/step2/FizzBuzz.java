@@ -18,10 +18,7 @@ public class FizzBuzz {
         String result = "";
 
         result = new Rule(3, "fizz").apply(number, result);
-
-        if (multipleOf(number, 5)) {
-            result += "buzz";
-        }
+        result = new Rule(5, "buzz").apply(number, result);
 
         if (String.valueOf(number).contains("3")) {
             result = "alfresco";
