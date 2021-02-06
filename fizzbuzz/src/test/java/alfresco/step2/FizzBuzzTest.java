@@ -8,11 +8,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class FizzBuzzTest {
 
-    private FizzBuzz fizzBuzz;
+    private FizzBuzzIt fizzBuzz;
 
     @BeforeEach
     void before() {
-        fizzBuzz = new FizzBuzz();
+        fizzBuzz = new FizzBuzzIt();
     }
 
     @Test

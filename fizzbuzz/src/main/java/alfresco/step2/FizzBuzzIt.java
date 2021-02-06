@@ -11,7 +11,7 @@ import java.util.List;
  * a string as an output. It encodes the output string according to
  * specific rules.
  */
-public class FizzBuzz {
+public class FizzBuzzIt {
 
     List<Rule> rules = List.of(new DivisorRule(3, "fizz"),
             new DivisorRule(5, "buzz"),

@@ -10,7 +10,7 @@ import static java.util.stream.Collectors.joining;
  */
 public class FizzBuzzApp {
 
-    private final FizzBuzz fizzBuzz;
+    private final FizzBuzzIt fizzBuzz;
 
     /**
      * Entry point of the Application.
@@ -24,7 +24,7 @@ public class FizzBuzzApp {
                 printUsageAndExit();
             }
 
-            new FizzBuzzApp(new FizzBuzz())
+            new FizzBuzzApp(new FizzBuzzIt())
                     .generate(parseInt(args[0]));
 
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public class FizzBuzzApp {
     /**
      * @param fizzBuzz collaborator that encodes numbers
      */
-    public FizzBuzzApp(FizzBuzz fizzBuzz) {
+    public FizzBuzzApp(FizzBuzzIt fizzBuzz) {
         this.fizzBuzz = fizzBuzz;
     }
 
