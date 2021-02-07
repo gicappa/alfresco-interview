@@ -1,8 +1,6 @@
 package alfresco;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.System.exit;
@@ -38,7 +36,7 @@ public class FizzBuzzMain {
 
             var app = new FizzBuzzApp(new CliAppContext());
 
-            printResults(app.fizzBuzzIt(parseInt(args[0])));
+            printResults(app.mapNumberRangeToWords(parseInt(args[0])));
 
         } catch (Exception e) {
             printUsage();
@@ -52,7 +50,7 @@ public class FizzBuzzMain {
      * @param results the result of the application execution
      */
     public void printResults(List<String> results) {
-        System.out.println(results.stream().collect(joining()));
+        System.out.println(String.join(" ", results));
     }
 
     /**
@@ -60,7 +58,7 @@ public class FizzBuzzMain {
      */
     private void printUsage() {
         System.err.println(
-                "usage: java alfresco.FizzBuzzApp [arg]\n" +
+                "usage: java alfresco.FizzBuzzMain [arg]\n" +
                         "   arg - (required) number of fizzbuzz words to generate");
     }
 }

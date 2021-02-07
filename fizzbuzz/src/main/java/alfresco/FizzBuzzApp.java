@@ -11,14 +11,14 @@ import static java.util.stream.Collectors.toList;
  */
 public class FizzBuzzApp {
 
-    private final FizzBuzzIt fizzBuzzIt;
+    private final FizzBuzzMapper fizzBuzzMapper;
     private final FizzBuzzReporter fizzBuzzReporter;
 
     /**
      * @param appContext context to wire and create collaborators
      */
     public FizzBuzzApp(AppContext appContext) {
-        this.fizzBuzzIt = appContext.getFizzBuzzIt();
+        this.fizzBuzzMapper = appContext.getFizzBuzzMapper();
         this.fizzBuzzReporter = appContext.getFizzBuzzReporter();
     }
 
@@ -28,10 +28,10 @@ public class FizzBuzzApp {
      * @param rangeEnd end number of the range
      * @return a string containing the generated values
      */
-    public List<String> fizzBuzzIt(int rangeEnd) {
+    public List<String> mapNumberRangeToWords(int rangeEnd) {
         var fizzBuzzWords =
                 IntStream.rangeClosed(1, rangeEnd)
-                        .mapToObj(fizzBuzzIt::generate)
+                        .mapToObj(fizzBuzzMapper::generate)
                         .collect(toList());
 
         Map<String, Long> report = fizzBuzzReporter.report(fizzBuzzWords);

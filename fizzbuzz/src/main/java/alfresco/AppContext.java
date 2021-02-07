@@ -13,7 +13,7 @@ public interface AppContext {
     /**
      * @return the object able to translate a number in a word
      */
-    FizzBuzzIt getFizzBuzzIt();
+    FizzBuzzMapper getFizzBuzzMapper();
 
     /**
      * @return the list of rule applicable to the numbers to generate

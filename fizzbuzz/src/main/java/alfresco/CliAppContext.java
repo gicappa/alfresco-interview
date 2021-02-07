@@ -8,7 +8,7 @@ import java.util.List;
 
 class CliAppContext implements AppContext {
     private final List<Rule> rules;
-    private final FizzBuzzIt fizzBuzzIt;
+    private final FizzBuzzMapper fizzBuzzMapper;
 
     public CliAppContext() {
         rules = List.of(new DivisorRule(3, "fizz"),
@@ -16,11 +16,11 @@ class CliAppContext implements AppContext {
                 new ContainsDigitRule(3, "alfresco"),
                 new ToStringRule());
 
-        fizzBuzzIt = new FizzBuzzIt(rules);
+        fizzBuzzMapper = new FizzBuzzMapper(rules);
     }
 
-    public FizzBuzzIt getFizzBuzzIt() {
-        return fizzBuzzIt;
+    public FizzBuzzMapper getFizzBuzzMapper() {
+        return fizzBuzzMapper;
     }
 
     public List<Rule> getRules() {
