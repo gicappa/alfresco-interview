@@ -24,7 +24,7 @@ public class FizzBuzzApp {
      * @param rangeEnd end number of the range
      * @return a string containing the generated values
      */
-    public String generatesFizzBuzzUpTo(int rangeEnd) {
+    public String fizzBuzzIt(int rangeEnd) {
         return IntStream.rangeClosed(1, rangeEnd)
                 .mapToObj(fizzBuzzIt::generate)
                 .collect(joining(" "));

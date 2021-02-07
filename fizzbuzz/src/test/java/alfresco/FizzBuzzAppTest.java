@@ -28,7 +28,7 @@ class FizzBuzzAppTest {
     @Test
     @DisplayName("it calls the fizzbuzz generation for arg[0] times")
     void it_calls_the_fizzbuzz_arg_0_times() {
-        app.generatesFizzBuzzUpTo(20);
+        app.fizzBuzzIt(20);
 
         verify(mockFizzBuzzIt, times(20)).generate(anyInt());
     }
