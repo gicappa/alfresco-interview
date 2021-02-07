@@ -4,7 +4,6 @@ import java.util.List;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.System.exit;
-import static java.util.stream.Collectors.joining;
 
 /**
  * The fizz buzz app translates a number range into a
@@ -34,7 +33,7 @@ public class FizzBuzzMain {
                 exit(128); // Invalid argument
             }
 
-            var app = new FizzBuzzApp(new CliAppContext());
+            var app = new FizzBuzzApp(new DefaultAppContext());
 
             printResults(app.mapNumberRangeToWords(parseInt(args[0])));
 

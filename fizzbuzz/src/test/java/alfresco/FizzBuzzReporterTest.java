@@ -1,7 +1,6 @@
 package alfresco;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -45,6 +44,7 @@ class FizzBuzzReporterTest {
     void it_returns_integer_if_is_a_number() {
         assertThat(fizzBuzzReporter.toInteger("1")).isEqualTo("integer");
     }
+
     @Test
     @DisplayName("It translate a string into the same string")
     void it_returns_string_unmodified() {

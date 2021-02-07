@@ -12,7 +12,7 @@ class FizzBuzzTest {
 
     @BeforeEach
     void before() {
-        fizzBuzz = new FizzBuzzMapper(new CliAppContext().getRules());
+        fizzBuzz = new FizzBuzzMapper(new DefaultAppContext().getRules());
     }
 
     @Test

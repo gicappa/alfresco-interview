@@ -6,11 +6,11 @@ import alfresco.rules.ToStringRule;
 
 import java.util.List;
 
-class CliAppContext implements AppContext {
+class DefaultAppContext implements AppContext {
     private final List<Rule> rules;
     private final FizzBuzzMapper fizzBuzzMapper;
 
-    public CliAppContext() {
+    DefaultAppContext() {
         rules = List.of(new DivisorRule(3, "fizz"),
                 new DivisorRule(5, "buzz"),
                 new ContainsDigitRule(3, "alfresco"),
