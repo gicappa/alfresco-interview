@@ -13,10 +13,10 @@ public class FizzBuzzGeneratorUseCase {
     private final FizzBuzzMapper fizzBuzzMapper;
 
     /**
-     * @param appContext context to wire and create collaborators
+     * @param fizzBuzzMapper the collaborator to map number into words
      */
-    public FizzBuzzGeneratorUseCase(AppContext appContext) {
-        this.fizzBuzzMapper = appContext.getFizzBuzzMapper();
+    public FizzBuzzGeneratorUseCase(FizzBuzzMapper fizzBuzzMapper) {
+        this.fizzBuzzMapper = fizzBuzzMapper;
     }
 
     /**
@@ -25,7 +25,7 @@ public class FizzBuzzGeneratorUseCase {
      * @param rangeEnd end number of the range
      * @return a string containing the generated values
      */
-    public List<String> mapNumberRangeToWords(int rangeEnd) {
+    public List<String> generateWords(int rangeEnd) {
         return IntStream.rangeClosed(1, rangeEnd)
                 .mapToObj(fizzBuzzMapper::map)
                 .collect(toList());

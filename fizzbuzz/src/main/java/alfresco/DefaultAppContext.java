@@ -28,6 +28,11 @@ class DefaultAppContext implements AppContext {
     }
 
     @Override
+    public FizzBuzzGeneratorUseCase getFizzBuzzGenerator() {
+        return new FizzBuzzGeneratorUseCase(fizzBuzzMapper);
+    }
+
+    @Override
     public FizzBuzzReporterUseCase getFizzBuzzReporter() {
         return new FizzBuzzReporterUseCase();
     }

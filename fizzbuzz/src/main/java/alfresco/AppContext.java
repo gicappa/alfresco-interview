@@ -25,5 +25,10 @@ public interface AppContext {
      * @return the object able to count the occurrence of a certain
      * word type
      */
+    FizzBuzzGeneratorUseCase getFizzBuzzGenerator();
+    /**
+     * @return the object able to count the occurrence of a certain
+     * word type
+     */
     FizzBuzzReporterUseCase getFizzBuzzReporter();
 }

@@ -13,6 +13,8 @@ import static java.lang.System.exit;
  */
 public class FizzBuzzMain {
 
+    private final AppContext appContext;
+
     /**
      * Entry point of the Application.
      * <p>
@@ -25,6 +27,10 @@ public class FizzBuzzMain {
         new FizzBuzzMain().run(args);
     }
 
+    public FizzBuzzMain() {
+        appContext = new DefaultAppContext();
+    }
+
     public void run(String... args) {
         try {
 
@@ -33,9 +39,9 @@ public class FizzBuzzMain {
                 exit(128); // Invalid argument
             }
 
-            var app = new FizzBuzzGeneratorUseCase(new DefaultAppContext());
+            var generator = appContext.getFizzBuzzGenerator();
 
-            printResults(app.mapNumberRangeToWords(parseInt(args[0])));
+            printResults(generator.generateWords(parseInt(args[0])));
 
         } catch (Exception e) {
             printUsage();

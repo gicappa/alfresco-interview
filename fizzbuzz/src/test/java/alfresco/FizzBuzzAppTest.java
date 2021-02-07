@@ -28,31 +28,22 @@ class FizzBuzzAppTest {
         var appContext = mock(AppContext.class);
         when(appContext.getFizzBuzzMapper()).thenReturn(mockFizzBuzzMapper);
         when(appContext.getFizzBuzzReporter()).thenReturn(mockFizzBuzzReporter);
-        app = new FizzBuzzGeneratorUseCase(appContext);
+        app = new FizzBuzzGeneratorUseCase(mockFizzBuzzMapper);
     }
 
     @Test
     @DisplayName("it calls the fizzbuzz generation for rangeEnd times")
     void it_calls_the_fizzbuzz_rangeEnd_times() {
-        app.mapNumberRangeToWords(20);
+        app.generateWords(20);
 
         verify(mockFizzBuzzMapper, times(20))
                 .map(anyInt());
-    }
-    @Test
-    @DisplayName("it calls the fizzbuzz generation for rangeEnd times")
-    void it_calls_the_fizzbuzz_object_that_generates_a_report() {
-        when(mockFizzBuzzMapper.map(anyInt())).thenReturn("1").thenReturn("2");
-
-        app.mapNumberRangeToWords(2);
-
-        verify(mockFizzBuzzReporter).report(List.of("1","2"));
     }
 
     @Test
     @DisplayName("It returns a List<String> containing words")
     void it_invokes_a_list_of_words() {
-        assertThat(app.mapNumberRangeToWords(5)).hasSize(5);
+        assertThat(app.generateWords(5)).hasSize(5);
     }
 
     @AfterEach
