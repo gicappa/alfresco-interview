@@ -2,10 +2,14 @@ package alfresco;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.*;
 
 /**
  * Testing that the application is calling the FizzBuzz generate method
@@ -33,4 +37,26 @@ class FizzBuzzMainTest {
         assertThat(result.getExitValue()).isEqualTo(exitValue);
         assertThat(result.getStderr()).contains("usage");
     }
+
+    @Test
+    @DisplayName("it calls the fizzbuzz generation for rangeEnd times")
+    void it_calls_the_fizzbuzz_object_that_generates_a_report() {
+        var mockGenerator = mock(FizzBuzzGeneratorUseCase.class);
+        var mockReporter = mock(FizzBuzzReporterUseCase.class);
+        when(mockGenerator.generateWords(anyInt())).thenReturn(List.of("1", "2"));
+
+        var fizzBuzzMain = new FizzBuzzMain(mockContext(mockGenerator, mockReporter));
+
+        fizzBuzzMain.run("2");
+
+        verify(mockReporter).report(List.of("1", "2"));
+    }
+
+    AppContext mockContext(FizzBuzzGeneratorUseCase generator, FizzBuzzReporterUseCase reporter) {
+        AppContext context = mock(AppContext.class);
+        when(context.getFizzBuzzGenerator()).thenReturn(generator);
+        when(context.getFizzBuzzReporter()).thenReturn(reporter);
+        return context;
+    }
+
 }

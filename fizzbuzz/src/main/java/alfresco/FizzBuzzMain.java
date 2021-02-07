@@ -28,7 +28,11 @@ public class FizzBuzzMain {
     }
 
     public FizzBuzzMain() {
-        appContext = new DefaultAppContext();
+        this.appContext = new DefaultAppContext();
+    }
+
+    public FizzBuzzMain(AppContext appContext) {
+        this.appContext = appContext;
     }
 
     public void run(String... args) {
@@ -40,8 +44,11 @@ public class FizzBuzzMain {
             }
 
             var generator = appContext.getFizzBuzzGenerator();
+            var report = appContext.getFizzBuzzReporter();
 
-            printResults(generator.generateWords(parseInt(args[0])));
+            var results = generator.generateWords(parseInt(args[0]));
+            printResults(results);
+            report.report(results);
 
         } catch (Exception e) {
             printUsage();
