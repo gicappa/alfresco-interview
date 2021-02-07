@@ -1,0 +1,36 @@
+== Development Notes
+
+- Step 1: Two if are still readable and manageable complexitywise so no refactoring toward a more oo design
+- Step 2: The new feature require a modification in the design. We can use the OCP to transform the code so that we can add this rule (and possibly new ones) without changing the fizzbuzz engine.
+- GOOS by Example: double cycle of TDD one for the feature one for the units with London Style. I tried an outside in approach using a library to test the specification in a BBD style.
+
+== Continuous Integration
+
+- Created some github actions configuration to run the code and build it to each and every push
+
+== Architecture
+
+Generally speaking, I use a DDD approach where the domain module containing the business logic is the bounded context and is connected through the outside world using module adapters (hexagonal/port and adapters architecture).
+
+The software is composed by the following modules:
+
+- fizzbuzz-domain
+- fizzbuzz-cli
+- fizzbuzz-api
+- fizzbuzz-ui
+- fizzbuzz-docs
+
+=== fizzbuzz-domain
+Where the domain logic resides
+
+=== fizzbuzz-cli
+TODO
+
+=== fizzbuzz-api
+TODO
+
+=== fizzbuzz-ui
+TODO
+
+=== fizzbuzz-docs
+TODO

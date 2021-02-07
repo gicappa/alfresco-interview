@@ -1,6 +1,7 @@
-![Alfresco](https://github.com/gicappa/alfresco-interview/blob/main/docs/images/logo.png?raw=true)
 # FizzBuzz Exercise
+
 ## The problem
+
 This is a simple variation on the well known http://codingdojo.org/kata/FizzBuzz/ kata exercise.
 
 Please write code delivering the requirements of the steps that follow and execute them one by one - do one at a time please, and don’t be tempted to read the following one :).

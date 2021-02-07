@@ -1,0 +1,4 @@
+:basedir: ../../../..
+include::{basedir}/README.md[]
+
+include::architecture.adoc[]
