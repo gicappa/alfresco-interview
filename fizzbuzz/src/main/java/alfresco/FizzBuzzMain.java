@@ -1,7 +1,5 @@
 package alfresco;
 
-import static java.lang.Integer.parseInt;
-
 /**
  * The fizz buzz app prints out a series of numbers
  */
@@ -9,7 +7,7 @@ public class FizzBuzzMain {
 
     /**
      * Entry point of the Application.
-     *
+     * <p>
      * If the caller doesn't pass one argument, it displays
      * the usage of the application on the standard error.
      *
@@ -22,13 +20,24 @@ public class FizzBuzzMain {
                 printUsageAndExit();
             }
 
-            new FizzBuzzApp(new AppContext.CliAppContext())
-                    .generate(parseInt(args[0]));
+            generate(Integer.parseInt(args[0]));
 
         } catch (Exception e) {
             printUsageAndExit();
         }
     }
+
+    /**
+     * Print all the fizz buzz values in a range
+     *
+     * @param rangeEnd end number of the range
+     */
+    public static void generate(int rangeEnd) {
+        var app = new FizzBuzzApp(new AppContext.CliAppContext());
+
+        System.out.println(app.generatesFizzBuzzUpTo(rangeEnd));
+    }
+
 
     private static void printUsageAndExit() {
         System.err.println(

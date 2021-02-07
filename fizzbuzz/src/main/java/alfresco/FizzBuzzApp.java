@@ -19,21 +19,12 @@ public class FizzBuzzApp {
     }
 
     /**
-     * Print all the fizz buzz values in a range
-     *
-     * @param rangeEnd end number of the range
-     */
-    public void generate(int rangeEnd) {
-        System.out.println(generatesFizzBuzzUpTo(rangeEnd));
-    }
-
-    /**
      * Generates all fizz buzz values up to a range limit
      *
      * @param rangeEnd end number of the range
      * @return a string containing the generated values
      */
-    private String generatesFizzBuzzUpTo(int rangeEnd) {
+    public String generatesFizzBuzzUpTo(int rangeEnd) {
         return IntStream.rangeClosed(1, rangeEnd)
                 .mapToObj(fizzBuzzIt::generate)
                 .collect(joining(" "));
