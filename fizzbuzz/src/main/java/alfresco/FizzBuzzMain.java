@@ -33,7 +33,7 @@ public class FizzBuzzMain {
                 exit(128); // Invalid argument
             }
 
-            var app = new FizzBuzzApp(new DefaultAppContext());
+            var app = new FizzBuzzGeneratorUseCase(new DefaultAppContext());
 
             printResults(app.mapNumberRangeToWords(parseInt(args[0])));
 

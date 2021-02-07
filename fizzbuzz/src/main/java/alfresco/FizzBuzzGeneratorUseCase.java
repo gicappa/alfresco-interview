@@ -6,16 +6,16 @@ import java.util.stream.IntStream;
 import static java.util.stream.Collectors.toList;
 
 /**
- * The fizz buzz app prints out a series of numbers
+ * This use case can generate a list of fizz buzz words
  */
-public class FizzBuzzApp {
+public class FizzBuzzGeneratorUseCase {
 
     private final FizzBuzzMapper fizzBuzzMapper;
 
     /**
      * @param appContext context to wire and create collaborators
      */
-    public FizzBuzzApp(AppContext appContext) {
+    public FizzBuzzGeneratorUseCase(AppContext appContext) {
         this.fizzBuzzMapper = appContext.getFizzBuzzMapper();
     }
 

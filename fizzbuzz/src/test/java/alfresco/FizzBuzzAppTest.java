@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
  */
 class FizzBuzzAppTest {
 
-    private FizzBuzzApp app;
+    private FizzBuzzGeneratorUseCase app;
     private FizzBuzzMapper mockFizzBuzzMapper;
     private FizzBuzzReporterUseCase mockFizzBuzzReporter;
 
@@ -28,7 +28,7 @@ class FizzBuzzAppTest {
         var appContext = mock(AppContext.class);
         when(appContext.getFizzBuzzMapper()).thenReturn(mockFizzBuzzMapper);
         when(appContext.getFizzBuzzReporter()).thenReturn(mockFizzBuzzReporter);
-        app = new FizzBuzzApp(appContext);
+        app = new FizzBuzzGeneratorUseCase(appContext);
     }
 
     @Test
