@@ -1,8 +1,9 @@
 package alfresco;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
-import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
 
 /**
  * The fizz buzz app prints out a series of numbers
@@ -10,12 +11,14 @@ import static java.util.stream.Collectors.joining;
 public class FizzBuzzApp {
 
     private final FizzBuzzIt fizzBuzzIt;
+    private final FizzBuzzReporter fizzBuzzReporter;
 
     /**
      * @param appContext context to wire and create collaborators
      */
     public FizzBuzzApp(AppContext appContext) {
         this.fizzBuzzIt = appContext.getFizzBuzzIt();
+        this.fizzBuzzReporter = appContext.getFizzBuzzReporter();
     }
 
     /**
@@ -24,9 +27,10 @@ public class FizzBuzzApp {
      * @param rangeEnd end number of the range
      * @return a string containing the generated values
      */
-    public String fizzBuzzIt(int rangeEnd) {
-        return IntStream.rangeClosed(1, rangeEnd)
+    public List<String> fizzBuzzIt(int rangeEnd) {
+        return fizzBuzzReporter.report(IntStream.rangeClosed(1, rangeEnd)
                 .mapToObj(fizzBuzzIt::generate)
-                .collect(joining(" "));
+                .collect(toList()));
+
     }
 }

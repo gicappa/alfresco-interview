@@ -1,7 +1,12 @@
 package alfresco;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static java.lang.Integer.parseInt;
 import static java.lang.System.exit;
+import static java.util.stream.Collectors.joining;
 
 /**
  * The fizz buzz app translates a number range into a
@@ -46,8 +51,8 @@ public class FizzBuzzMain {
      *
      * @param results the result of the application execution
      */
-    public void printResults(String results) {
-        System.out.println(results);
+    public void printResults(List<String> results) {
+        System.out.println(results.stream().collect(joining()));
     }
 
     /**

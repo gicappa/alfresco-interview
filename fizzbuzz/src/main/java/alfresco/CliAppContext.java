@@ -26,5 +26,10 @@ class CliAppContext implements AppContext {
     public List<Rule> getRules() {
         return rules;
     }
+
+    @Override
+    public FizzBuzzReporter getFizzBuzzReporter() {
+        return new FizzBuzzReporter();
+    }
 }
 
