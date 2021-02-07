@@ -18,12 +18,12 @@ class FizzBuzzAppTest {
 
     private FizzBuzzApp app;
     private FizzBuzzMapper mockFizzBuzzMapper;
-    private FizzBuzzReporter mockFizzBuzzReporter;
+    private FizzBuzzReporterUseCase mockFizzBuzzReporter;
 
     @BeforeEach
     void beforeEach() {
         mockFizzBuzzMapper = mock(FizzBuzzMapper.class);
-        mockFizzBuzzReporter = mock(FizzBuzzReporter.class);
+        mockFizzBuzzReporter = mock(FizzBuzzReporterUseCase.class);
 
         var appContext = mock(AppContext.class);
         when(appContext.getFizzBuzzMapper()).thenReturn(mockFizzBuzzMapper);

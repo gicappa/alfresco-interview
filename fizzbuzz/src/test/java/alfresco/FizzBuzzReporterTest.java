@@ -10,11 +10,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class FizzBuzzReporterTest {
 
-    private FizzBuzzReporter fizzBuzzReporter;
+    private FizzBuzzReporterUseCase fizzBuzzReporter;
 
     @BeforeEach
     public void beforeEach() {
-        fizzBuzzReporter = new FizzBuzzReporter();
+        fizzBuzzReporter = new FizzBuzzReporterUseCase();
     }
 
     @Test

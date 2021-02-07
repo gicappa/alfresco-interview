@@ -11,14 +11,12 @@ import static java.util.stream.Collectors.toList;
 public class FizzBuzzApp {
 
     private final FizzBuzzMapper fizzBuzzMapper;
-    private final FizzBuzzReporter fizzBuzzReporter;
 
     /**
      * @param appContext context to wire and create collaborators
      */
     public FizzBuzzApp(AppContext appContext) {
         this.fizzBuzzMapper = appContext.getFizzBuzzMapper();
-        this.fizzBuzzReporter = appContext.getFizzBuzzReporter();
     }
 
     /**
