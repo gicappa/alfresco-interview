@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * method. This is the acceptance test.
  */
 @RunWith(ConcordionRunner.class)
-public class FizzBuzzStep2Fixture {
+public class FizzBuzzStep3Fixture {
 
     private SystemCommand command;
 
