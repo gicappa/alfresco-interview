@@ -16,13 +16,14 @@ public class FizzBuzzMapper {
     }
 
     /**
-     * Generate is the method that applies the rules of the fizzbuzz
-     * to the input number generating the strings.
+     * The map() method translates a number into a fizzbuzz word.
+     * The translation happens according to a list of rules that
+     * are passed to the mapper class.
      *
      * @param number the input
      * @return the string computed on the rules applied to the input
      */
-    public String generate(int number) {
+    public String map(int number) {
         String result = "";
 
         for (Rule rule : rules) {

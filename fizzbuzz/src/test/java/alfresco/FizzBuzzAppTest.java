@@ -37,12 +37,12 @@ class FizzBuzzAppTest {
         app.mapNumberRangeToWords(20);
 
         verify(mockFizzBuzzMapper, times(20))
-                .generate(anyInt());
+                .map(anyInt());
     }
     @Test
     @DisplayName("it calls the fizzbuzz generation for rangeEnd times")
     void it_calls_the_fizzbuzz_object_that_generates_a_report() {
-        when(mockFizzBuzzMapper.generate(anyInt())).thenReturn("1").thenReturn("2");
+        when(mockFizzBuzzMapper.map(anyInt())).thenReturn("1").thenReturn("2");
 
         app.mapNumberRangeToWords(2);
 
