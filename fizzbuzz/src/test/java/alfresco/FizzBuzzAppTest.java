@@ -1,6 +1,6 @@
-package alfresco.step1;
+package alfresco;
 
-import alfresco.SystemCommand;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,13 +16,17 @@ import static org.mockito.Mockito.*;
 class FizzBuzzAppTest {
 
     private FizzBuzzApp app;
-    private FizzBuzz mockFizzBuzz;
+    private FizzBuzzIt mockFizzBuzzIt;
     private SystemCommand command;
 
     @BeforeEach
     void beforeEach() {
-        mockFizzBuzz = mock(FizzBuzz.class);
-        app = new FizzBuzzApp(mockFizzBuzz);
+        mockFizzBuzzIt = mock(FizzBuzzIt.class);
+
+        var appContext = mock(AppContext.class);
+        when(appContext.getFizzBuzzIt()).thenReturn(mockFizzBuzzIt);
+        app = new FizzBuzzApp(appContext);
+
         command = new SystemCommand();
     }
 
@@ -31,14 +35,14 @@ class FizzBuzzAppTest {
     void it_calls_the_fizzbuzz_arg_0_times() {
         app.generate(20);
 
-        verify(mockFizzBuzz, times(20)).generate(anyInt());
+        verify(mockFizzBuzzIt, times(20)).generate(anyInt());
     }
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "java -cp target/classes alfresco.step1.FizzBuzzApp",
-            "java -cp target/classes alfresco.step1.FizzBuzzApp 1 2 3",
-            "java -cp target/classes alfresco.step1.FizzBuzzApp blah"
+            "java -cp target/classes alfresco.FizzBuzzMain",
+            "java -cp target/classes alfresco.FizzBuzzMain 1 2 3",
+            "java -cp target/classes alfresco.FizzBuzzMain blah"
     })
     @DisplayName("it displays usage when no number or while are passed")
     void it_prints_the_usage_when_no_args_are_passed(String cmdString) {

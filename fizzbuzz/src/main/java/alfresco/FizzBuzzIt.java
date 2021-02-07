@@ -1,4 +1,4 @@
-package alfresco.step2;
+package alfresco;
 
 import java.util.List;
 

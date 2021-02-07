@@ -1,4 +1,4 @@
-package alfresco.step2;
+package alfresco;
 
 /**
  * Rule is the abstraction of all the rules that can

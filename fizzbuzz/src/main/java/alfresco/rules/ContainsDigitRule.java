@@ -1,6 +1,6 @@
-package alfresco.step2.rules;
+package alfresco.rules;
 
-import alfresco.step2.Rule;
+import alfresco.Rule;
 
 /**
  * The ContainsRule is meant to substitute a the result

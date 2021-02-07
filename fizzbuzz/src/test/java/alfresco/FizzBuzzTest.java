@@ -1,4 +1,4 @@
-package alfresco.step2;
+package alfresco;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +12,7 @@ class FizzBuzzTest {
 
     @BeforeEach
     void before() {
-        fizzBuzz = new FizzBuzzIt(new AppContext().getRules());
+        fizzBuzz = new FizzBuzzIt(new AppContext.CliAppContext().getRules());
     }
 
     @Test

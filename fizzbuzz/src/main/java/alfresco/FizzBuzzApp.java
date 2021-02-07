@@ -1,4 +1,4 @@
-package alfresco.step2;
+package alfresco;
 
 import java.util.stream.IntStream;
 
@@ -9,13 +9,13 @@ import static java.util.stream.Collectors.joining;
  */
 public class FizzBuzzApp {
 
-    private final FizzBuzzIt fizzBuzz;
+    private final FizzBuzzIt fizzBuzzIt;
 
     /**
      * @param appContext context to wire and create collaborators
      */
     public FizzBuzzApp(AppContext appContext) {
-        this.fizzBuzz = appContext.getFizzBuzzIt();
+        this.fizzBuzzIt = appContext.getFizzBuzzIt();
     }
 
     /**
@@ -35,7 +35,7 @@ public class FizzBuzzApp {
      */
     private String generatesFizzBuzzUpTo(int rangeEnd) {
         return IntStream.rangeClosed(1, rangeEnd)
-                .mapToObj(fizzBuzz::generate)
+                .mapToObj(fizzBuzzIt::generate)
                 .collect(joining(" "));
     }
 }
