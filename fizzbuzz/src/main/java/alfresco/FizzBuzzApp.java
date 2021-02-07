@@ -1,6 +1,7 @@
 package alfresco;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
@@ -28,9 +29,14 @@ public class FizzBuzzApp {
      * @return a string containing the generated values
      */
     public List<String> fizzBuzzIt(int rangeEnd) {
-        return fizzBuzzReporter.report(IntStream.rangeClosed(1, rangeEnd)
-                .mapToObj(fizzBuzzIt::generate)
-                .collect(toList()));
+        var fizzBuzzWords =
+                IntStream.rangeClosed(1, rangeEnd)
+                        .mapToObj(fizzBuzzIt::generate)
+                        .collect(toList());
+
+        Map<String, Long> report = fizzBuzzReporter.report(fizzBuzzWords);
+
+        return fizzBuzzWords;
 
     }
 }

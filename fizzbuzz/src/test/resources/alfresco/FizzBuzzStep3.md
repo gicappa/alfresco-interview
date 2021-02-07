@@ -6,7 +6,7 @@ fizz
 buzz
 fizzbuzz
 alfresco
-an integer
+integer
 ```
 
 ### [Example](- "example  c:status=ExpectedToFail")

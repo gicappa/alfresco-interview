@@ -1,6 +1,7 @@
 package alfresco;
 
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -53,4 +54,12 @@ class FizzBuzzAppTest {
     void it_invokes_a_list_of_words() {
         assertThat(app.fizzBuzzIt(5)).hasSize(5);
     }
+
+    @AfterEach
+    public void afterEach() {
+        reset(mockFizzBuzzIt);
+        reset(mockFizzBuzzReporter);
+
+    }
 }
+
