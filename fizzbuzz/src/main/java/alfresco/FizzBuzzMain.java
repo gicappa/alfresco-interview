@@ -2,9 +2,11 @@ package alfresco;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.System.exit;
+import static java.util.stream.Collectors.toList;
 
 /**
  * The fizz buzz app translates a number range into a
@@ -75,10 +77,10 @@ public class FizzBuzzMain {
      * @return the string with all the fizzbuzz
      */
     public List<String> computeReport(Map<String, Long> reports) {
-
-        String fizz = "fizz" + ": " + reports.get("fizz");
-        String alfresco = "alfresco" + ": " + reports.get("alfresco");
-        return List.of(fizz, alfresco);
+        return Stream.of("fizz", "buzz", "fizzbuzz", "alfresco", "integer")
+                .filter(reports::containsKey)
+                .map(r -> r + ": " + reports.get(r))
+                .collect(toList());
     }
 
     /**

@@ -62,7 +62,7 @@ class FizzBuzzMainTest {
 
         var report = fizzBuzzMain.computeReport(Map.of("alfresco", 10L));
 
-        assertThat(report).contains("alfresco: 10");
+        assertThat(report).containsExactly("alfresco: 10");
     }
 
     @Test
@@ -70,14 +70,22 @@ class FizzBuzzMainTest {
     void it_prints_the_report_alfresco_fizz() {
         var fizzBuzzMain = new FizzBuzzMain();
 
+
+
+
+
         var alfresco = Map.of(
                 "alfresco", 10L,
-                "fizz", 20L
+                "buzz", 20L,
+                "fizz", 30L,
+                "integer", 40L,
+                "fizzbuzz", 50L
         );
 
         var report = fizzBuzzMain.computeReport(alfresco);
 
-        assertThat(report).containsSequence("fizz: 20", "alfresco: 10");
+        assertThat(report).containsExactly(
+                "fizz: 30", "buzz: 20", "fizzbuzz: 50", "alfresco: 10", "integer: 40");
     }
 
     AppContext mockContext(FizzBuzzGeneratorUseCase generator, FizzBuzzReporterUseCase reporter) {
