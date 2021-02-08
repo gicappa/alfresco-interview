@@ -74,12 +74,11 @@ public class FizzBuzzMain {
      * @param reports the result of the application execution
      * @return the string with all the fizzbuzz
      */
-    public String computeReport(Map<String, Long> reports) {
-        StringBuilder buffer = new StringBuilder();
-        buffer.append("alfresco");
-        buffer.append(": ");
-        buffer.append(reports.get("alfresco"));
-        return buffer.toString();
+    public List<String> computeReport(Map<String, Long> reports) {
+
+        String fizz = "fizz" + ": " + reports.get("fizz");
+        String alfresco = "alfresco" + ": " + reports.get("alfresco");
+        return List.of(fizz, alfresco);
     }
 
     /**

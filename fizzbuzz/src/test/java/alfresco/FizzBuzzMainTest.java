@@ -57,12 +57,27 @@ class FizzBuzzMainTest {
 
     @Test
     @DisplayName("it creates the string report")
-    void it_prints_the_report() {
+    void it_prints_the_report_for_alfresco() {
         var fizzBuzzMain = new FizzBuzzMain();
 
         var report = fizzBuzzMain.computeReport(Map.of("alfresco", 10L));
 
         assertThat(report).contains("alfresco: 10");
+    }
+
+    @Test
+    @DisplayName("it creates the string report")
+    void it_prints_the_report_alfresco_fizz() {
+        var fizzBuzzMain = new FizzBuzzMain();
+
+        var alfresco = Map.of(
+                "alfresco", 10L,
+                "fizz", 20L
+        );
+
+        var report = fizzBuzzMain.computeReport(alfresco);
+
+        assertThat(report).containsSequence("fizz: 20", "alfresco: 10");
     }
 
     AppContext mockContext(FizzBuzzGeneratorUseCase generator, FizzBuzzReporterUseCase reporter) {
