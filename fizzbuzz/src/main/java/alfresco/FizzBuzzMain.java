@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 import static java.lang.Integer.parseInt;
+import static java.lang.String.join;
 import static java.lang.System.exit;
 import static java.util.stream.Collectors.toList;
 
@@ -16,7 +17,8 @@ import static java.util.stream.Collectors.toList;
  */
 public class FizzBuzzMain {
 
-    private final AppContext appContext;
+    private final FizzBuzzGeneratorUseCase generator;
+    private final FizzBuzzReporterUseCase report;
 
     /**
      * Entry point of the Application.
@@ -31,11 +33,12 @@ public class FizzBuzzMain {
     }
 
     public FizzBuzzMain() {
-        this.appContext = new DefaultAppContext();
+        this(new DefaultAppContext());
     }
 
     public FizzBuzzMain(AppContext appContext) {
-        this.appContext = appContext;
+        this.generator = appContext.getFizzBuzzGenerator();
+        this.report = appContext.getFizzBuzzReporter();
     }
 
     public void run(String... args) {
@@ -46,30 +49,14 @@ public class FizzBuzzMain {
                 exit(128); // Invalid argument
             }
 
-            var generator = appContext.getFizzBuzzGenerator();
-            var report = appContext.getFizzBuzzReporter();
-
             var results = generator.generateWords(parseInt(args[0]));
 
-            printOutput(computeResults(results));
-
-            report.report(results);
+            printOutput(results, computeReport(report.report(results)));
 
         } catch (Exception e) {
             printUsage();
             exit(1); // Generic error
         }
-    }
-
-    /**
-     * All the fizzbuzz words in a list needs to be joined in
-     * a spaced string
-     *
-     * @param results the result of the application execution
-     * @return the string with all the fizzbuzz
-     */
-    public String computeResults(List<String> results) {
-        return String.join(" ", results);
     }
 
     /**
@@ -88,8 +75,10 @@ public class FizzBuzzMain {
      *
      * @param results the result of the application execution
      */
-    public void printOutput(String results) {
-        System.out.println(results);
+    public void printOutput(List<String> results, List<String> reports) {
+        System.out.println(
+                join(" ", results) + " " + join(" ", reports)
+        );
     }
 
     /**
