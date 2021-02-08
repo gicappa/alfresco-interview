@@ -36,7 +36,7 @@
   </licenses>
 
   <modules>
-    <module>fizzbuzz</module>
+    <module>fizzbuzz-domain</module>
     <module>fizzbuzz-docs</module>
   </modules>
 
