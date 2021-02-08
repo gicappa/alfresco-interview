@@ -18,7 +18,7 @@ import static java.util.stream.Collectors.toList;
 public class FizzBuzzMain {
 
     private final FizzBuzzGeneratorUseCase generator;
-    private final FizzBuzzReporterUseCase report;
+    private final FizzBuzzReporterUseCase reporter;
 
     /**
      * Entry point of the Application.
@@ -38,7 +38,7 @@ public class FizzBuzzMain {
 
     public FizzBuzzMain(AppContext appContext) {
         this.generator = appContext.getFizzBuzzGenerator();
-        this.report = appContext.getFizzBuzzReporter();
+        this.reporter = appContext.getFizzBuzzReporter();
     }
 
     public void run(String... args) {
@@ -51,34 +51,35 @@ public class FizzBuzzMain {
 
             var results = generator.generateWords(parseInt(args[0]));
 
-            printOutput(results, computeReport(report.report(results)));
+            printOutput(results, formatListReport(reporter.generateReport(results)));
 
         } catch (Exception e) {
             printUsage();
+            e.printStackTrace();
             exit(1); // Generic error
         }
+    }
+
+    /**
+     * Print all the fizz buzz values in a range
+     *
+     * @param wordList the result of the application execution
+     */
+    public void printOutput(List<String> wordList, List<String> reportList) {
+        System.out.println(
+                join(" ", wordList) + " " + join(" ", reportList)
+        );
     }
 
     /**
      * @param reports the result of the application execution
      * @return the string with all the fizzbuzz
      */
-    public List<String> computeReport(Map<String, Long> reports) {
+    public List<String> formatListReport(Map<String, Long> reports) {
         return Stream.of("fizz", "buzz", "fizzbuzz", "alfresco", "integer")
                 .filter(reports::containsKey)
                 .map(r -> r + ": " + reports.get(r))
                 .collect(toList());
-    }
-
-    /**
-     * Print all the fizz buzz values in a range
-     *
-     * @param results the result of the application execution
-     */
-    public void printOutput(List<String> results, List<String> reports) {
-        System.out.println(
-                join(" ", results) + " " + join(" ", reports)
-        );
     }
 
     /**

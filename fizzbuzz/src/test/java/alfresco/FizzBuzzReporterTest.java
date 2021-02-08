@@ -23,7 +23,7 @@ class FizzBuzzReporterTest {
     void it_returns_an_integer_with_a_counter() {
         var input = List.of("1", "2");
 
-        assertThat(fizzBuzzReporter.report(input))
+        assertThat(fizzBuzzReporter.generateReport(input))
                 .containsKey("integer")
                 .containsValue(2L);
     }
@@ -34,7 +34,7 @@ class FizzBuzzReporterTest {
     void it_counts_the_occurrence_of_a_given_string_in_a_list() {
         var input = List.of("alfresco", "alfresco", "alfresco");
 
-        assertThat(fizzBuzzReporter.report(input))
+        assertThat(fizzBuzzReporter.generateReport(input))
                 .containsKey("alfresco")
                 .containsValue(3L);
     }

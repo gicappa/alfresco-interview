@@ -21,7 +21,7 @@ public class FizzBuzzReporterUseCase {
      * @param words a list of fizzbuzz words
      * @return a map with the words and their occurrences
      */
-    public Map<String, Long> report(List<String> words) {
+    public Map<String, Long> generateReport(List<String> words) {
         return words.stream()
                 .map(this::toInteger)
                 .collect(groupingBy(identity(), counting()));

@@ -34,7 +34,10 @@ public class FizzBuzzStep3Fixture {
                         rangeEnd
                 );
 
-        assertThat(result.getExitValue()).isZero();
+        assertThat(result.getExitValue())
+                .as("the java application returned a non zero exit value")
+                .as(result.getStderr())
+                .isZero();
 
         return result.getStdout();
     }

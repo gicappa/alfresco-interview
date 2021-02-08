@@ -52,7 +52,7 @@ class FizzBuzzMainTest {
 
         fizzBuzzMain.run("2");
 
-        verify(mockReporter).report(List.of("1", "2"));
+        verify(mockReporter).generateReport(List.of("1", "2"));
     }
 
     @Test
@@ -60,7 +60,7 @@ class FizzBuzzMainTest {
     void it_prints_the_report_for_alfresco() {
         var fizzBuzzMain = new FizzBuzzMain();
 
-        var report = fizzBuzzMain.computeReport(Map.of("alfresco", 10L));
+        var report = fizzBuzzMain.formatListReport(Map.of("alfresco", 10L));
 
         assertThat(report).containsExactly("alfresco: 10");
     }
@@ -70,10 +70,6 @@ class FizzBuzzMainTest {
     void it_prints_the_report_alfresco_fizz() {
         var fizzBuzzMain = new FizzBuzzMain();
 
-
-
-
-
         var alfresco = Map.of(
                 "alfresco", 10L,
                 "buzz", 20L,
@@ -82,7 +78,7 @@ class FizzBuzzMainTest {
                 "fizzbuzz", 50L
         );
 
-        var report = fizzBuzzMain.computeReport(alfresco);
+        var report = fizzBuzzMain.formatListReport(alfresco);
 
         assertThat(report).containsExactly(
                 "fizz: 30", "buzz: 20", "fizzbuzz: 50", "alfresco: 10", "integer: 40");

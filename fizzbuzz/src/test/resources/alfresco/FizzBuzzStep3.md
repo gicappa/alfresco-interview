@@ -9,8 +9,8 @@ alfresco
 integer
 ```
 
-### [Example](- "example  c:status=ExpectedToFail")
-Running the program with a range from 1-20 should produce the following result:
+### [Example](- "example")
+Running the program with a range from 1-[20](- "#end") should produce the following result:
 
 [1 2 alfresco 4 buzz fizz 7 8 fizz buzz 11 fizz alfresco 14 fizzbuzz 16 17 fizz 19 buzz fizz: 4 buzz: 3 fizzbuzz: 1 alfresco: 2 integer: 10](- "?=fizzBuzzIt(#end)")
 
