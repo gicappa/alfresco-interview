@@ -1,6 +1,7 @@
 package alfresco;
 
 import java.util.List;
+import java.util.Map;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.System.exit;
@@ -47,7 +48,9 @@ public class FizzBuzzMain {
             var report = appContext.getFizzBuzzReporter();
 
             var results = generator.generateWords(parseInt(args[0]));
-            printResults(results);
+
+            printOutput(computeResults(results));
+
             report.report(results);
 
         } catch (Exception e) {
@@ -57,12 +60,35 @@ public class FizzBuzzMain {
     }
 
     /**
+     * All the fizzbuzz words in a list needs to be joined in
+     * a spaced string
+     *
+     * @param results the result of the application execution
+     * @return the string with all the fizzbuzz
+     */
+    public String computeResults(List<String> results) {
+        return String.join(" ", results);
+    }
+
+    /**
+     * @param reports the result of the application execution
+     * @return the string with all the fizzbuzz
+     */
+    public String computeReport(Map<String, Long> reports) {
+        StringBuilder buffer = new StringBuilder();
+        buffer.append("alfresco");
+        buffer.append(": ");
+        buffer.append(reports.get("alfresco"));
+        return buffer.toString();
+    }
+
+    /**
      * Print all the fizz buzz values in a range
      *
      * @param results the result of the application execution
      */
-    public void printResults(List<String> results) {
-        System.out.println(String.join(" ", results));
+    public void printOutput(String results) {
+        System.out.println(results);
     }
 
     /**
@@ -73,4 +99,5 @@ public class FizzBuzzMain {
                 "usage: java alfresco.FizzBuzzMain [arg]\n" +
                         "   arg - (required) number of fizzbuzz words to generate");
     }
+
 }

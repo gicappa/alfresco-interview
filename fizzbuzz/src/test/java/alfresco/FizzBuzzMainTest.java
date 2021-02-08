@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -16,10 +17,14 @@ import static org.mockito.Mockito.*;
  */
 class FizzBuzzMainTest {
 
+    private FizzBuzzGeneratorUseCase mockGenerator;
+    private FizzBuzzReporterUseCase mockReporter;
     private SystemCommand command;
 
     @BeforeEach
     void beforeEach() {
+        mockGenerator = mock(FizzBuzzGeneratorUseCase.class);
+        mockReporter = mock(FizzBuzzReporterUseCase.class);
         command = new SystemCommand();
     }
 
@@ -41,8 +46,6 @@ class FizzBuzzMainTest {
     @Test
     @DisplayName("it calls the fizzbuzz generation for rangeEnd times")
     void it_calls_the_fizzbuzz_object_that_generates_a_report() {
-        var mockGenerator = mock(FizzBuzzGeneratorUseCase.class);
-        var mockReporter = mock(FizzBuzzReporterUseCase.class);
         when(mockGenerator.generateWords(anyInt())).thenReturn(List.of("1", "2"));
 
         var fizzBuzzMain = new FizzBuzzMain(mockContext(mockGenerator, mockReporter));
@@ -50,6 +53,16 @@ class FizzBuzzMainTest {
         fizzBuzzMain.run("2");
 
         verify(mockReporter).report(List.of("1", "2"));
+    }
+
+    @Test
+    @DisplayName("it creates the string report")
+    void it_prints_the_report() {
+        var fizzBuzzMain = new FizzBuzzMain();
+
+        var report = fizzBuzzMain.computeReport(Map.of("alfresco", 10L));
+
+        assertThat(report).contains("alfresco: 10");
     }
 
     AppContext mockContext(FizzBuzzGeneratorUseCase generator, FizzBuzzReporterUseCase reporter) {
