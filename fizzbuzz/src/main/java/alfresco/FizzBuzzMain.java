@@ -32,15 +32,33 @@ public class FizzBuzzMain {
         new FizzBuzzMain().run(args);
     }
 
+    /**
+     * Default constructor using the default application
+     * context to build the objects.
+     */
     public FizzBuzzMain() {
         this(new DefaultAppContext());
     }
 
+    /**
+     * Main entry point of the application that accept an
+     * application context as a dependency.
+     * The application context provides the collaborator
+     * of this class.
+     *
+     * @param appContext an object that provides the class
+     *                   collaborators.
+     */
     public FizzBuzzMain(AppContext appContext) {
         this.generator = appContext.getFizzBuzzGenerator();
         this.reporter = appContext.getFizzBuzzReporter();
     }
 
+    /**
+     * The instance method to start the application.
+     *
+     * @param args accepted by the application.
+     */
     public void run(String... args) {
         try {
 

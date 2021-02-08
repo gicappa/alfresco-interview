@@ -32,8 +32,12 @@ public class ContainsDigitRule implements Rule {
         return result;
     }
 
-    private String str(int digit) {
-        return String.valueOf(digit);
+    /**
+     * @param number to be transformed in a string
+     * @return the string containing the number
+     */
+    private String str(int number) {
+        return String.valueOf(number);
     }
 
 }

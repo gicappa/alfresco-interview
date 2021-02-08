@@ -6,7 +6,7 @@ import alfresco.Rule;
  * The ToStringRule is applied when the result is not valued
  * and it just transform the number in a string.
  */
-public class ToStringRule implements Rule {
+public class BaseRule implements Rule {
 
     /**
      * Apply the rule to the number

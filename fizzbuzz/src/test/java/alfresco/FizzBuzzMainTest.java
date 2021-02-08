@@ -13,19 +13,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 /**
- * Testing that the application is calling the FizzBuzz generate method
+ * Testing that the entry point of the application is handling
+ * the command line parameters.
  */
 class FizzBuzzMainTest {
 
     private FizzBuzzGeneratorUseCase mockGenerator;
     private FizzBuzzReporterUseCase mockReporter;
     private SystemCommand command;
+    private FizzBuzzMain fizzBuzzMain;
 
     @BeforeEach
     void beforeEach() {
         mockGenerator = mock(FizzBuzzGeneratorUseCase.class);
         mockReporter = mock(FizzBuzzReporterUseCase.class);
         command = new SystemCommand();
+        fizzBuzzMain = new FizzBuzzMain();
     }
 
     @ParameterizedTest
@@ -58,8 +61,6 @@ class FizzBuzzMainTest {
     @Test
     @DisplayName("it creates the string report")
     void it_prints_the_report_for_alfresco() {
-        var fizzBuzzMain = new FizzBuzzMain();
-
         var report = fizzBuzzMain.formatListReport(Map.of("alfresco", 10L));
 
         assertThat(report).containsExactly("alfresco: 10");
@@ -68,7 +69,6 @@ class FizzBuzzMainTest {
     @Test
     @DisplayName("it creates the string report")
     void it_prints_the_report_alfresco_fizz() {
-        var fizzBuzzMain = new FizzBuzzMain();
 
         var alfresco = Map.of(
                 "alfresco", 10L,
