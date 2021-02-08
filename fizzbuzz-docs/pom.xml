@@ -50,13 +50,13 @@
                 </goals>
                 <configuration>
                   <backend>html5</backend>
-                  <sourceHighlighter>prettify</sourceHighlighter>
                   <sourceDirectory>src/main/asciidoc</sourceDirectory>
                   <outputDirectory>target/docs</outputDirectory>
                   <attributes>
                     <toc>left</toc>
                     <linkcss>false</linkcss>
                     <stylesheet>stylesheets/maker.css</stylesheet>
+                    <source-highlighter>prettify</source-highlighter>
                   </attributes>
                 </configuration>
               </execution>
