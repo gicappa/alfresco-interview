@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-
-  <artifactId>fizzbuzz-parent</artifactId>
   <groupId>alfresco</groupId>
+  <artifactId>fizzbuzz-parent</artifactId>
   <version>1.0-SNAPSHOT</version>
-
   <packaging>pom</packaging>
-
   <name>FizzBuzz</name>
   <description>FizzBuzz Exercise</description>
   <url>https://github.com/asciidoctor/asciidoctor-maven-plugin</url>
-
+  <licenses>
+    <license>
+      <name>BSD 3-Clause License</name>
+      <url>https://opensource.org/licenses/BSD-3-Clause</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
   <developers>
     <developer>
       <id>gicappa</id>
@@ -26,20 +28,11 @@
       <timezone>UTC+1</timezone>
     </developer>
   </developers>
-
-  <licenses>
-    <license>
-      <name>BSD 3-Clause License</name>
-      <url>https://opensource.org/licenses/BSD-3-Clause</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-
   <modules>
     <module>fizzbuzz-domain</module>
     <module>fizzbuzz-docs</module>
+    <module>fizzbuzz-api</module>
   </modules>
-
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <maven.compiler.parameters>true</maven.compiler.parameters>
@@ -49,7 +42,6 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <surefire-plugin.version>2.22.1</surefire-plugin.version>
   </properties>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -87,27 +79,24 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>3.0.0</version>
         <executions>
           <execution>
             <id>validate</id>
             <phase>validate</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
             <configuration>
               <configLocation>checkstyle.xml</configLocation>
               <encoding>UTF-8</encoding>
               <consoleOutput>true</consoleOutput>
               <failsOnError>true</failsOnError>
             </configuration>
-            <goals>
-              <goal>check</goal>
-            </goals>
           </execution>
         </executions>
       </plugin>
-
-      <!-- create an appropriate javadoc -->
       <plugin>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>2.7</version>

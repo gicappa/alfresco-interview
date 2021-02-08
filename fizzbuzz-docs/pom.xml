@@ -12,7 +12,7 @@
 
   <artifactId>fizzbuzz-docs</artifactId>
 
-  <name>FizzBuzz Documentation</name>
+  <name>FizzBuzz Docs</name>
 
   <build>
     <pluginManagement>
