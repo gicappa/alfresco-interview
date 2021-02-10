@@ -1,21 +1,35 @@
 package alfresco;
 
 import io.quarkus.test.junit.QuarkusTest;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
+import static io.restassured.http.ContentType.JSON;
+import static org.hamcrest.Matchers.hasItems;
 
 @QuarkusTest
-public class FizzBuzzWordsTest {
+class FizzBuzzWordsTest {
 
+    /**
+     * Checking that the apis are returning a JSON with a list of
+     * words. The number of words is by default 20 and they must
+     * comply with the fizzbuzz specification.
+     */
     @Test
-    public void testHelloEndpoint() {
+    @Disabled("Feature in progress")
+    void test() {
         given()
-          .when().get("/hello")
-          .then()
-             .statusCode(200)
-             .body(is("Hello RESTEasy"));
+                .when()
+                .get("/words")
+                .then()
+                .statusCode(200)
+                .contentType(JSON)
+                .body("words",
+                        hasItems("1", "2", "alfresco", "4", "buzz",
+                                "fizz", "7", "8", "fizz", "buzz", "11", "fizz",
+                                "alfresco", "14", "fizzbuzz", "16", "17", "fizz",
+                                "19", "buzz"));
     }
 
 }
