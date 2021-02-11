@@ -16,7 +16,6 @@ class WordsResourceTest {
      * comply with the fizzbuzz specification.
      */
     @Test
-//    @Disabled("Feature in progress")
     void test() {
         given()
                 .when()
