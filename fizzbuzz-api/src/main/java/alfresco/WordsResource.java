@@ -17,6 +17,6 @@ public class WordsResource {
     @GET
     @Path("words")
     public Words words() {
-        return new Words(generator.generateWords(20));
+        return generator.generateWords(20);
     }
 }

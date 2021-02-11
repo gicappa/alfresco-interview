@@ -21,7 +21,7 @@ class FizzBuzzReporterTest {
     @DisplayName("It returns a map with key 'integer' and value '2L'" +
             "when 2 integer are in the list")
     void it_returns_an_integer_with_a_counter() {
-        var input = List.of("1", "2");
+        var input = Words.of("1", "2");
 
         assertThat(fizzBuzzReporter.generateReport(input))
                 .containsKey("integer")
@@ -32,7 +32,7 @@ class FizzBuzzReporterTest {
     @DisplayName("It returns a map with key 'alfresco' and value '3L'" +
             "when 3 string 'alfresco' are in the list")
     void it_counts_the_occurrence_of_a_given_string_in_a_list() {
-        var input = List.of("alfresco", "alfresco", "alfresco");
+        var input = Words.of("alfresco", "alfresco", "alfresco");
 
         assertThat(fizzBuzzReporter.generateReport(input))
                 .containsKey("alfresco")

@@ -1,6 +1,5 @@
 package alfresco;
 
-import java.util.List;
 import java.util.Map;
 
 import static java.lang.Integer.parseInt;
@@ -21,10 +20,10 @@ public class FizzBuzzReporterUseCase {
      * @param words a list of fizzbuzz words
      * @return a map with the words and their occurrences
      */
-    public Map<String, Long> generateReport(List<String> words) {
-        return words.stream()
-                .map(this::toInteger)
-                .collect(groupingBy(identity(), counting()));
+    public Map<String, Long> generateReport(Words words) {
+        return words.getWords().stream()
+            .map(this::toInteger)
+            .collect(groupingBy(identity(), counting()));
     }
 
     /**

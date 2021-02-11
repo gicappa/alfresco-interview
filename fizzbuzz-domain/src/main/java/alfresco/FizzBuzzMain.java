@@ -81,11 +81,11 @@ public class FizzBuzzMain {
     /**
      * Print all the fizz buzz values in a range
      *
-     * @param wordList the result of the application execution
+     * @param words the result of the application execution
      */
-    public void printOutput(List<String> wordList, List<String> reportList) {
+    public void printOutput(Words words, List<String> reportList) {
         System.out.println(
-                join(" ", wordList) + " " + join(" ", reportList)
+                join(" ", words.getWords()) + " " + join(" ", reportList)
         );
     }
 

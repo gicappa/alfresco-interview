@@ -40,9 +40,15 @@ class FizzBuzzGeneratorTest {
     }
 
     @Test
+    @DisplayName("It returns a Words containing Word")
+    void it_generates_a_Words_object_containing_a_list_of_Word() {
+        assertThat(app.generateWords(5)).isInstanceOf(Words.class);
+    }
+
+    @Test
     @DisplayName("It returns a List<String> containing words")
     void it_invokes_a_list_of_words() {
-        assertThat(app.generateWords(5)).hasSize(5);
+        assertThat(app.generateWords(5).getWords()).hasSize(5);
     }
 
     @AfterEach

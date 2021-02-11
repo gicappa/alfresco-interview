@@ -1,9 +1,8 @@
 package alfresco;
 
-import java.util.List;
 import java.util.stream.IntStream;
 
-import static java.util.stream.Collectors.toList;
+import static alfresco.WordsCollector.toWords;
 
 /**
  * This use case can generate a list of fizz buzz words
@@ -25,10 +24,10 @@ public class FizzBuzzGeneratorUseCase {
      * @param rangeEnd end number of the range
      * @return a string containing the generated values
      */
-    public List<String> generateWords(int rangeEnd) {
+    public Words generateWords(int rangeEnd) {
         return IntStream.rangeClosed(1, rangeEnd)
                 .mapToObj(fizzBuzzMapper::map)
-                .collect(toList());
+                .collect(toWords());
 
     }
 }

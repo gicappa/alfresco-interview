@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
@@ -18,6 +16,7 @@ class FizzBuzzWordsRestTest {
         AppContext appContext = mock(AppContext.class);
         generator = mock(FizzBuzzGeneratorUseCase.class);
         when(appContext.getFizzBuzzGenerator()).thenReturn(generator);
+        when(generator.generateWords(20)).thenReturn(Words.of("a", "b", "c"));
 
         fizzBuzzWords = new WordsResource(appContext);
     }
@@ -39,8 +38,6 @@ class FizzBuzzWordsRestTest {
     @Test
     @DisplayName("It returns a Words from the generator")
     void it_returns_the_words_generated_by_the_generator() {
-        when(generator.generateWords(20)).thenReturn(List.of("a", "b", "c"));
-
         assertThat(fizzBuzzWords.words().getWords()).containsExactly("a", "b", "c");
     }
 }

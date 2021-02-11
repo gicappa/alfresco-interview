@@ -49,13 +49,13 @@ class FizzBuzzMainTest {
     @Test
     @DisplayName("it calls the fizzbuzz generation for rangeEnd times")
     void it_calls_the_fizzbuzz_object_that_generates_a_report() {
-        when(mockGenerator.generateWords(anyInt())).thenReturn(List.of("1", "2"));
+        when(mockGenerator.generateWords(anyInt())).thenReturn(new Words(List.of("1", "2")));
 
         var fizzBuzzMain = new FizzBuzzMain(mockContext(mockGenerator, mockReporter));
 
         fizzBuzzMain.run("2");
 
-        verify(mockReporter).generateReport(List.of("1", "2"));
+        verify(mockReporter).generateReport(Words.of("1", "2"));
     }
 
     @Test
