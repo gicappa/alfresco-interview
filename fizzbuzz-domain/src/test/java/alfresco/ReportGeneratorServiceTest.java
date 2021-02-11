@@ -4,17 +4,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
-class FizzBuzzReporterTest {
+class ReportGeneratorServiceTest {
 
-    private FizzBuzzReporterUseCase fizzBuzzReporter;
+    private ReportGeneratorService fizzBuzzReporter;
 
     @BeforeEach
     public void beforeEach() {
-        fizzBuzzReporter = new FizzBuzzReporterUseCase();
+        fizzBuzzReporter = new ReportGeneratorService();
     }
 
     @Test

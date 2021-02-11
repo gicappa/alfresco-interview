@@ -8,6 +8,9 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 
+/**
+ * Collecting the resulting Words object out of a stream.
+ */
 public class WordsCollector implements Collector<String, Words, Words> {
 
     @Override

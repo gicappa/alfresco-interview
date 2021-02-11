@@ -13,7 +13,7 @@ public interface AppContext {
     /**
      * @return the object able to translate a number in a word
      */
-    FizzBuzzMapper getFizzBuzzMapper();
+    WordMapper getFizzBuzzMapper();
 
     /**
      * @return the list of rule applicable to the numbers to generate
@@ -25,10 +25,10 @@ public interface AppContext {
      * @return the object able to count the occurrence of a certain
      * word type
      */
-    FizzBuzzGeneratorUseCase getFizzBuzzGenerator();
+    WordGeneratorService getFizzBuzzGenerator();
     /**
      * @return the object able to count the occurrence of a certain
      * word type
      */
-    FizzBuzzReporterUseCase getFizzBuzzReporter();
+    ReportGeneratorService getFizzBuzzReporter();
 }

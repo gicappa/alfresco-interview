@@ -9,12 +9,12 @@ import static org.mockito.Mockito.*;
 
 class FizzBuzzWordsRestTest {
     private WordsResource fizzBuzzWords;
-    private FizzBuzzGeneratorUseCase generator;
+    private WordGeneratorService generator;
 
     @BeforeEach
     void beforeEach() {
         AppContext appContext = mock(AppContext.class);
-        generator = mock(FizzBuzzGeneratorUseCase.class);
+        generator = mock(WordGeneratorService.class);
         when(appContext.getFizzBuzzGenerator()).thenReturn(generator);
         when(generator.generateWords(20)).thenReturn(Words.of("a", "b", "c"));
 

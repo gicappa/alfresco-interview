@@ -17,8 +17,8 @@ import static java.util.stream.Collectors.toList;
  */
 public class FizzBuzzMain {
 
-    private final FizzBuzzGeneratorUseCase generator;
-    private final FizzBuzzReporterUseCase reporter;
+    private final WordGeneratorService generator;
+    private final ReportGeneratorService reporter;
 
     /**
      * Entry point of the Application.

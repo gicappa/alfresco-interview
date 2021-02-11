@@ -8,7 +8,7 @@ import javax.ws.rs.Produces;
 @Produces("application/json")
 public class WordsResource {
 
-    private final FizzBuzzGeneratorUseCase generator;
+    private final WordGeneratorService generator;
 
     public WordsResource(AppContext appContext) {
         generator = appContext.getFizzBuzzGenerator();

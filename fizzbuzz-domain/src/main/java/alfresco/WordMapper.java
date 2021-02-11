@@ -7,11 +7,11 @@ import java.util.List;
  * a string as an output. It encodes the output string according to
  * specific rules.
  */
-public class FizzBuzzMapper {
+public class WordMapper {
 
     private final List<Rule> rules;
 
-    FizzBuzzMapper(List<Rule> rules) {
+    WordMapper(List<Rule> rules) {
         this.rules = rules;
     }
 

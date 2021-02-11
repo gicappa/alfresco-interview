@@ -13,9 +13,9 @@ import java.util.List;
 class DefaultAppContext implements AppContext {
 
     private final List<Rule> rules;
-    private final FizzBuzzMapper fizzBuzzMapper;
-    private final FizzBuzzGeneratorUseCase generator;
-    private final FizzBuzzReporterUseCase reporter;
+    private final WordMapper fizzBuzzMapper;
+    private final WordGeneratorService generator;
+    private final ReportGeneratorService reporter;
 
     /**
      * Creates the specific instances of the objects needed
@@ -27,13 +27,13 @@ class DefaultAppContext implements AppContext {
                 new ContainsDigitRule(3, "alfresco"),
                 new BaseRule());
 
-        fizzBuzzMapper = new FizzBuzzMapper(rules);
-        generator = new FizzBuzzGeneratorUseCase(fizzBuzzMapper);
-        reporter = new FizzBuzzReporterUseCase();
+        fizzBuzzMapper = new WordMapper(rules);
+        generator = new WordGeneratorService(fizzBuzzMapper);
+        reporter = new ReportGeneratorService();
     }
 
     @Override
-    public FizzBuzzMapper getFizzBuzzMapper() {
+    public WordMapper getFizzBuzzMapper() {
         return fizzBuzzMapper;
     }
 
@@ -43,12 +43,12 @@ class DefaultAppContext implements AppContext {
     }
 
     @Override
-    public FizzBuzzGeneratorUseCase getFizzBuzzGenerator() {
+    public WordGeneratorService getFizzBuzzGenerator() {
         return generator;
     }
 
     @Override
-    public FizzBuzzReporterUseCase getFizzBuzzReporter() {
+    public ReportGeneratorService getFizzBuzzReporter() {
         return reporter;
     }
 }

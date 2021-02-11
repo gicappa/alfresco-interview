@@ -11,7 +11,7 @@ import static java.util.stream.Collectors.groupingBy;
  * This class can create reports counting the usage of
  * the words in fizzbuzz word list
  */
-public class FizzBuzzReporterUseCase {
+public class ReportGeneratorService {
 
     /**
      * Analyse the word list in input to create a map containing

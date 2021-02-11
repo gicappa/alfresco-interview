@@ -7,14 +7,14 @@ import static alfresco.WordsCollector.toWords;
 /**
  * This use case can generate a list of fizz buzz words
  */
-public class FizzBuzzGeneratorUseCase {
+public class WordGeneratorService {
 
-    private final FizzBuzzMapper fizzBuzzMapper;
+    private final WordMapper fizzBuzzMapper;
 
     /**
      * @param fizzBuzzMapper the collaborator to map number into words
      */
-    public FizzBuzzGeneratorUseCase(FizzBuzzMapper fizzBuzzMapper) {
+    public WordGeneratorService(WordMapper fizzBuzzMapper) {
         this.fizzBuzzMapper = fizzBuzzMapper;
     }
 

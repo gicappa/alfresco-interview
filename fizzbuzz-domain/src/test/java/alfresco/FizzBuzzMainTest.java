@@ -18,15 +18,15 @@ import static org.mockito.Mockito.*;
  */
 class FizzBuzzMainTest {
 
-    private FizzBuzzGeneratorUseCase mockGenerator;
-    private FizzBuzzReporterUseCase mockReporter;
+    private WordGeneratorService mockGenerator;
+    private ReportGeneratorService mockReporter;
     private SystemCommand command;
     private FizzBuzzMain fizzBuzzMain;
 
     @BeforeEach
     void beforeEach() {
-        mockGenerator = mock(FizzBuzzGeneratorUseCase.class);
-        mockReporter = mock(FizzBuzzReporterUseCase.class);
+        mockGenerator = mock(WordGeneratorService.class);
+        mockReporter = mock(ReportGeneratorService.class);
         command = new SystemCommand();
         fizzBuzzMain = new FizzBuzzMain();
     }
@@ -84,7 +84,7 @@ class FizzBuzzMainTest {
                 "fizz: 30", "buzz: 20", "fizzbuzz: 50", "alfresco: 10", "integer: 40");
     }
 
-    AppContext mockContext(FizzBuzzGeneratorUseCase generator, FizzBuzzReporterUseCase reporter) {
+    AppContext mockContext(WordGeneratorService generator, ReportGeneratorService reporter) {
         AppContext context = mock(AppContext.class);
         when(context.getFizzBuzzGenerator()).thenReturn(generator);
         when(context.getFizzBuzzReporter()).thenReturn(reporter);

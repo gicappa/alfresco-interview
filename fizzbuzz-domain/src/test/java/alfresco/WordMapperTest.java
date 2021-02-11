@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class FizzBuzzTest {
+class WordMapperTest {
 
-    private FizzBuzzMapper fizzBuzz;
+    private WordMapper fizzBuzz;
 
     @BeforeEach
     void before() {
-        fizzBuzz = new FizzBuzzMapper(new DefaultAppContext().getRules());
+        fizzBuzz = new WordMapper(new DefaultAppContext().getRules());
     }
 
     @Test
