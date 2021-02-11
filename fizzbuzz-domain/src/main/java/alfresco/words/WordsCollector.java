@@ -1,4 +1,4 @@
-package alfresco;
+package alfresco.words;
 
 import java.util.Collections;
 import java.util.Set;

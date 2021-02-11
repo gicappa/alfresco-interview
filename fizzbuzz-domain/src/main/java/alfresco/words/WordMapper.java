@@ -1,4 +1,4 @@
-package alfresco;
+package alfresco.words;
 
 import java.util.List;
 
@@ -11,12 +11,12 @@ public class WordMapper {
 
     private final List<Rule> rules;
 
-    WordMapper(List<Rule> rules) {
+    public WordMapper(List<Rule> rules) {
         this.rules = rules;
     }
 
     /**
-     * The map() method translates a number into a fizzbuzz word.
+     * The map method translates a number into a fizzbuzz word.
      * The translation happens according to a list of rules that
      * are passed to the mapper class.
      *

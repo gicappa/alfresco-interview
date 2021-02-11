@@ -1,8 +1,10 @@
 package alfresco;
 
-import alfresco.rules.ContainsDigitRule;
-import alfresco.rules.DivisorRule;
-import alfresco.rules.BaseRule;
+import alfresco.words.Rule;
+import alfresco.words.WordMapper;
+import alfresco.words.rules.BaseRule;
+import alfresco.words.rules.ContainsDigitRule;
+import alfresco.words.rules.DivisorRule;
 
 import java.util.List;
 
@@ -13,28 +15,32 @@ import java.util.List;
 class DefaultAppContext implements AppContext {
 
     private final List<Rule> rules;
-    private final WordMapper fizzBuzzMapper;
-    private final WordGeneratorService generator;
-    private final ReportGeneratorService reporter;
+
+    private final WordMapper wordMapper;
+
+    private final WordGeneratorService wordGenerator;
+    private final ReportGeneratorService reportGenerator;
 
     /**
      * Creates the specific instances of the objects needed
      * by the application
      */
     DefaultAppContext() {
-        rules = List.of(new DivisorRule(3, "fizz"),
-                new DivisorRule(5, "buzz"),
-                new ContainsDigitRule(3, "alfresco"),
-                new BaseRule());
+        rules = List.of(
+            new DivisorRule(3, "fizz"),
+            new DivisorRule(5, "buzz"),
+            new ContainsDigitRule(3, "alfresco"),
+            new BaseRule()
+        );
 
-        fizzBuzzMapper = new WordMapper(rules);
-        generator = new WordGeneratorService(fizzBuzzMapper);
-        reporter = new ReportGeneratorService();
+        wordMapper = new WordMapper(rules);
+        wordGenerator = new WordGeneratorService(wordMapper);
+        reportGenerator = new ReportGeneratorService();
     }
 
     @Override
-    public WordMapper getFizzBuzzMapper() {
-        return fizzBuzzMapper;
+    public WordMapper getWordMapper() {
+        return wordMapper;
     }
 
     @Override
@@ -44,12 +50,12 @@ class DefaultAppContext implements AppContext {
 
     @Override
     public WordGeneratorService getFizzBuzzGenerator() {
-        return generator;
+        return wordGenerator;
     }
 
     @Override
     public ReportGeneratorService getFizzBuzzReporter() {
-        return reporter;
+        return reportGenerator;
     }
 }
 

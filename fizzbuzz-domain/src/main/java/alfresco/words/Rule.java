@@ -1,4 +1,4 @@
-package alfresco;
+package alfresco.words;
 
 /**
  * Rule is the abstraction of all the rules that can

@@ -1,6 +1,8 @@
 package alfresco;
 
 
+import alfresco.words.WordMapper;
+import alfresco.words.Words;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -25,7 +27,7 @@ class WordGeneratorServiceTest {
         mockReportGeneratorService = mock(ReportGeneratorService.class);
 
         var appContext = mock(AppContext.class);
-        when(appContext.getFizzBuzzMapper()).thenReturn(mockWordMapper);
+        when(appContext.getWordMapper()).thenReturn(mockWordMapper);
         when(appContext.getFizzBuzzReporter()).thenReturn(mockReportGeneratorService);
 
         // SUT

@@ -1,5 +1,8 @@
 package alfresco;
 
+import alfresco.words.Rule;
+import alfresco.words.WordMapper;
+
 import java.util.List;
 
 /**
@@ -13,7 +16,7 @@ public interface AppContext {
     /**
      * @return the object able to translate a number in a word
      */
-    WordMapper getFizzBuzzMapper();
+    WordMapper getWordMapper();
 
     /**
      * @return the list of rule applicable to the numbers to generate

@@ -1,6 +1,6 @@
-package alfresco.rules;
+package alfresco.words.rules;
 
-import alfresco.Rule;
+import alfresco.words.Rule;
 
 /**
  * The ToStringRule is applied when the result is not valued

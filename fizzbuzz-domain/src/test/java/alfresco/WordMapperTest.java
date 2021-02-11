@@ -1,5 +1,6 @@
 package alfresco;
 
+import alfresco.words.WordMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

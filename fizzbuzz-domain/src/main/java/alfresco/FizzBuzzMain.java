@@ -1,5 +1,7 @@
 package alfresco;
 
+import alfresco.words.Words;
+
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -17,8 +19,8 @@ import static java.util.stream.Collectors.toList;
  */
 public class FizzBuzzMain {
 
-    private final WordGeneratorService generator;
-    private final ReportGeneratorService reporter;
+    private final WordGeneratorService wordGenerator;
+    private final ReportGeneratorService reportGenerator;
 
     /**
      * Entry point of the Application.
@@ -50,8 +52,8 @@ public class FizzBuzzMain {
      *                   collaborators.
      */
     public FizzBuzzMain(AppContext appContext) {
-        this.generator = appContext.getFizzBuzzGenerator();
-        this.reporter = appContext.getFizzBuzzReporter();
+        this.wordGenerator = appContext.getFizzBuzzGenerator();
+        this.reportGenerator = appContext.getFizzBuzzReporter();
     }
 
     /**
@@ -67,9 +69,9 @@ public class FizzBuzzMain {
                 exit(128); // Invalid argument
             }
 
-            var results = generator.generateWords(parseInt(args[0]));
+            var results = wordGenerator.generateWords(parseInt(args[0]));
 
-            printOutput(results, formatListReport(reporter.generateReport(results)));
+            printOutput(results, formatListReport(reportGenerator.generateReport(results)));
 
         } catch (Exception e) {
             printUsage();
@@ -85,7 +87,9 @@ public class FizzBuzzMain {
      */
     public void printOutput(Words words, List<String> reportList) {
         System.out.println(
-                join(" ", words.getWords()) + " " + join(" ", reportList)
+            join(" ", words.getWords())
+                + " "
+                + join(" ", reportList)
         );
     }
 
@@ -95,9 +99,9 @@ public class FizzBuzzMain {
      */
     public List<String> formatListReport(Map<String, Long> reports) {
         return Stream.of("fizz", "buzz", "fizzbuzz", "alfresco", "integer")
-                .filter(reports::containsKey)
-                .map(r -> r + ": " + reports.get(r))
-                .collect(toList());
+            .filter(reports::containsKey)
+            .map(r -> r + ": " + reports.get(r))
+            .collect(toList());
     }
 
     /**
@@ -105,8 +109,8 @@ public class FizzBuzzMain {
      */
     private void printUsage() {
         System.err.println(
-                "usage: java alfresco.FizzBuzzMain [arg]\n" +
-                        "   arg - (required) number of fizzbuzz words to generate");
+            "usage: java alfresco.FizzBuzzMain [arg]\n" +
+                "   arg - (required) number of fizzbuzz words to generate");
     }
 
 }

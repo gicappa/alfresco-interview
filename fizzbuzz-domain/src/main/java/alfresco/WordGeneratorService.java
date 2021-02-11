@@ -1,8 +1,11 @@
 package alfresco;
 
+import alfresco.words.WordMapper;
+import alfresco.words.Words;
+
 import java.util.stream.IntStream;
 
-import static alfresco.WordsCollector.toWords;
+import static alfresco.words.WordsCollector.toWords;
 
 /**
  * This use case can generate a list of fizz buzz words
