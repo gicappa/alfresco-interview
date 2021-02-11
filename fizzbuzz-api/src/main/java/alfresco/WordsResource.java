@@ -3,7 +3,6 @@ package alfresco;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import java.util.List;
 
 @Path("/")
 @Produces("application/json")
@@ -17,7 +16,7 @@ public class WordsResource {
 
     @GET
     @Path("words")
-    public List<String> words() {
-        return generator.generateWords(20);
+    public Words words() {
+        return new Words(generator.generateWords(20));
     }
 }

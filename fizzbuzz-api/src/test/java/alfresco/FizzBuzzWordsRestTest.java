@@ -31,16 +31,16 @@ class FizzBuzzWordsRestTest {
     }
 
     @Test
-    @DisplayName("It returns a List from the generator")
+    @DisplayName("It returns a Words from the generator")
     void it_returns_the_words_from_the_generator_in_a_list() {
-        assertThat(fizzBuzzWords.words()).isInstanceOf(List.class);
+        assertThat(fizzBuzzWords.words()).isInstanceOf(Words.class);
     }
 
     @Test
-    @DisplayName("It returns a List from the generator")
+    @DisplayName("It returns a Words from the generator")
     void it_returns_the_words_generated_by_the_generator() {
         when(generator.generateWords(20)).thenReturn(List.of("a", "b", "c"));
 
-        assertThat(fizzBuzzWords.words()).containsExactly("a", "b", "c");
+        assertThat(fizzBuzzWords.words().getWords()).containsExactly("a", "b", "c");
     }
 }

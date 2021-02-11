@@ -1,8 +1,19 @@
 package alfresco;
 
+import java.util.List;
+
+/**
+ * Class containing and carrying the fizzbuzz words.
+ */
 public class Words {
-    public Words() {
-        // to allow the newInstance() from
+
+    private final List<String> words;
+
+    public Words(List<String> words) {
+        this.words = words;
     }
-    public String name = "yo!";
+
+    public List<String> getWords() {
+        return words;
+    }
 }
