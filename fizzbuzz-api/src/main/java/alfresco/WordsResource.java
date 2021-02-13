@@ -24,7 +24,8 @@ public class WordsResource {
             String limit) {
         try {
 
-            var words = generator.generateWords(parseInt(limit));
+            int safeLimit = parseInt(limit);
+            var words = new WordsResponse(generator.generateWords(safeLimit), safeLimit);
 
             return Response.status(200).entity(words).build();
 

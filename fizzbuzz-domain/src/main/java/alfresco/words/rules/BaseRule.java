@@ -3,7 +3,7 @@ package alfresco.words.rules;
 import alfresco.words.Rule;
 
 /**
- * The ToStringRule is applied when the result is not valued
+ * The {BaseRule} is applied when the result is not valued
  * and it just transform the number in a string.
  */
 public class BaseRule implements Rule {

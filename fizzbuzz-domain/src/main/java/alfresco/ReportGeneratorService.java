@@ -23,7 +23,8 @@ public class ReportGeneratorService {
      * @return a map with the words and their occurrences
      */
     public Map<String, Long> generateReport(Words words) {
-        return words.getWords().stream()
+        return words.getWords()
+            .stream()
             .map(this::toInteger)
             .collect(groupingBy(identity(), counting()));
     }

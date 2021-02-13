@@ -36,14 +36,17 @@ class WordsResourceTest {
     @Test
     @DisplayName("It returns a Words from the generator")
     void it_returns_the_words_from_the_generator_in_a_list() {
-        assertThat(fizzBuzzWords.words("20")).isInstanceOf(Response.class);
+
+        assertThat(fizzBuzzWords.words("20"))
+            .isInstanceOf(Response.class);
     }
 
     @Test
     @DisplayName("It returns a Words from the generator")
     void it_returns_the_words_generated_by_the_generator() {
+
         assertThat(fizzBuzzWords.words("20")
-            .readEntity(Words.class).getWords())
+            .readEntity(WordsResponse.class).getWords())
             .containsExactly("a", "b", "c");
     }
 }

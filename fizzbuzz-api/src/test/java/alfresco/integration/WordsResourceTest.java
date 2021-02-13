@@ -27,7 +27,9 @@ class WordsResourceTest {
                 hasItems("1", "2", "alfresco", "4", "buzz",
                     "fizz", "7", "8", "fizz", "buzz", "11",
                     "fizz", "alfresco", "14", "fizzbuzz",
-                    "16", "17", "fizz", "19", "buzz"));
+                    "16", "17", "fizz", "19", "buzz"))
+            .body("limit", is(20))
+        ;
     }
 
     /**
@@ -58,7 +60,9 @@ class WordsResourceTest {
             .body("words", hasSize(15))
             .body("words", hasItems("1", "2", "alfresco", "4", "buzz",
                 "fizz", "7", "8", "fizz", "buzz", "11", "fizz",
-                "alfresco", "14", "fizzbuzz"));
+                "alfresco", "14", "fizzbuzz"))
+            .body("limit", is(15))
+        ;
     }
 
     /**
