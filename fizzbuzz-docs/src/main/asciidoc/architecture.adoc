@@ -1,10 +1,10 @@
 == Development Notes
 
-- Step 1: Two if are still readable and manageable complexitywise so no refactoring toward a more oo design
+- Step 1: Two if are still readable and manageable complexities so no refactoring toward a more oo design
 - Step 2: The new feature require a modification in the design. We can use the OCP to transform the code so that we can add this rule (and possibly new ones) without changing the fizzbuzz engine.
 - GOOS by Example: double cycle of TDD one for the feature one for the units with London Style. I tried an outside in approach using a library to test the specification in a BBD style.
 - UseCase class define the entry point of the application.
-- ubuquitous language: fizzbuzz word is a translated item, the mapper translate a number in a word, the reporter create a report out of a list of words and a generator generates words after a sequence of numbers until an end range
+- ubiquitous language: fizzbuzz word is a translated item, the mapper translate a number in a word, the reporter create a report out of a list of words and a generator generates words after a sequence of numbers until an end range
 
 == Continuous Integration
 
