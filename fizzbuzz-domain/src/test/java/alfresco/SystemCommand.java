@@ -21,21 +21,33 @@ public class SystemCommand {
      */
     public Result run(String command, String... args) {
         try {
-            Process process = Runtime.getRuntime().exec(format(command, args));
+
+            Process process = Runtime.getRuntime().exec(format(command, (Object[]) args));
+
             process.waitFor();
 
-
             return new Result(process);
+
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
+    /**
+     * Class containing the result of the command execution
+     */
     public static class Result {
+
         private final String stdout;
         private final String stderr;
         private final int exitValue;
 
+        /**
+         * It is a bit unconventional that an exception is thrown in the constructor
+         * but this is an helper class of a test class and can be acceptable
+         *
+         * @param process the process just executed
+         */
         public Result(Process process) {
             try {
                 stdout = new String(process.getInputStream().readAllBytes());

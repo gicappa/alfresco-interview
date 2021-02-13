@@ -1,11 +1,11 @@
 package alfresco;
 
 @SuppressWarnings("all")
-public class Error {
+public class ErrorReponse {
 
     private final ErrorFields error;
 
-    public Error(String type, String code, String message) {
+    public ErrorReponse(String type, String code, String message) {
         error = new ErrorFields(type, code, message);
     }
 

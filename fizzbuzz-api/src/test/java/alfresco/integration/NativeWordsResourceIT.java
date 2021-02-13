@@ -1,4 +1,4 @@
-package alfresco;
+package alfresco.integration;
 
 import io.quarkus.test.junit.NativeImageTest;
 

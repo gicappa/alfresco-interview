@@ -30,7 +30,7 @@ public class WordsResource {
 
         } catch (NumberFormatException nfe) {
 
-            var errors = new Error(
+            var errors = new ErrorReponse(
                 "ValidationError",
                 "FB001",
                 "The query parameter limit must be a number.");
