@@ -14,41 +14,47 @@ import static org.mockito.Mockito.*;
 
 class WordsResourceTest {
 
-    private WordsResource fizzBuzzWords;
+    private WordsResource wordsResource;
     private WordGeneratorService generator;
+    private WordsResponse wordsResponse;
 
     @BeforeEach
     void beforeEach() {
         AppContext appContext = mock(AppContext.class);
         generator = mock(WordGeneratorService.class);
         when(appContext.getFizzBuzzGenerator()).thenReturn(generator);
-        when(generator.generateWords(20)).thenReturn(Words.of("a", "b", "c"));
+        when(generator.generateWords(3)).thenReturn(Words.of("a", "b", "c"));
+        wordsResource = new WordsResource(appContext);
 
-        fizzBuzzWords = new WordsResource(appContext);
-    }
-
-    @Test
-    @DisplayName("It calls the words generator")
-    void it_calls_the_words_generator() {
-        fizzBuzzWords.words("20");
-
-        verify(generator).generateWords(20);
+        wordsResponse = wordsResource.words("3").readEntity(WordsResponse.class);
     }
 
     @Test
     @DisplayName("It returns a Words from the generator")
     void it_returns_the_words_from_the_generator_in_a_list() {
 
-        assertThat(fizzBuzzWords.words("20"))
-            .isInstanceOf(Response.class);
+        assertThat(wordsResource.words("3")).isInstanceOf(Response.class);
+    }
+
+    @Test
+    @DisplayName("It calls the words generator")
+    void it_calls_the_words_generator() {
+
+        verify(generator).generateWords(3);
     }
 
     @Test
     @DisplayName("It returns a Words from the generator")
     void it_returns_the_words_generated_by_the_generator() {
 
-        assertThat(fizzBuzzWords.words("20")
-            .readEntity(WordsResponse.class).getWords())
-            .containsExactly("a", "b", "c");
+        assertThat(wordsResponse.getWords()).containsExactly("a", "b", "c");
     }
+
+    @Test
+    @DisplayName("It returns a Words from the generator")
+    void it_returns_the_limit_set_by_the_caller() {
+
+        assertThat(wordsResponse.getLimit()).isEqualTo(3);
+    }
+
 }
