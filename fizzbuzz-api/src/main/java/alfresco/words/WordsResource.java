@@ -1,4 +1,8 @@
-package alfresco;
+package alfresco.words;
+
+import alfresco.AppContext;
+import alfresco.ErrorReponse;
+import alfresco.WordGeneratorService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;

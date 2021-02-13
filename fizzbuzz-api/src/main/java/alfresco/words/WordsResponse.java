@@ -1,12 +1,10 @@
-package alfresco;
-
-import alfresco.words.Words;
+package alfresco.words;
 
 import java.util.List;
 
 public class WordsResponse {
-    
-    public final List<String> words;
+
+    private final List<String> words;
     private final int limit;
 
     public WordsResponse(Words words, int limit) {
