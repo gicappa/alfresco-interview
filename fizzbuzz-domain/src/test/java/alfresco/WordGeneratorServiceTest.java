@@ -35,17 +35,18 @@ class WordGeneratorServiceTest {
     }
 
     @Test
-    @DisplayName("it calls the fizzbuzz generation for rangeEnd times")
-    void it_calls_the_fizzbuzz_rangeEnd_times() {
-        wordGeneratorService.generateWords(20);
+    @DisplayName("it calls the fizzbuzz generation for limit times")
+    void it_calls_the_fizzbuzz_1_to_limit_times() {
+        wordGeneratorService.generateWords(100);
 
-        verify(mockWordMapper, times(20))
+        verify(mockWordMapper, times(100))
                 .map(anyInt());
     }
 
     @Test
     @DisplayName("It returns a Words containing Word")
     void it_generates_a_Words_object_containing_a_list_of_Word() {
+
         assertThat(wordGeneratorService.generateWords(5))
             .isInstanceOf(Words.class);
     }
@@ -53,6 +54,7 @@ class WordGeneratorServiceTest {
     @Test
     @DisplayName("It returns a Words object containing Word objects")
     void it_invokes_a_list_of_words() {
+
         assertThat(wordGeneratorService.generateWords(5)
             .getWords()).hasSize(5);
     }
@@ -61,7 +63,6 @@ class WordGeneratorServiceTest {
     public void afterEach() {
         reset(mockWordMapper);
         reset(mockReportGeneratorService);
-
     }
 }
 

@@ -24,11 +24,11 @@ public class WordGeneratorService {
     /**
      * Generates all fizz buzz values up to a range limit
      *
-     * @param rangeEnd end number of the range
+     * @param limit is the upper bound of the range
      * @return a string containing the generated values
      */
-    public Words generateWords(int rangeEnd) {
-        return IntStream.rangeClosed(1, rangeEnd)
+    public Words generateWords(int limit) {
+        return IntStream.rangeClosed(1, limit)
                 .mapToObj(fizzBuzzMapper::map)
                 .collect(toWords());
 

@@ -48,7 +48,7 @@ class FizzBuzzMainTest {
     }
 
     @Test
-    @DisplayName("it calls the fizzbuzz generation for rangeEnd times")
+    @DisplayName("it calls the fizzbuzz generation for 1 to limit times")
     void it_calls_the_fizzbuzz_object_that_generates_a_report() {
         when(mockGenerator.generateWords(anyInt())).thenReturn(new Words(List.of("1", "2")));
 

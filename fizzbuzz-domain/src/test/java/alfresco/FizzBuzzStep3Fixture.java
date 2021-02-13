@@ -24,14 +24,14 @@ public class FizzBuzzStep3Fixture {
      * The method fizzBuzzIt is called by the specification defined
      * in the file alfresco/FizzBuzzStep1.md
      *
-     * @param rangeEnd the
+     * @param limit the
      * @return the output of the fizzbuzz app launched
      */
-    public String fizzBuzzIt(String rangeEnd) {
+    public String fizzBuzzIt(String limit) {
         var result =
                 command.run(
                         "java -cp target/classes alfresco.FizzBuzzMain %s",
-                        rangeEnd
+                        limit
                 );
 
         assertThat(result.getExitValue())
