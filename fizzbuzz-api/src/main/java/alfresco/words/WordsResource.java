@@ -2,6 +2,7 @@ package alfresco.words;
 
 import alfresco.AppContext;
 import alfresco.ErrorReponse;
+import alfresco.LimitMinorThanOneEx;
 import alfresco.WordGeneratorService;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
@@ -50,15 +51,12 @@ public class WordsResource {
             responseCode = "500",
             description = "Internal Error generate by an unhandled exception",
             content = @Content(schema = @Schema(implementation = ErrorReponse.class)))})
-    public Response words(
-        @DefaultValue("20")
-        @QueryParam("limit")
-            String limit) {
+
+    public Response words(@DefaultValue("20") @QueryParam("limit") String limit) {
         try {
 
             int safeLimit = parseInt(limit);
             var words = new WordsResponse(generator.generateWords(safeLimit), safeLimit);
-
             return Response.status(200).entity(words).build();
 
         } catch (NumberFormatException nfe) {
@@ -67,6 +65,15 @@ public class WordsResource {
                 "ValidationError",
                 "FB001",
                 "The query parameter limit must be a number.");
+
+            return Response.status(400).entity(errors).build();
+
+        } catch (LimitMinorThanOneEx lmtoe) {
+
+            var errors = new ErrorReponse(
+                "ValidationError",
+                "FB002",
+                "The query parameter limit must be a number equal or greater than one.");
 
             return Response.status(400).entity(errors).build();
         }

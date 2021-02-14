@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.*;
 
 /**
@@ -23,12 +24,14 @@ class WordGeneratorServiceTest {
 
     @BeforeEach
     void beforeEach() {
+        // fixtures
         mockWordMapper = mock(WordMapper.class);
         mockReportGeneratorService = mock(ReportGeneratorService.class);
 
         var appContext = mock(AppContext.class);
         when(appContext.getWordMapper()).thenReturn(mockWordMapper);
         when(appContext.getFizzBuzzReporter()).thenReturn(mockReportGeneratorService);
+        when(mockWordMapper.map(anyInt())).thenReturn("a string");
 
         // SUT
         wordGeneratorService = new WordGeneratorService(mockWordMapper);
@@ -40,23 +43,33 @@ class WordGeneratorServiceTest {
         wordGeneratorService.generateWords(100);
 
         verify(mockWordMapper, times(100))
-                .map(anyInt());
+            .map(anyInt());
     }
 
     @Test
-    @DisplayName("It returns a Words containing Word")
-    void it_generates_a_Words_object_containing_a_list_of_Word() {
+    @DisplayName("It returns a Words class")
+    void it_generates_a_Words_object_containing_a_list_of_strings() {
 
         assertThat(wordGeneratorService.generateWords(5))
             .isInstanceOf(Words.class);
     }
 
     @Test
-    @DisplayName("It returns a Words object containing Word objects")
-    void it_invokes_a_list_of_words() {
+    @DisplayName("It returns a Words object containing a list of strings")
+    void it_returns_a_list_of_strings() {
 
         assertThat(wordGeneratorService.generateWords(5)
             .getWords()).hasSize(5);
+        assertThat(wordGeneratorService.generateWords(5)
+            .getWords().get(0)).isInstanceOf(String.class);
+    }
+
+    @Test
+    @DisplayName("It throws an exception for a limit minor than one")
+    void it_throws_an_exception_for_a_number_minor_than_one() {
+
+        assertThatThrownBy(() -> wordGeneratorService.generateWords(-1))
+            .isInstanceOf(LimitMinorThanOneEx.class);
     }
 
     @AfterEach

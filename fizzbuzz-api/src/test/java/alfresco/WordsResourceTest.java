@@ -30,8 +30,8 @@ class WordsResourceTest {
     }
 
     @Test
-    @DisplayName("It returns a Words from the generator")
-    void it_returns_the_words_from_the_generator_in_a_list() {
+    @DisplayName("It returns a Response object from the WordsResource")
+    void it_returns_the_response_object_from_WordsResource() {
 
         assertThat(wordsResource.words("3")).isInstanceOf(Response.class);
     }
@@ -44,27 +44,39 @@ class WordsResourceTest {
     }
 
     @Test
-    @DisplayName("It returns a Words from the generator")
-    void it_returns_the_words_generated_by_the_generator() {
+    @DisplayName("It returns a WordsResponse object containing fizzbuzz generated strings")
+    void it_returns_a_Words_object_containing_strings() {
 
         assertThat(wordsResponse.getWords()).containsExactly("a", "b", "c");
     }
 
     @Test
-    @DisplayName("It returns a Words from the generator")
-    void it_returns_the_limit_set_by_the_caller() {
+    @DisplayName("It returns a WordsResponse containing the limit used as argument")
+    void it_returns_a_WordResponse_limit_argument() {
 
         assertThat(wordsResponse.getLimit()).isEqualTo(3);
     }
 
     @Test
-    @DisplayName("It returns a Words from the generator")
-    void it_returns_the_error_response_when_limits_is_not_a_number() {
+    @DisplayName("It returns an ErrorResponse when limit is NaN")
+    void it_returns_an_ErrorResponse_when_limit_is_NaN() {
         var errorResponse = wordsResource.words("not-a-number").readEntity(ErrorReponse.class);
 
-         assertThat(errorResponse.getError().getCode()).isEqualTo("FB001");
-         assertThat(errorResponse.getError().getType()).isEqualTo("ValidationError");
-         assertThat(errorResponse.getError().getMessage()).contains("limit");
+        assertThat(errorResponse.getError().getCode()).isEqualTo("FB001");
+        assertThat(errorResponse.getError().getType()).isEqualTo("ValidationError");
+        assertThat(errorResponse.getError().getMessage()).contains("limit");
     }
 
+    @Test
+    @DisplayName("It returns an ErrorResponse when limit is minor than one")
+    void it_returns_the_error_response_when_limits_is_not_a_number() {
+        when(generator.generateWords(-1)).thenThrow(LimitMinorThanOneEx.class);
+
+        var errorResponse = wordsResource.words("-1")
+            .readEntity(ErrorReponse.class);
+
+        assertThat(errorResponse.getError().getCode()).isEqualTo("FB002");
+        assertThat(errorResponse.getError().getType()).isEqualTo("ValidationError");
+        assertThat(errorResponse.getError().getMessage()).contains("greater");
+    }
 }
