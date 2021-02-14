@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  fizzbuzz-api:
+    build:
+      context: ./fizzbuzz-api
+      dockerfile: src/main/docker/Dockerfile.fast-jar
+    image: alfresco/fizzbuzz-api:4.0
+    container_name: fizzbuzz-api
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
