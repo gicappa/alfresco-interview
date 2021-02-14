@@ -57,4 +57,14 @@ class WordsResourceTest {
         assertThat(wordsResponse.getLimit()).isEqualTo(3);
     }
 
+    @Test
+    @DisplayName("It returns a Words from the generator")
+    void it_returns_the_error_response_when_limits_is_not_a_number() {
+        var errorResponse = wordsResource.words("not-a-number").readEntity(ErrorReponse.class);
+
+         assertThat(errorResponse.getError().getCode()).isEqualTo("FB001");
+         assertThat(errorResponse.getError().getType()).isEqualTo("ValidationError");
+         assertThat(errorResponse.getError().getMessage()).contains("limit");
+    }
+
 }
