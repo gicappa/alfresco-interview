@@ -19,9 +19,6 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus-plugin.version>1.11.2.Final</quarkus-plugin.version>
   </properties>
-  <dependencyManagement>
-
-  </dependencyManagement>
   <dependencies>
     <dependency>
       <groupId>alfresco</groupId>
@@ -62,6 +59,10 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-container-image-docker</artifactId>
     </dependency>
   </dependencies>
   <build>
@@ -127,8 +128,8 @@
         </plugins>
       </build>
       <properties>
-        <quarkus.package.type>native</quarkus.package.type>
         <surefire-plugin.version>2.22.1</surefire-plugin.version>
+        <quarkus.package.type>native</quarkus.package.type>
       </properties>
     </profile>
   </profiles>
