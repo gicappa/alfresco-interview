@@ -10,9 +10,10 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <name>FizzBuzz App</name>
+  <name>FizzBuzz Domain</name>
   <artifactId>fizzbuzz-domain</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
   <dependencies>
     <dependency>

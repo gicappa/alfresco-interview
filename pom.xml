@@ -33,6 +33,7 @@
     <module>fizzbuzz-domain</module>
     <module>fizzbuzz-docs</module>
     <module>fizzbuzz-api</module>
+    <module>fizzbuzz-cli</module>
   </modules>
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>

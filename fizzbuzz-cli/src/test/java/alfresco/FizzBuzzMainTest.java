@@ -34,14 +34,13 @@ class FizzBuzzMainTest {
 
     @ParameterizedTest
     @CsvSource({
-            "java -cp target/classes alfresco.FizzBuzzMain,       128",
-            "java -cp target/classes alfresco.FizzBuzzMain 1 2 3, 128",
-            "java -cp target/classes alfresco.FizzBuzzMain blah,  1"
+        "java -cp target/classes:../fizzbuzz-domain/target/fizzbuzz-domain-1.0-SNAPSHOT.jar alfresco.FizzBuzzMain,       128",
+        "java -cp target/classes:../fizzbuzz-domain/target/fizzbuzz-domain-1.0-SNAPSHOT.jar alfresco.FizzBuzzMain 1 2 3, 128",
+        "java -cp target/classes:../fizzbuzz-domain/target/fizzbuzz-domain-1.0-SNAPSHOT.jar alfresco.FizzBuzzMain blah,  1"
     })
     @DisplayName("it displays usage when no number or while are passed")
     void it_prints_the_usage_when_no_args_are_passed(String cmdString, int exitValue) {
-        var result =
-                command.run(cmdString);
+        var result = command.run(cmdString);
 
         assertThat(result.getExitValue()).isEqualTo(exitValue);
         assertThat(result.getStderr()).contains("usage");
@@ -72,17 +71,17 @@ class FizzBuzzMainTest {
     void it_prints_the_report_alfresco_fizz() {
 
         var alfresco = Map.of(
-                "alfresco", 10L,
-                "buzz", 20L,
-                "fizz", 30L,
-                "integer", 40L,
-                "fizzbuzz", 50L
+            "alfresco", 10L,
+            "buzz", 20L,
+            "fizz", 30L,
+            "integer", 40L,
+            "fizzbuzz", 50L
         );
 
         var report = fizzBuzzMain.formatListReport(alfresco);
 
         assertThat(report).containsExactly(
-                "fizz: 30", "buzz: 20", "fizzbuzz: 50", "alfresco: 10", "integer: 40");
+            "fizz: 30", "buzz: 20", "fizzbuzz: 50", "alfresco: 10", "integer: 40");
     }
 
     AppContext mockContext(WordGeneratorService generator, ReportGeneratorService reporter) {

@@ -30,7 +30,7 @@ public class FizzBuzzStep3Fixture {
     public String fizzBuzzIt(String limit) {
         var result =
                 command.run(
-                        "java -cp target/classes alfresco.FizzBuzzMain %s",
+                        "java -cp target/classes:../fizzbuzz-domain/target/fizzbuzz-domain-1.0-SNAPSHOT.jar alfresco.FizzBuzzMain %s",
                         limit
                 );
 
