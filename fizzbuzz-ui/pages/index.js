@@ -1,12 +1,13 @@
 import React from 'react';
-import Page from '../components/page';
+import Page from './page';
 import FizzBuzzStore from "../stores/FizzBuzzStore";
+import EventEmitter from "eventemitter3";
 
-const fbStore = new FizzBuzzStore();
+const store = new FizzBuzzStore(new EventEmitter());
 
 function Homepage() {
     return (
-        <Page s={fbStore}/>
+        <Page store={store}/>
     );
 }
 
