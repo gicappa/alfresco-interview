@@ -1,9 +1,6 @@
 package alfresco.words;
 
-import alfresco.AppContext;
-import alfresco.ErrorReponse;
-import alfresco.LimitMinorThanOneEx;
-import alfresco.WordGeneratorService;
+import alfresco.*;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
@@ -76,6 +73,14 @@ public class WordsResource {
                 "The limit value must be a number equal or greater than one.");
 
             return Response.status(400).entity(errors).build();
+        } catch (FizzBuzzUnhandledEx fbuhe) {
+
+            var errors = new ErrorReponse(
+                "InternalError",
+                "FB003",
+                "Internal unrecoverable error.");
+
+            return Response.status(500).entity(errors).build();
         }
     }
 }
