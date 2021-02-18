@@ -1,4 +1,4 @@
-# FizzBuzz Exercise
+# FizzBuzz
 
 ## The problem
 

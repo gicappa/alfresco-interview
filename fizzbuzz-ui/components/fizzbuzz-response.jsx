@@ -19,13 +19,19 @@ const FizzbuzzResponse = (props) => {
     })
   })
 
+  const wordList = () => {
+    if (!data.words)
+      return;
+
+    return data.words.map((word, index) =>
+      (<li className="w-9/12" key={index}>{word}</li>)
+    )
+  }
+
   return (
     <div className={styles.containerClass}>
-      <ol className={styles.olClass}
-          style={{left: 150}}>
-        {data.words.map((word, index) =>
-          (<li className="w-9/12" key={index}>{word}</li>)
-        )}
+      <ol className={styles.olClass} style={{left: 150}}>
+        {wordList()}
       </ol>
     </div>
   );
