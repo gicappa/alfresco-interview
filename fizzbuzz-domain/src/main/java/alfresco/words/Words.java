@@ -33,6 +33,16 @@ public class Words {
     }
 
     /**
+     * Helper to create a words
+     *
+     * @param array vararg to create a Words object
+     * @return an instance of the class Words
+     */
+    public static Words of(String... array) {
+        return new Words(Arrays.stream(array).collect(toList()));
+    }
+
+    /**
      * @return the list of values to be added
      */
     public List<String> getWords() {
@@ -62,20 +72,14 @@ public class Words {
         return this;
     }
 
-    /**
-     * Helper to create a words
-     *
-     * @param array vararg to create a Words object
-     * @return an instance of the class Words
-     */
-    public static Words of(String... array) {
-        return new Words(Arrays.stream(array).collect(toList()));
-    }
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Words words1 = (Words) o;
         return Objects.equals(words, words1.words);
     }

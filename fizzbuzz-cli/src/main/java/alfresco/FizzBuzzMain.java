@@ -1,10 +1,10 @@
 package alfresco;
 
-import alfresco.words.Words;
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
+
+import alfresco.words.Words;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.String.join;
@@ -21,18 +21,6 @@ public class FizzBuzzMain {
 
     private final WordGeneratorService wordGenerator;
     private final ReportGeneratorService reportGenerator;
-
-    /**
-     * Entry point of the Application.
-     * <p>
-     * If the caller doesn't pass one argument, it displays
-     * the usage of the application on the standard error.
-     *
-     * @param args number of fizz buzz element to generate
-     */
-    public static void main(String... args) {
-        new FizzBuzzMain().run(args);
-    }
 
     /**
      * Default constructor using the default application
@@ -54,6 +42,18 @@ public class FizzBuzzMain {
     public FizzBuzzMain(AppContext appContext) {
         this.wordGenerator = appContext.getFizzBuzzGenerator();
         this.reportGenerator = appContext.getFizzBuzzReporter();
+    }
+
+    /**
+     * Entry point of the Application.
+     * <p>
+     * If the caller doesn't pass one argument, it displays
+     * the usage of the application on the standard error.
+     *
+     * @param args number of fizz buzz element to generate
+     */
+    public static void main(String... args) {
+        new FizzBuzzMain().run(args);
     }
 
     /**

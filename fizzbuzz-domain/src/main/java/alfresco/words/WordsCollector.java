@@ -13,6 +13,10 @@ import java.util.stream.Collector;
  */
 public class WordsCollector implements Collector<String, Words, Words> {
 
+    public static WordsCollector toWords() {
+        return new WordsCollector();
+    }
+
     @Override
     public Supplier<Words> supplier() {
         return Words::new;
@@ -36,9 +40,5 @@ public class WordsCollector implements Collector<String, Words, Words> {
     @Override
     public Set<Characteristics> characteristics() {
         return Collections.emptySet();
-    }
-
-    public static WordsCollector toWords() {
-        return new WordsCollector();
     }
 }

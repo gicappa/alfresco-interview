@@ -1,6 +1,17 @@
 package alfresco.words;
 
-import alfresco.*;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Response;
+
+import alfresco.AppContext;
+import alfresco.ErrorReponse;
+import alfresco.FizzBuzzUnhandledEx;
+import alfresco.LimitMinorThanOneEx;
+import alfresco.WordGeneratorService;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
@@ -8,9 +19,6 @@ import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameters;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
-
-import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
 
 import static java.lang.Integer.parseInt;
 

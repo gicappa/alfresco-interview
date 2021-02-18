@@ -1,9 +1,9 @@
 package alfresco;
 
+import java.util.List;
+
 import alfresco.words.Rule;
 import alfresco.words.WordMapper;
-
-import java.util.List;
 
 /**
  * AppContext allow create and wire all the object contained
@@ -29,6 +29,7 @@ public interface AppContext {
      * word type
      */
     WordGeneratorService getFizzBuzzGenerator();
+
     /**
      * @return the object able to count the occurrence of a certain
      * word type

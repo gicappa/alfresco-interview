@@ -5,7 +5,7 @@ import alfresco.words.Rule;
 /**
  * The rule is applied when the number passed
  * is a divisor of the number.
- *
+ * <p>
  * If the rule is matched the result is returned
  * with an additional special word in it.
  */
@@ -31,8 +31,9 @@ public class DivisorRule implements Rule {
     }
 
     private String translate(int number) {
-        if (multipleOf(number, divisor))
+        if (multipleOf(number, divisor)) {
             return word;
+        }
 
         return "";
     }

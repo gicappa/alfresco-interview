@@ -1,8 +1,8 @@
 package alfresco;
 
-import alfresco.words.Words;
-
 import java.util.Map;
+
+import alfresco.words.Words;
 
 import static java.lang.Integer.parseInt;
 import static java.util.function.Function.identity;

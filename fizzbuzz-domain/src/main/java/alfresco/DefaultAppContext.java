@@ -1,12 +1,12 @@
 package alfresco;
 
+import java.util.List;
+
 import alfresco.words.Rule;
 import alfresco.words.WordMapper;
 import alfresco.words.rules.BaseRule;
 import alfresco.words.rules.ContainsDigitRule;
 import alfresco.words.rules.DivisorRule;
-
-import java.util.List;
 
 /**
  * Default implementation of the appContext that specifies

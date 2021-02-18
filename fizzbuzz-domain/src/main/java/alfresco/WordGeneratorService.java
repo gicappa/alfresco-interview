@@ -1,9 +1,9 @@
 package alfresco;
 
+import java.util.stream.IntStream;
+
 import alfresco.words.WordMapper;
 import alfresco.words.Words;
-
-import java.util.stream.IntStream;
 
 import static alfresco.words.WordsCollector.toWords;
 
@@ -30,8 +30,9 @@ public class WordGeneratorService {
      *                             values minor than 1
      */
     public Words generateWords(int limit) {
-        if (limit < 1)
+        if (limit < 1) {
             throw new LimitMinorThanOneEx();
+        }
 
         return IntStream.rangeClosed(1, limit)
             .mapToObj(fizzBuzzMapper::map)
