@@ -35,7 +35,7 @@ function Page(props) {
 function menu() {
   return {
     items: [
-      {"name": "Docs", "link": "/"},
+      {"name": "Docs", "link": "/docs/index.html"},
       {"name": "Rest APIs", "link": "/q/swagger-ui"},
       {"name": "JavaDoc", "link": "/apidocs/index.html"},
       {"name": "Code Coverage", "link": "/coverage/index.html"}
