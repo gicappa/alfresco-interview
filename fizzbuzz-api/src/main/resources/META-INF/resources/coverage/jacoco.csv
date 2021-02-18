@@ -1,0 +1,17 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+FizzBuzz Docs/fizzbuzz-api,alfresco,FizzBuzzUnhandledEx,4,0,0,0,2,0,1,0,1,0
+FizzBuzz Docs/fizzbuzz-api,alfresco,FizzBuzzApplication,0,11,0,0,0,4,0,2,0,2
+FizzBuzz Docs/fizzbuzz-api,alfresco,ErrorReponse.ErrorFields,0,21,0,0,0,8,0,4,0,4
+FizzBuzz Docs/fizzbuzz-api,alfresco,ErrorReponse,0,14,0,0,0,4,0,2,0,2
+FizzBuzz Docs/fizzbuzz-api,alfresco.words,WordsResponse,0,16,0,0,0,6,0,3,0,3
+FizzBuzz Docs/fizzbuzz-api,alfresco.words,WordsResource,0,67,0,0,0,15,0,2,0,2
+FizzBuzz Docs/fizzbuzz-domain,alfresco,DefaultAppContext,6,49,0,0,2,8,2,3,2,3
+FizzBuzz Docs/fizzbuzz-domain,alfresco,ReportGeneratorService,0,23,0,0,0,9,0,3,0,3
+FizzBuzz Docs/fizzbuzz-domain,alfresco,LimitMinorThanOneEx,0,4,0,0,0,2,0,1,0,1
+FizzBuzz Docs/fizzbuzz-domain,alfresco,WordGeneratorService,0,27,0,2,0,8,0,3,0,2
+FizzBuzz Docs/fizzbuzz-domain,alfresco.words.rules,DivisorRule,0,34,0,4,0,9,0,6,0,4
+FizzBuzz Docs/fizzbuzz-domain,alfresco.words.rules,ContainsDigitRule,0,26,0,2,0,8,0,4,0,3
+FizzBuzz Docs/fizzbuzz-domain,alfresco.words.rules,BaseRule,0,11,0,2,0,2,0,3,0,2
+FizzBuzz Docs/fizzbuzz-domain,alfresco.words,WordsCollector,0,19,0,0,0,7,0,8,0,8
+FizzBuzz Docs/fizzbuzz-domain,alfresco.words,WordMapper,0,27,0,2,0,8,0,3,0,2
+FizzBuzz Docs/fizzbuzz-domain,alfresco.words,Words,13,57,3,3,1,15,4,7,1,7

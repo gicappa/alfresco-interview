@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../jacoco-resources/report.gif" type="image/gif"/><title>Words.java</title><link rel="stylesheet" href="../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../index.html" class="el_report">FizzBuzz Docs</a> &gt; <a href="../index.html" class="el_bundle">fizzbuzz-domain</a> &gt; <a href="index.source.html" class="el_package">alfresco.words</a> &gt; <span class="el_source">Words.java</span></div><h1>Words.java</h1><pre class="source lang-java linenums">package alfresco.words;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
+import static java.util.stream.Collectors.toList;
+
+/**
+ * Model Class containing and carrying the fizzbuzz words.
+ */
+public class Words {
+
+    private final List&lt;String&gt; words;
+
+    /**
+     * Default constructor of a Words instance
+     * with an empty list of values
+     */
+    public Words() {
+<span class="fc" id="L22">        this(new ArrayList&lt;&gt;());</span>
+<span class="fc" id="L23">    }</span>
+
+    /**
+     * Constructor to build a Words instance with
+     * a list of values passed to the constructor
+     *
+     * @param words the list of values to build the object
+     */
+<span class="fc" id="L31">    public Words(List&lt;String&gt; words) {</span>
+<span class="fc" id="L32">        this.words = words;</span>
+<span class="fc" id="L33">    }</span>
+
+    /**
+     * @return the list of values to be added
+     */
+    public List&lt;String&gt; getWords() {
+<span class="fc" id="L39">        return words;</span>
+    }
+
+    /**
+     * Add a word value to the Words object instance
+     *
+     * @param value the value to be added
+     */
+    public void add(String value) {
+<span class="fc" id="L48">        words.add(value);</span>
+<span class="fc" id="L49">    }</span>
+
+    /**
+     * Adds the list of the generated words to the one in
+     * input
+     *
+     * @param words the external object that contains the
+     *              words to be added
+     * @return this instance with the word of the other
+     * object added
+     */
+    public Words addAll(Words words) {
+<span class="fc" id="L61">        this.words.addAll(words.getWords());</span>
+<span class="fc" id="L62">        return this;</span>
+    }
+
+    /**
+     * Helper to create a words
+     *
+     * @param array vararg to create a Words object
+     * @return an instance of the class Words
+     */
+    public static Words of(String... array) {
+<span class="fc" id="L72">        return new Words(Arrays.stream(array).collect(toList()));</span>
+    }
+
+    @Override
+    public boolean equals(Object o) {
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">        if (this == o) return true;</span>
+<span class="pc bpc" id="L78" title="2 of 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="fc" id="L79">        Words words1 = (Words) o;</span>
+<span class="fc" id="L80">        return Objects.equals(words, words1.words);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L85">        return Objects.hash(words);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

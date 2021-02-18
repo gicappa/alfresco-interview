@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../jacoco-resources/report.gif" type="image/gif"/><title>WordsResource.java</title><link rel="stylesheet" href="../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../index.html" class="el_report">FizzBuzz Docs</a> &gt; <a href="../index.html" class="el_bundle">fizzbuzz-api</a> &gt; <a href="index.source.html" class="el_package">alfresco.words</a> &gt; <span class="el_source">WordsResource.java</span></div><h1>WordsResource.java</h1><pre class="source lang-java linenums">package alfresco.words;
+
+import alfresco.*;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
+import org.eclipse.microprofile.openapi.annotations.parameters.Parameters;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
+
+import static java.lang.Integer.parseInt;
+
+@Path(&quot;/&quot;)
+@Produces(&quot;application/json&quot;)
+public class WordsResource {
+
+    private final WordGeneratorService generator;
+
+    @SuppressWarnings(&quot;CdiInjectionPointsInspection&quot;)
+<span class="fc" id="L24">    public WordsResource(AppContext appContext) {</span>
+<span class="fc" id="L25">        generator = appContext.getFizzBuzzGenerator();</span>
+<span class="fc" id="L26">    }</span>
+
+    @GET
+    @Path(&quot;words&quot;)
+    @Operation(
+        summary = &quot;Get a list of fizzbuzz words&quot;,
+        description = &quot;FizzBuzz maps a number positive number into a string according to&quot; +
+            &quot;a set of rule. The number can be translated in the same number in string format&quot; +
+            &quot;or in a string 'fizz' or 'buzz' or 'fizzbuzz' or 'alfresco'&quot;)
+    @Parameters(value = @Parameter(name = &quot;limit&quot;,
+        description = &quot;it is the upper bound of the fizzbuzz words generation&quot;))
+    @APIResponses(value = {
+        @APIResponse(
+            responseCode = &quot;200&quot;,
+            description = &quot;It returns the list of fizzbuzz words generated translating&quot; +
+                &quot;number from 1 to the 'limit' parameter&quot;,
+            content = @Content(schema = @Schema(implementation = WordsResponse.class))),
+        @APIResponse(
+            responseCode = &quot;400&quot;,
+            description = &quot;The 'limit' params is not in a number format&quot;,
+            content = @Content(schema = @Schema(implementation = ErrorReponse.class))),
+        @APIResponse(
+            responseCode = &quot;500&quot;,
+            description = &quot;Internal Error generate by an unhandled exception&quot;,
+            content = @Content(schema = @Schema(implementation = ErrorReponse.class)))})
+
+    public Response words(@DefaultValue(&quot;20&quot;) @QueryParam(&quot;limit&quot;) String limit) {
+        try {
+
+<span class="fc" id="L55">            int safeLimit = parseInt(limit);</span>
+<span class="fc" id="L56">            var words = new WordsResponse(generator.generateWords(safeLimit), safeLimit);</span>
+<span class="fc" id="L57">            return Response.status(200).entity(words).build();</span>
+
+<span class="fc" id="L59">        } catch (NumberFormatException nfe) {</span>
+
+<span class="fc" id="L61">            var errors = new ErrorReponse(</span>
+                &quot;ValidationError&quot;,
+                &quot;FB001&quot;,
+                &quot;The limit value must be a number.&quot;);
+
+<span class="fc" id="L66">            return Response.status(400).entity(errors).build();</span>
+
+<span class="fc" id="L68">        } catch (LimitMinorThanOneEx lmtoe) {</span>
+
+<span class="fc" id="L70">            var errors = new ErrorReponse(</span>
+                &quot;ValidationError&quot;,
+                &quot;FB002&quot;,
+                &quot;The limit value must be a number equal or greater than one.&quot;);
+
+<span class="fc" id="L75">            return Response.status(400).entity(errors).build();</span>
+<span class="fc" id="L76">        } catch (FizzBuzzUnhandledEx fbuhe) {</span>
+
+<span class="fc" id="L78">            var errors = new ErrorReponse(</span>
+                &quot;InternalError&quot;,
+                &quot;FB003&quot;,
+                &quot;Internal unrecoverable error.&quot;);
+
+<span class="fc" id="L83">            return Response.status(500).entity(errors).build();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
