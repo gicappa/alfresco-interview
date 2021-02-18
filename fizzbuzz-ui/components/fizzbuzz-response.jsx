@@ -1,24 +1,29 @@
 import React, {useEffect, useState} from 'react';
 
 const FizzbuzzResponse = (props) => {
+  const styles = {
+    olClass: "gradient-list w-11/12 lg:absolute lg:top-20 " +
+      "lg:text-3xl md:text-2xl sm:text-xl lg:left-150 " +
+      "text-indigo-700 m-auto",
+    containerClass: "lg:absolute lg:inset-y-0 lg:right-0 " +
+      "lg:w-1/2 overflow-y-scroll bg-logo-alfresco " +
+      "bg-right-top bg-no-repeat min-h-full h-96"
+  }
 
-  const [words, setWords] = useState({words: []})
+  const [data, setData] = useState({words: []})
 
   useEffect(() => {
-    props.store.emitter().on('redraw', (data) => {
-      console.log("FizzbuzzResponse received: ", data);
-      setWords(data.words);
+    props.store.emitter().on('redraw', (_data) => {
+      console.log("FizzbuzzResponse.on: ", _data);
+      setData(_data);
     })
   })
 
   return (
-    <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-indigo-300 overflow-y-scroll">
-      <h1 className="lg:absolute text-indigo-700 font-extrabold tracking-tight" style={{left: 150}}>FizzBuzz
-        Response</h1>
-      <ol className="gradient-list w-11/12 lg:absolute lg:top-20 lg:text-3xl
-      md:text-xl sm:text-lg lg:left-150 text-indigo-700"
+    <div className={styles.containerClass}>
+      <ol className={styles.olClass}
           style={{left: 150}}>
-        {words.map((word, index) =>
+        {data.words.map((word, index) =>
           (<li className="w-9/12" key={index}>{word}</li>)
         )}
       </ol>
