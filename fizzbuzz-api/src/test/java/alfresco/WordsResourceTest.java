@@ -25,7 +25,6 @@ class WordsResourceTest {
         when(appContext.getFizzBuzzGenerator()).thenReturn(generator);
         when(generator.generateWords(3)).thenReturn(Words.of("a", "b", "c"));
         wordsResource = new WordsResource(appContext);
-
         wordsResponse = wordsResource.words("3").readEntity(WordsResponse.class);
     }
 
@@ -34,6 +33,12 @@ class WordsResourceTest {
     void it_returns_the_response_object_from_WordsResource() {
 
         assertThat(wordsResource.words("3")).isInstanceOf(Response.class);
+    }
+
+    @Test
+    @DisplayName("It returns a Response object from the WordsResource")
+    void it_returns_status_200() {
+        assertThat(wordsResource.words("3").getStatus()).isEqualTo(200);
     }
 
     @Test
@@ -60,11 +65,13 @@ class WordsResourceTest {
     @Test
     @DisplayName("It returns an ErrorResponse when limit is NaN")
     void it_returns_an_ErrorResponse_when_limit_is_NaN() {
-        var errorResponse = wordsResource.words("not-a-number").readEntity(ErrorReponse.class);
+        Response response = wordsResource.words("not-a-number");
+        var errorResponse = response.readEntity(ErrorReponse.class);
 
         assertThat(errorResponse.getError().getCode()).isEqualTo("FB001");
         assertThat(errorResponse.getError().getType()).isEqualTo("ValidationError");
         assertThat(errorResponse.getError().getMessage()).contains("limit");
+        assertThat(response.getStatus()).isEqualTo(400);
     }
 
     @Test
@@ -72,11 +79,26 @@ class WordsResourceTest {
     void it_returns_the_error_response_when_limits_is_not_a_number() {
         when(generator.generateWords(-1)).thenThrow(LimitMinorThanOneEx.class);
 
-        var errorResponse = wordsResource.words("-1")
-            .readEntity(ErrorReponse.class);
+        Response response = wordsResource.words("-1");
+        var errorResponse = response.readEntity(ErrorReponse.class);
 
         assertThat(errorResponse.getError().getCode()).isEqualTo("FB002");
         assertThat(errorResponse.getError().getType()).isEqualTo("ValidationError");
         assertThat(errorResponse.getError().getMessage()).contains("greater");
+        assertThat(response.getStatus()).isEqualTo(400);
+    }
+
+    @Test
+    @DisplayName("It returns an ErrorResponse for unhandled exceptions")
+    void it_returns_the_error_response_for_unhandled_exceptions() {
+        when(generator.generateWords(666)).thenThrow(FizzBuzzUnhandledEx.class);
+
+        Response response = wordsResource.words("666");
+        var errorResponse = response.readEntity(ErrorReponse.class);
+
+        assertThat(errorResponse.getError().getCode()).isEqualTo("FB003");
+        assertThat(errorResponse.getError().getType()).isEqualTo("InternalError");
+        assertThat(errorResponse.getError().getMessage()).contains("error");
+        assertThat(response.getStatus()).isEqualTo(500);
     }
 }
