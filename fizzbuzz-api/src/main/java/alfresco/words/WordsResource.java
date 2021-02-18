@@ -64,7 +64,7 @@ public class WordsResource {
             var errors = new ErrorReponse(
                 "ValidationError",
                 "FB001",
-                "The query parameter limit must be a number.");
+                "The limit value must be a number.");
 
             return Response.status(400).entity(errors).build();
 
@@ -73,7 +73,7 @@ public class WordsResource {
             var errors = new ErrorReponse(
                 "ValidationError",
                 "FB002",
-                "The query parameter limit must be a number equal or greater than one.");
+                "The limit value must be a number equal or greater than one.");
 
             return Response.status(400).entity(errors).build();
         }
