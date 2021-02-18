@@ -37,8 +37,8 @@ function menu() {
     items: [
       {"name": "Docs", "link": "/"},
       {"name": "Rest APIs", "link": "/q/swagger-ui"},
-      {"name": "JavaDoc", "link": "/javadoc"},
-      {"name": "Code Coverage", "link": "/jacoco"}
+      {"name": "JavaDoc", "link": "/apidocs/index.html"},
+      {"name": "Code Coverage", "link": "/coverage/index.html"}
     ]
   };
 }

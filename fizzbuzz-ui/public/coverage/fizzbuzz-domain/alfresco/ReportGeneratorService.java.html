@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../jacoco-resources/report.gif" type="image/gif"/><title>ReportGeneratorService.java</title><link rel="stylesheet" href="../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../index.html" class="el_report">FizzBuzz Docs</a> &gt; <a href="../index.html" class="el_bundle">fizzbuzz-domain</a> &gt; <a href="index.source.html" class="el_package">alfresco</a> &gt; <span class="el_source">ReportGeneratorService.java</span></div><h1>ReportGeneratorService.java</h1><pre class="source lang-java linenums">package alfresco;
+
+import alfresco.words.Words;
+
+import java.util.Map;
+
+import static java.lang.Integer.parseInt;
+import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+
+/**
+ * This class can create reports counting the usage of
+ * the words in fizzbuzz word list
+ */
+<span class="fc" id="L16">public class ReportGeneratorService {</span>
+
+    /**
+     * Analyse the word list in input to create a map containing
+     * as keys the words and as values the occurrences of the word
+     *
+     * @param words a list of fizzbuzz words
+     * @return a map with the words and their occurrences
+     */
+    public Map&lt;String, Long&gt; generateReport(Words words) {
+<span class="fc" id="L26">        return words.getWords()</span>
+<span class="fc" id="L27">            .stream()</span>
+<span class="fc" id="L28">            .map(this::toInteger)</span>
+<span class="fc" id="L29">            .collect(groupingBy(identity(), counting()));</span>
+    }
+
+    /**
+     * @param word a fizzbuzz word
+     * @return the same word or the string 'integer' in case
+     * the fizzbuzz word is a number
+     */
+    public String toInteger(String word) {
+        try {
+<span class="fc" id="L39">            parseInt(word);</span>
+<span class="fc" id="L40">            return &quot;integer&quot;;</span>
+<span class="fc" id="L41">        } catch (NumberFormatException nfe) {</span>
+<span class="fc" id="L42">            return word;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

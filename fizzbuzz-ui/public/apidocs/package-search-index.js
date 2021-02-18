@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"alfresco"},{"l":"alfresco.words"},{"l":"alfresco.words.rules"},{"l":"All Packages","url":"allpackages-index.html"}]

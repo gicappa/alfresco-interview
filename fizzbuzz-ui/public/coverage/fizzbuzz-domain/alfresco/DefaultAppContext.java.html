@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../jacoco-resources/report.gif" type="image/gif"/><title>DefaultAppContext.java</title><link rel="stylesheet" href="../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../index.html" class="el_report">FizzBuzz Docs</a> &gt; <a href="../index.html" class="el_bundle">fizzbuzz-domain</a> &gt; <a href="index.source.html" class="el_package">alfresco</a> &gt; <span class="el_source">DefaultAppContext.java</span></div><h1>DefaultAppContext.java</h1><pre class="source lang-java linenums">package alfresco;
+
+import alfresco.words.Rule;
+import alfresco.words.WordMapper;
+import alfresco.words.rules.BaseRule;
+import alfresco.words.rules.ContainsDigitRule;
+import alfresco.words.rules.DivisorRule;
+
+import java.util.List;
+
+/**
+ * Default implementation of the appContext that specifies
+ * the rules to be applied.
+ */
+class DefaultAppContext implements AppContext {
+
+    private final List&lt;Rule&gt; rules;
+
+    private final WordMapper wordMapper;
+
+    private final WordGeneratorService wordGenerator;
+    private final ReportGeneratorService reportGenerator;
+
+    /**
+     * Creates the specific instances of the objects needed
+     * by the application
+     */
+<span class="fc" id="L28">    DefaultAppContext() {</span>
+<span class="fc" id="L29">        rules = List.of(</span>
+            new DivisorRule(3, &quot;fizz&quot;),
+            new DivisorRule(5, &quot;buzz&quot;),
+            new ContainsDigitRule(3, &quot;alfresco&quot;),
+            new BaseRule()
+        );
+
+<span class="fc" id="L36">        wordMapper = new WordMapper(rules);</span>
+<span class="fc" id="L37">        wordGenerator = new WordGeneratorService(wordMapper);</span>
+<span class="fc" id="L38">        reportGenerator = new ReportGeneratorService();</span>
+<span class="fc" id="L39">    }</span>
+
+    @Override
+    public WordMapper getWordMapper() {
+<span class="nc" id="L43">        return wordMapper;</span>
+    }
+
+    @Override
+    public List&lt;Rule&gt; getRules() {
+<span class="fc" id="L48">        return rules;</span>
+    }
+
+    @Override
+    public WordGeneratorService getFizzBuzzGenerator() {
+<span class="fc" id="L53">        return wordGenerator;</span>
+    }
+
+    @Override
+    public ReportGeneratorService getFizzBuzzReporter() {
+<span class="nc" id="L58">        return reportGenerator;</span>
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
