@@ -90,7 +90,7 @@ class WordsResourceTest {
             .body("any { it.key == 'error' }", is(true))
             .body("error.type", is("ValidationError"))
             .body("error.code", is("FB001"))
-            .body("error.message", containsString("limit must be a number"))
+            .body("error.message", containsString("must be a number"))
         );
 
     }
