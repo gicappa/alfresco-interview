@@ -26,10 +26,6 @@ const FizzbuzzResponse = (props) => {
   }
 
   const wordList = () => {
-    if ("error" in data) {
-      return (<h1 className="text-red-500">{data.error.message}</h1>)
-    }
-
     if ("words" in data) {
       return data.words.map((word, index) =>
         (<li className="w-9/12" key={index}>{word}</li>)
