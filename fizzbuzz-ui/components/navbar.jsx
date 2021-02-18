@@ -32,7 +32,7 @@ function NavBar(props) {
         </div>
       </div>
       <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-        {props.store.getMenuItems().map((item, index) =>
+        {props.menu.items.map((item, index) =>
           (<NavbarItem key={index} text={item.name} link={item.link}/>)
         )}
       </div>

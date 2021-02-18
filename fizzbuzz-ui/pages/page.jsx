@@ -21,8 +21,8 @@ function Page(props) {
       </Head>
       <div className={styles.mainClass}>
         <PageContainer>
-          <NavBar store={props.store}/>
-          <NavBarPopup store={props.store}/>
+          <NavBar store={props.store} menu={menu()}/>
+          <NavBarPopup store={props.store} menu={menu()}/>
           <Hero store={props.store}/>
         </PageContainer>
         <FizzbuzzResponse store={props.store}/>
@@ -30,6 +30,17 @@ function Page(props) {
       <Footer/>
     </>
   );
+}
+
+function menu() {
+  return {
+    items: [
+      {"name": "Docs", "link": "/"},
+      {"name": "Rest APIs", "link": "/q/swagger-ui"},
+      {"name": "JavaDoc", "link": "/javadoc"},
+      {"name": "Code Coverage", "link": "/jacoco"}
+    ]
+  };
 }
 
 export default Page;
