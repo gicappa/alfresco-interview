@@ -5,10 +5,15 @@ function NavBarPopup(props) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    props.store.emitter().on('redraw', () => {
-      setVisible(props.store.isPopupVisible());
-    });
+    props.store.emitter().on('redraw', setVisibility);
+    return function cleanup() {
+      props.store.emitter().removeListener('redraw', setVisibility);
+    };
   })
+
+  const setVisibility = () => {
+    setVisible(props.store.isPopupVisible());
+  }
 
   const handleClick = () => {
     props.store.setPopupHidden();

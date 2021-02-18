@@ -15,14 +15,23 @@ function FizzBuzzStore(emitter) {
 
 FizzBuzzStore.prototype.loadWords = async function () {
   console.log("FizzBuzzStore.loadWords");
+  const [error, result] = await execute(getWordsService(this.limit));
 
-  const wordsResponse = await getWordsService(this.limit);
-  this.words.push(wordsResponse);
-  this.e.emit('redraw', wordsResponse);
+  if (error) {
+    this.e.emit('redraw', error.response.data);
+    return;
+  }
+
+  this.words.push(result);
+  this.e.emit('redraw', result);
+
+  function execute(promise) {
+    return promise.then(r => [null, r])
+      .catch(e => [e]);
+  }
 }
 
 FizzBuzzStore.prototype.emitter = function () {
-  console.log("FizzBuzzStore.prototype.emitter", this);
   return this.e;
 }
 

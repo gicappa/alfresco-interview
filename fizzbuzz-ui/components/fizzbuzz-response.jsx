@@ -10,22 +10,31 @@ const FizzbuzzResponse = (props) => {
       "bg-right-top bg-no-repeat min-h-full h-96"
   }
 
-  const [data, setData] = useState({words: []})
+  const [data, setData] = useState({})
 
   useEffect(() => {
-    props.store.emitter().on('redraw', (_data) => {
-      console.log("FizzbuzzResponse.on: ", _data);
-      setData(_data);
-    })
+    props.store.emitter().on('redraw', setResult);
+
+    return function cleanup() {
+      props.store.emitter().removeListener('redraw', setResult);
+    };
   })
 
-  const wordList = () => {
-    if (!data.words)
-      return;
+  const setResult = (_data) => {
+    console.log("FizzbuzzResponse.on: ", _data);
+    setData(_data);
+  }
 
-    return data.words.map((word, index) =>
-      (<li className="w-9/12" key={index}>{word}</li>)
-    )
+  const wordList = () => {
+    if ("error" in data) {
+      return (<h1 className="text-red-500">{data.error.message}</h1>)
+    }
+
+    if ("words" in data) {
+      return data.words.map((word, index) =>
+        (<li className="w-9/12" key={index}>{word}</li>)
+      )
+    }
   }
 
   return (
