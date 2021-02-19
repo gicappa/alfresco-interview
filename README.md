@@ -2,75 +2,67 @@
 
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-## The problem
-
 This is a simple variation on the well known http://codingdojo.org/kata/FizzBuzz/ kata exercise.
 
-Please write code delivering the requirements of the steps that follow and execute them one by one - do one at a time please, and don’t be tempted to read the following one :).
+# The interview exercise
+According to the instructions, the exercise have been developed in an iterative way, so the branch ``main`` contains only the specification ``Step 1``. 
 
-The code should be developed using TDD so test first, be as simple as possible,  self-explanatory and automatable with a build system of your choice.
+The most part of the exercise is in the branch ``alfresco`` that contains all the remaining steps.
 
-## Step 1
-### Requirements
-Write code that produces the following output for each number in a contiguous range of integers:
+The installation instruction will make reference to the more complete branch ``alfresco``.
 
-1. the number itself
-2. ‘fizz’ for numbers that are multiples of 3
-3. ‘buzz’ for numbers that are multiples of 5
-4. ‘fizzbuzz’ for numbers that are multiples of 15
+# Installation
+## Requirement
 
-Being careful to avoid trailing spaces.
+To build, test and launch FizzBuzz the following software are required:
 
-### Example
-Running the program with a range from 1-20 should produce the following result:
+- A JDK 11+ distribution
+- Docker 20.10.3
+- Docker Compose 1.28.3
+
+NOTE: Using the GraalVM (https://www.graalvm.org/), it will be possible to generate native versions of the FizzBuzz applicaton
+NOTE: The docker and docker compose version indicated are the ones used to develop and test the application. It is expected that the application works also with previous versions.
+
+## Build the Java Application
+
+Clone the repository and switch to the branch ``alfresco``:
+```shell
+...$ git clone https://github.com/gicappa/alfresco-interview.git
+...$ git checkout -b alfresco
 ```
-1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz 16 17 fizz 19 buzz
-```
+It is possible to build the code using the maven wrapper ``./mvnw`` or a preexisting maven installation (version 3.6+).
 
-Init a local git repository and create a commit with the solution.
-
-## Step 2
-### Requirements
-Please enhance your existing FizzBuzz solution to perform the following requirements:
-
-- If the number contains a three you must output the text ‘alfresco’, any other rule is skipped.
-
-### Example
-running the program with a range from 1-20 should produce the following result:
-```
-1 2 alfresco 4 buzz fizz 7 8 fizz buzz 11 fizz alfresco 14 fizzbuzz 16 17 fizz 19 buzz
+Launch the build with the command:
+```shell
+...$ ./mvnw clean verify
 ```
 
-Create a branch for the alfresco variation and then a commit with the solution.
-
-## Step 3
-### Requirements
-Produce a report at the end of the output showing how many times the following were printed:
+The process starts until all the modules are built successfully, and the terminal shows a message similar to the following one:
+```shell
+...
+[INFO] FizzBuzz ........................................... SUCCESS [  1.482 s]
+[INFO] FizzBuzz Domain .................................... SUCCESS [ 11.146 s]
+[INFO] FizzBuzz UI ........................................ SUCCESS [ 24.443 s]
+[INFO] FizzBuzz API ....................................... SUCCESS [ 31.708 s]
+[INFO] FizzBuzz Docs ...................................... SUCCESS [  4.527 s]
+[INFO] FizzBuzz CLI ....................................... SUCCESS [ 10.913 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:25 min
+[INFO] Finished at: 2021-02-19T00:42:53+01:00
+[INFO] ------------------------------------------------------------------------
 ```
-fizz
-buzz
-fizzbuzz
-alfresco
-an integer
+All the necessary jar files are generated.
+
+## Build the Docker images
+
+Once the Java part is successfully built, it is possible to build and package the docker image using docker compose:
+
+```shell
+...$ docker-compose build
 ```
 
-### Example
-Running the program with a range from 1-20 should produce the following result:
-```
-1 2 alfresco 4 buzz fizz 7 8 fizz buzz 11 fizz alfresco 14 fizzbuzz 16 17 fizz 19 buzz fizz: 4 buzz: 3 fizzbuzz: 1 alfresco: 2 integer: 10
-```
-(Integer is 10 because there were 10 numbers in the output that were not altered).
+This process can take some time since it needs to download and build the docker image that will contain the final application of the exercise.
 
-## Step 4
-### Requirements
-Wrap this in a RESTful API for a fizzbuzz integer range resource using Spring Boot or any other technology you are familiar with, and create an integration test for a successful run and for an invalid input, for example a string rather than a number.
-
-## Step 5
-### Requirements
-Create a docker image with your REST API server and launch a container, then execute the same integration test as in Step 4.
-Step 6
-
-## Full Stack bonus! 
-### Requirements
-Create a simple JavaScript user interface providing a form for the input number calling the REST API and printing the result without page reload.
-
+# Usage
