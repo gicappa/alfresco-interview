@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Architecture</title>
+<title>Development</title>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Glegoo);
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
@@ -741,13 +741,17 @@ body { background-image: url('../images/maker/body-bg.png?1547219607'); padding-
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_architecture">Architecture</a>
+<li><a href="#_development">Development</a>
 <ul class="sectlevel2">
-<li><a href="#_fizzbuzz_domain">fizzbuzz-domain</a></li>
-<li><a href="#_fizzbuzz_cli">fizzbuzz-cli</a></li>
-<li><a href="#_fizzbuzz_api">fizzbuzz-api</a></li>
-<li><a href="#_fizzbuzz_ui">fizzbuzz-ui</a></li>
-<li><a href="#_fizzbuzz_docs">fizzbuzz-docs</a></li>
+<li><a href="#_tech_stack">Tech Stack</a></li>
+<li><a href="#_continuous_integration">Continuous Integration</a></li>
+<li><a href="#_static_analysis">Static Analysis</a></li>
+</ul>
+</li>
+<li><a href="#_sdlc">SDLC</a>
+<ul class="sectlevel2">
+<li><a href="#_test_driven_design">Test Driven Design</a></li>
+<li><a href="#_notes_on_the_implementation">Notes on the implementation</a></li>
 </ul>
 </li>
 </ul>
@@ -755,66 +759,109 @@ body { background-image: url('../images/maker/body-bg.png?1547219607'); padding-
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_architecture">Architecture</h2>
+<h2 id="_development">Development</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_tech_stack">Tech Stack</h3>
 <div class="paragraph">
-<p>Generally speaking, I use a DDD approach where the domain module containing the business logic is the bounded context and is connected through the outside world using module adapters (hexagonal/port and adapters architecture).</p>
+<p>The technologies involved in the development of the application are:</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/ports-and-adapters-architecture.svg" alt="ports and adapters architecture">
-</div>
-</div>
-<div class="paragraph">
-<p>The software is composed by the following modules:</p>
-</div>
+<div class="sect3">
+<h4 id="_backend">Backend</h4>
 <div class="ulist">
 <ul>
 <li>
-<p>fizzbuzz-domain</p>
+<p>Java</p>
 </li>
 <li>
-<p>fizzbuzz-cli</p>
+<p>quarkus.io</p>
 </li>
 <li>
-<p>fizzbuzz-api</p>
+<p>vert.x</p>
 </li>
 <li>
-<p>fizzbuzz-ui</p>
-</li>
-<li>
-<p>fizzbuzz-docs</p>
+<p>resteasy</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_frontend">Frontend</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>JavaScript</p>
+</li>
+<li>
+<p>reactjs.org</p>
+</li>
+<li>
+<p>nextjs.org</p>
+</li>
+<li>
+<p>tailwind.css</p>
+</li>
+<li>
+<p>axios</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="sect2">
-<h3 id="_fizzbuzz_domain">fizzbuzz-domain</h3>
+<h3 id="_continuous_integration">Continuous Integration</h3>
 <div class="paragraph">
-<p>Is the inner part of the application that sets the behavior of it.</p>
+<p>To enforce good practices and to verify the application increments, some github action has been set up to build the code on a CI server at every push.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_fizzbuzz_cli">fizzbuzz-cli</h3>
+<h3 id="_static_analysis">Static Analysis</h3>
 <div class="paragraph">
-<p>Is one of the possible primary driver that accepts input and provide outputs. It makes use of the command line to give input and output to the domain.</p>
+<p>Copying the configuration from Activity project, it has been set up a <code>checkstyle</code> rule engine.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sdlc">SDLC</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The application has been developed adding increments of functionalities.</p>
+</div>
+<div class="paragraph">
+<p>The driver has been the idea of avoid to anticipate the requirements and refactor before each step in order to better welcome the upcoming requirements.</p>
+</div>
+<div class="sect2">
+<h3 id="_test_driven_design">Test Driven Design</h3>
+<div class="paragraph">
+<p>It has been used a two cycle TDD: an outer cycle as an acceptance test that states the feature need, and an inner cycle to reach incrementally the completion of the feature (unit test).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/tdd-with-acceptance-tests.svg" alt="tdd with acceptance tests">
+</div>
+</div>
+<div class="paragraph">
+<p>To create the acceptance test I used concordion, a tool similar to fitness to execute the documentation in a BDD style.</p>
+</div>
+<div class="paragraph">
+<p>This tool gave me the chance to develop the software in an outside in style.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_fizzbuzz_api">fizzbuzz-api</h3>
-<div class="paragraph">
-<p>Is another primary driver that accepts input and provide outputs. It makes use of an Restful API to give input and output to the domain.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_fizzbuzz_ui">fizzbuzz-ui</h3>
-<div class="paragraph">
-<p>Is the HID to access the API and so give the chance to the humans to access the application</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_fizzbuzz_docs">fizzbuzz-docs</h3>
-<div class="paragraph">
-<p>This documentation.</p>
+<h3 id="_notes_on_the_implementation">Notes on the implementation</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The implementation of the FizzBuzz is quite simple and uses only two "ifs". Since the code is still readable, I avoided refactoring the solution towards a more OO design.</p>
+</li>
+<li>
+<p>Step 2: The new feature require a modification in the design. This is clear example of the usefulness of the OCP to add a behaviour just adding a class. This time it is necessary to refactor the code to an OO design to take advantage of the OCP.</p>
+</li>
+<li>
+<p>Ubiquitous language: one of the more difficult part of the development is the abstract nature of fizzbuzz. Without a real model to create it is difficult to set the correct abstractions. I have set some terms to ease my life: <strong>word</strong> is the result of a mapping action, while <strong>reporter</strong> is the object capable to create reports.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -822,7 +869,7 @@ body { background-image: url('../images/maker/body-bg.png?1547219607'); padding-
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-02-19 03:29:47 +0100
+Last updated 2021-02-19 03:24:25 +0100
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

@@ -748,11 +748,22 @@ body { background-image: url('../images/maker/body-bg.png?1547219607'); padding-
 <li><a href="#_creating_a_native_executable">Creating a native executable</a></li>
 <li><a href="#_using_fizzbuzz">Using FizzBuzz</a></li>
 <li><a href="#_copyright">Copyright</a></li>
+<li><a href="#_the_problem">The problem</a></li>
+<li><a href="#_step_1">Step 1</a></li>
+<li><a href="#_step_2">Step 2</a></li>
+<li><a href="#_step_3">Step 3</a></li>
+<li><a href="#_step_4">Step 4</a></li>
+<li><a href="#_step_5">Step 5</a></li>
+<li><a href="#_full_stack_bonus">Full Stack bonus!</a></li>
+<li><a href="#_tech_stack">Tech Stack</a></li>
+<li><a href="#_continuous_integration">Continuous Integration</a></li>
+<li><a href="#_static_analysis">Static Analysis</a></li>
 </ul>
 </li>
-<li><a href="#_continuous_integration">Continuous Integration</a></li>
-<li><a href="#_architecture">Architecture</a>
+<li><a href="#_sdlc">SDLC</a>
 <ul class="sectlevel2">
+<li><a href="#_test_driven_design">Test Driven Design</a></li>
+<li><a href="#_notes_on_the_implementation">Notes on the implementation</a></li>
 <li><a href="#_fizzbuzz_domain">fizzbuzz-domain</a></li>
 <li><a href="#_fizzbuzz_cli">fizzbuzz-cli</a></li>
 <li><a href="#_fizzbuzz_api">fizzbuzz-api</a></li>
@@ -1033,47 +1044,282 @@ browse to the url: <code><a href="http://localhost:8080/" class="bare">http://lo
 <h3 id="_copyright">Copyright</h3>
 <div class="paragraph">
 <p>This software has been released under BSD 3-Clause License
-== Development Notes</p>
+== FizzBuzz Specifications</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_problem">The problem</h3>
+<div class="paragraph">
+<p>This is a simple variation on the well known
+<a href="http://codingdojo.org/kata/FizzBuzz/" class="bare">http://codingdojo.org/kata/FizzBuzz/</a> kata exercise.</p>
+</div>
+<div class="paragraph">
+<p>Please write code delivering the requirements of the steps that follow
+and execute them one by one - do one at a time please, and don’t be
+tempted to read the following one :).</p>
+</div>
+<div class="paragraph">
+<p>The code should be developed using TDD so test first, be as simple as
+possible, self-explanatory and automatable with a build system of your
+choice.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_1">Step 1</h3>
+<div class="sect3">
+<h4 id="_requirements">Requirements</h4>
+<div class="paragraph">
+<p>Write code that produces the following output for each number in a
+contiguous range of integers:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>the number itself</p>
+</li>
+<li>
+<p>`fizz' for numbers that are multiples of 3</p>
+</li>
+<li>
+<p>`buzz' for numbers that are multiples of 5</p>
+</li>
+<li>
+<p>`fizzbuzz' for numbers that are multiples of 15</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Being careful to avoid trailing spaces.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example">Example</h4>
+<div class="paragraph">
+<p>Running the program with a range from 1-20 should produce the following
+result:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz 16 17 fizz 19 buzz</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Init a local git repository and create a commit with the solution.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_2">Step 2</h3>
+<div class="sect3">
+<h4 id="_requirements_2">Requirements</h4>
+<div class="paragraph">
+<p>Please enhance your existing FizzBuzz solution to perform the following
+requirements:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Step 1: Two if are still readable and manageable complexities so no refactoring toward a more oo design</p>
+<p>If the number contains a three you must output the text `alfresco',
+any other rule is skipped.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_2">Example</h4>
+<div class="paragraph">
+<p>running the program with a range from 1-20 should produce the following
+result:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>1 2 alfresco 4 buzz fizz 7 8 fizz buzz 11 fizz alfresco 14 fizzbuzz 16 17 fizz 19 buzz</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create a branch for the alfresco variation and then a commit with the
+solution.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_3">Step 3</h3>
+<div class="sect3">
+<h4 id="_requirements_3">Requirements</h4>
+<div class="paragraph">
+<p>Produce a report at the end of the output showing how many times the
+following were printed:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>fizz
+buzz
+fizzbuzz
+alfresco
+an integer</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_3">Example</h4>
+<div class="paragraph">
+<p>Running the program with a range from 1-20 should produce the following
+result:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>1 2 alfresco 4 buzz fizz 7 8 fizz buzz 11 fizz alfresco 14 fizzbuzz 16 17 fizz 19 buzz fizz: 4 buzz: 3 fizzbuzz: 1 alfresco: 2 integer: 10</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(Integer is 10 because there were 10 numbers in the output that were not
+altered).</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_4">Step 4</h3>
+<div class="sect3">
+<h4 id="_requirements_4">Requirements</h4>
+<div class="paragraph">
+<p>Wrap this in a RESTful API for a fizzbuzz integer range resource using
+Spring Boot or any other technology you are familiar with, and create an
+integration test for a successful run and for an invalid input, for
+example a string rather than a number.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_5">Step 5</h3>
+<div class="sect3">
+<h4 id="_requirements_5">Requirements</h4>
+<div class="paragraph">
+<p>Create a docker image with your REST API server and launch a container,
+then execute the same integration test as in Step 4. Step 6</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_full_stack_bonus">Full Stack bonus!</h3>
+<div class="sect3">
+<h4 id="_requirements_6">Requirements</h4>
+<div class="paragraph">
+<p>Create a simple JavaScript user interface providing a form for the input
+number calling the REST API and printing the result without page reload.
+== Development</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tech_stack">Tech Stack</h3>
+<div class="paragraph">
+<p>The technologies involved in the development of the application are:</p>
+</div>
+<div class="sect3">
+<h4 id="_backend">Backend</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Java</p>
 </li>
 <li>
-<p>Step 2: The new feature require a modification in the design. We can use the OCP to transform the code so that we can add this rule (and possibly new ones) without changing the fizzbuzz engine.</p>
+<p>quarkus.io</p>
 </li>
 <li>
-<p>GOOS by Example: double cycle of TDD one for the feature one for the units with London Style. I tried an outside in approach using a library to test the specification in a BBD style.</p>
+<p>vert.x</p>
 </li>
 <li>
-<p>UseCase class define the entry point of the application.</p>
+<p>resteasy</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_frontend">Frontend</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>JavaScript</p>
 </li>
 <li>
-<p>ubiquitous language: fizzbuzz word is a translated item, the mapper translate a number in a word, the reporter create a report out of a list of words and a generator generates words after a sequence of numbers until an end range</p>
+<p>reactjs.org</p>
+</li>
+<li>
+<p>nextjs.org</p>
+</li>
+<li>
+<p>tailwind.css</p>
+</li>
+<li>
+<p>axios</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_continuous_integration">Continuous Integration</h3>
+<div class="paragraph">
+<p>To enforce good practices and to verify the application increments, some github action has been set up to build the code on a CI server at every push.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_static_analysis">Static Analysis</h3>
+<div class="paragraph">
+<p>Copying the configuration from Activity project, it has been set up a <code>checkstyle</code> rule engine.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect1">
-<h2 id="_continuous_integration">Continuous Integration</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Created some github actions configuration to run the code and build it to each and every push</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_architecture">Architecture</h2>
+<h2 id="_sdlc">SDLC</h2>
 <div class="sectionbody">
 <div class="paragraph">
+<p>The application has been developed adding increments of functionalities.</p>
+</div>
+<div class="paragraph">
+<p>The driver has been the idea of avoid to anticipate the requirements and refactor before each step in order to better welcome the upcoming requirements.</p>
+</div>
+<div class="sect2">
+<h3 id="_test_driven_design">Test Driven Design</h3>
+<div class="paragraph">
+<p>It has been used a two cycle TDD: an outer cycle as an acceptance test that states the feature need, and an inner cycle to reach incrementally the completion of the feature (unit test).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/tdd-with-acceptance-tests.svg" alt="tdd with acceptance tests">
+</div>
+</div>
+<div class="paragraph">
+<p>To create the acceptance test I used concordion, a tool similar to fitness to execute the documentation in a BDD style.</p>
+</div>
+<div class="paragraph">
+<p>This tool gave me the chance to develop the software in an outside in style.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_notes_on_the_implementation">Notes on the implementation</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The implementation of the FizzBuzz is quite simple and uses only two "ifs". Since the code is still readable, I avoided refactoring the solution towards a more OO design.</p>
+</li>
+<li>
+<p>Step 2: The new feature require a modification in the design. This is clear example of the usefulness of the OCP to add a behaviour just adding a class. This time it is necessary to refactor the code to an OO design to take advantage of the OCP.</p>
+</li>
+<li>
+<p>Ubiquitous language: one of the more difficult part of the development is the abstract nature of fizzbuzz. Without a real model to create it is difficult to set the correct abstractions. I have set some terms to ease my life: <strong>word</strong> is the result of a mapping action, while <strong>reporter</strong> is the object capable to create reports.
+== Architecture</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
 <p>Generally speaking, I use a DDD approach where the domain module containing the business logic is the bounded context and is connected through the outside world using module adapters (hexagonal/port and adapters architecture).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ports-and-adapters-architecture.svg" alt="ports and adapters architecture">
+</div>
 </div>
 <div class="paragraph">
 <p>The software is composed by the following modules:</p>
@@ -1097,34 +1343,35 @@ browse to the url: <code><a href="http://localhost:8080/" class="bare">http://lo
 </li>
 </ul>
 </div>
+</div>
 <div class="sect2">
 <h3 id="_fizzbuzz_domain">fizzbuzz-domain</h3>
 <div class="paragraph">
-<p>Where the domain logic resides</p>
+<p>Is the inner part of the application that sets the behavior of it.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_fizzbuzz_cli">fizzbuzz-cli</h3>
 <div class="paragraph">
-<p>TODO</p>
+<p>Is one of the possible primary driver that accepts input and provide outputs. It makes use of the command line to give input and output to the domain.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_fizzbuzz_api">fizzbuzz-api</h3>
 <div class="paragraph">
-<p>TODO</p>
+<p>Is another primary driver that accepts input and provide outputs. It makes use of an Restful API to give input and output to the domain.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_fizzbuzz_ui">fizzbuzz-ui</h3>
 <div class="paragraph">
-<p>TODO</p>
+<p>Is the HID to access the API and so give the chance to the humans to access the application</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_fizzbuzz_docs">fizzbuzz-docs</h3>
 <div class="paragraph">
-<p>TODO</p>
+<p>This documentation.</p>
 </div>
 </div>
 </div>
@@ -1132,7 +1379,7 @@ browse to the url: <code><a href="http://localhost:8080/" class="bare">http://lo
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-02-19 02:12:46 +0100
+Last updated 2021-02-19 02:49:05 +0100
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

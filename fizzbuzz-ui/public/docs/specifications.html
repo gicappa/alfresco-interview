@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Architecture</title>
+<title>FizzBuzz Specifications</title>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Glegoo);
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
@@ -741,13 +741,15 @@ body { background-image: url('../images/maker/body-bg.png?1547219607'); padding-
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_architecture">Architecture</a>
+<li><a href="#_fizzbuzz_specifications">FizzBuzz Specifications</a>
 <ul class="sectlevel2">
-<li><a href="#_fizzbuzz_domain">fizzbuzz-domain</a></li>
-<li><a href="#_fizzbuzz_cli">fizzbuzz-cli</a></li>
-<li><a href="#_fizzbuzz_api">fizzbuzz-api</a></li>
-<li><a href="#_fizzbuzz_ui">fizzbuzz-ui</a></li>
-<li><a href="#_fizzbuzz_docs">fizzbuzz-docs</a></li>
+<li><a href="#_the_problem">The problem</a></li>
+<li><a href="#_step_1">Step 1</a></li>
+<li><a href="#_step_2">Step 2</a></li>
+<li><a href="#_step_3">Step 3</a></li>
+<li><a href="#_step_4">Step 4</a></li>
+<li><a href="#_step_5">Step 5</a></li>
+<li><a href="#_full_stack_bonus">Full Stack bonus!</a></li>
 </ul>
 </li>
 </ul>
@@ -755,66 +757,168 @@ body { background-image: url('../images/maker/body-bg.png?1547219607'); padding-
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_architecture">Architecture</h2>
+<h2 id="_fizzbuzz_specifications">FizzBuzz Specifications</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_the_problem">The problem</h3>
 <div class="paragraph">
-<p>Generally speaking, I use a DDD approach where the domain module containing the business logic is the bounded context and is connected through the outside world using module adapters (hexagonal/port and adapters architecture).</p>
+<p>This is a simple variation on the well known
+<a href="http://codingdojo.org/kata/FizzBuzz/" class="bare">http://codingdojo.org/kata/FizzBuzz/</a> kata exercise.</p>
 </div>
-<div class="imageblock">
+<div class="paragraph">
+<p>Please write code delivering the requirements of the steps that follow
+and execute them one by one - do one at a time please, and don’t be
+tempted to read the following one :).</p>
+</div>
+<div class="paragraph">
+<p>The code should be developed using TDD so test first, be as simple as
+possible, self-explanatory and automatable with a build system of your
+choice.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_1">Step 1</h3>
+<div class="sect3">
+<h4 id="_requirements">Requirements</h4>
+<div class="paragraph">
+<p>Write code that produces the following output for each number in a
+contiguous range of integers:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>the number itself</p>
+</li>
+<li>
+<p>`fizz' for numbers that are multiples of 3</p>
+</li>
+<li>
+<p>`buzz' for numbers that are multiples of 5</p>
+</li>
+<li>
+<p>`fizzbuzz' for numbers that are multiples of 15</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Being careful to avoid trailing spaces.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example">Example</h4>
+<div class="paragraph">
+<p>Running the program with a range from 1-20 should produce the following
+result:</p>
+</div>
+<div class="literalblock">
 <div class="content">
-<img src="images/ports-and-adapters-architecture.svg" alt="ports and adapters architecture">
+<pre>1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz 16 17 fizz 19 buzz</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The software is composed by the following modules:</p>
+<p>Init a local git repository and create a commit with the solution.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_2">Step 2</h3>
+<div class="sect3">
+<h4 id="_requirements_2">Requirements</h4>
+<div class="paragraph">
+<p>Please enhance your existing FizzBuzz solution to perform the following
+requirements:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>fizzbuzz-domain</p>
-</li>
-<li>
-<p>fizzbuzz-cli</p>
-</li>
-<li>
-<p>fizzbuzz-api</p>
-</li>
-<li>
-<p>fizzbuzz-ui</p>
-</li>
-<li>
-<p>fizzbuzz-docs</p>
+<p>If the number contains a three you must output the text `alfresco',
+any other rule is skipped.</p>
 </li>
 </ul>
 </div>
-<div class="sect2">
-<h3 id="_fizzbuzz_domain">fizzbuzz-domain</h3>
+</div>
+<div class="sect3">
+<h4 id="_example_2">Example</h4>
 <div class="paragraph">
-<p>Is the inner part of the application that sets the behavior of it.</p>
+<p>running the program with a range from 1-20 should produce the following
+result:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>1 2 alfresco 4 buzz fizz 7 8 fizz buzz 11 fizz alfresco 14 fizzbuzz 16 17 fizz 19 buzz</pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_fizzbuzz_cli">fizzbuzz-cli</h3>
 <div class="paragraph">
-<p>Is one of the possible primary driver that accepts input and provide outputs. It makes use of the command line to give input and output to the domain.</p>
+<p>Create a branch for the alfresco variation and then a commit with the
+solution.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_fizzbuzz_api">fizzbuzz-api</h3>
-<div class="paragraph">
-<p>Is another primary driver that accepts input and provide outputs. It makes use of an Restful API to give input and output to the domain.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_fizzbuzz_ui">fizzbuzz-ui</h3>
-<div class="paragraph">
-<p>Is the HID to access the API and so give the chance to the humans to access the application</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_fizzbuzz_docs">fizzbuzz-docs</h3>
+<h3 id="_step_3">Step 3</h3>
+<div class="sect3">
+<h4 id="_requirements_3">Requirements</h4>
 <div class="paragraph">
-<p>This documentation.</p>
+<p>Produce a report at the end of the output showing how many times the
+following were printed:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>fizz
+buzz
+fizzbuzz
+alfresco
+an integer</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_example_3">Example</h4>
+<div class="paragraph">
+<p>Running the program with a range from 1-20 should produce the following
+result:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>1 2 alfresco 4 buzz fizz 7 8 fizz buzz 11 fizz alfresco 14 fizzbuzz 16 17 fizz 19 buzz fizz: 4 buzz: 3 fizzbuzz: 1 alfresco: 2 integer: 10</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(Integer is 10 because there were 10 numbers in the output that were not
+altered).</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_4">Step 4</h3>
+<div class="sect3">
+<h4 id="_requirements_4">Requirements</h4>
+<div class="paragraph">
+<p>Wrap this in a RESTful API for a fizzbuzz integer range resource using
+Spring Boot or any other technology you are familiar with, and create an
+integration test for a successful run and for an invalid input, for
+example a string rather than a number.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_5">Step 5</h3>
+<div class="sect3">
+<h4 id="_requirements_5">Requirements</h4>
+<div class="paragraph">
+<p>Create a docker image with your REST API server and launch a container,
+then execute the same integration test as in Step 4. Step 6</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_full_stack_bonus">Full Stack bonus!</h3>
+<div class="sect3">
+<h4 id="_requirements_6">Requirements</h4>
+<div class="paragraph">
+<p>Create a simple JavaScript user interface providing a form for the input
+number calling the REST API and printing the result without page reload.</p>
+</div>
 </div>
 </div>
 </div>
@@ -822,7 +926,7 @@ body { background-image: url('../images/maker/body-bg.png?1547219607'); padding-
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-02-19 03:29:47 +0100
+Last updated 2021-02-19 02:48:15 +0100
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
