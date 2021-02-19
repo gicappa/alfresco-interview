@@ -65,7 +65,7 @@ $ docker-compose build
 
 This process can take some time since it needs to download and build the docker image that will contain the final application of the exercise.
 
-## Build the Java uber-jar
+### Creating an uber-jar
 
 By default, the Java project will package the application in a ``fast-jar`` format, that allows a quicker startup time for the docker container.
 
@@ -76,14 +76,29 @@ To build the ``uber-jar`` package:
 $ ./mvnw verify -Dquarkus.package.type=uber-jar
 ```
 
-### Build result
-At the end of the build process, there are two jars and one docker image available to the user:
+## Creating a native executable
+
+You can create a native executable using:
+```shell script
+./mvnw package -Pnative
+```
+
+Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+```shell script
+./mvnw package -Pnative -Dquarkus.native.container-build=true
+```
+
+### Build Result
+At the end of the build process, there eventually are two jars and one docker image and a native executable application available to the user:
 
 - fizzbuzz-cli.jar
 - fizzbuzz-api-1.0-SNAPSHOT-runner.jar (the ``uber-jar``)
 - alfresco/fizzbuzz-api (docker image)
+- fizzbuzz-api-1.0-SNAPSHOT-runner (native)
 
-## Executing the CLI application
+## Using FizzBuzz
+
+### Launching the CLI application
 
 Executing the following command from the terminal to launch the FizzBuzz application:
 
@@ -99,7 +114,7 @@ $ java -jar fizzbuzz-cli/target/fizzbuzz-cli.jar 10
 1 2 alfresco 4 buzz fizz 7 8 fizz buzz fizz: 2 buzz: 2 alfresco: 1 integer: 5
 ```
 
-## Executing the Uber JAR
+### Launching the Uber JAR
 
 Executing the following command from the terminal to start up the FizzBuzz server:
 ```shell
@@ -117,10 +132,22 @@ __  ____  __  _____   ___  __ ____  ______
 
 Once the server has started, access the url: ```http://localhost:8080/```.
 
-## Executing the docker container
+### Launching the docker container
 
 Launch the command:
 ```shell
 $ docker-compose up
 ```
 to  launch the docker container. Again, to access the web application browse to the url: ```http://localhost:8080/```. 
+
+### Launching the native application:
+
+Launch the command:
+```shell
+$ ./fizzbuzz-api/target/fizzbuzz-api-1.0-SNAPSHOT-runner
+```
+to  launch the docker container. Again, to access the web application browse to the url: ```http://localhost:8080/```
+
+## Copyright
+
+This software has been released under BSD 3-Clause License

@@ -750,16 +750,6 @@ body { background-image: url('../images/maker/body-bg.png?1547219607'); padding-
 <li><a href="#_copyright">Copyright</a></li>
 </ul>
 </li>
-<li><a href="#_continuous_integration">Continuous Integration</a></li>
-<li><a href="#_architecture">Architecture</a>
-<ul class="sectlevel2">
-<li><a href="#_fizzbuzz_domain">fizzbuzz-domain</a></li>
-<li><a href="#_fizzbuzz_cli">fizzbuzz-cli</a></li>
-<li><a href="#_fizzbuzz_api">fizzbuzz-api</a></li>
-<li><a href="#_fizzbuzz_ui">fizzbuzz-ui</a></li>
-<li><a href="#_fizzbuzz_docs">fizzbuzz-docs</a></li>
-</ul>
-</li>
 </ul>
 </div>
 </div>
@@ -1032,99 +1022,7 @@ browse to the url: <code><a href="http://localhost:8080/" class="bare">http://lo
 <div class="sect2">
 <h3 id="_copyright">Copyright</h3>
 <div class="paragraph">
-<p>This software has been released under BSD 3-Clause License
-== Development Notes</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Step 1: Two if are still readable and manageable complexities so no refactoring toward a more oo design</p>
-</li>
-<li>
-<p>Step 2: The new feature require a modification in the design. We can use the OCP to transform the code so that we can add this rule (and possibly new ones) without changing the fizzbuzz engine.</p>
-</li>
-<li>
-<p>GOOS by Example: double cycle of TDD one for the feature one for the units with London Style. I tried an outside in approach using a library to test the specification in a BBD style.</p>
-</li>
-<li>
-<p>UseCase class define the entry point of the application.</p>
-</li>
-<li>
-<p>ubiquitous language: fizzbuzz word is a translated item, the mapper translate a number in a word, the reporter create a report out of a list of words and a generator generates words after a sequence of numbers until an end range</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_continuous_integration">Continuous Integration</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Created some github actions configuration to run the code and build it to each and every push</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_architecture">Architecture</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Generally speaking, I use a DDD approach where the domain module containing the business logic is the bounded context and is connected through the outside world using module adapters (hexagonal/port and adapters architecture).</p>
-</div>
-<div class="paragraph">
-<p>The software is composed by the following modules:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>fizzbuzz-domain</p>
-</li>
-<li>
-<p>fizzbuzz-cli</p>
-</li>
-<li>
-<p>fizzbuzz-api</p>
-</li>
-<li>
-<p>fizzbuzz-ui</p>
-</li>
-<li>
-<p>fizzbuzz-docs</p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_fizzbuzz_domain">fizzbuzz-domain</h3>
-<div class="paragraph">
-<p>Where the domain logic resides</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_fizzbuzz_cli">fizzbuzz-cli</h3>
-<div class="paragraph">
-<p>TODO</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_fizzbuzz_api">fizzbuzz-api</h3>
-<div class="paragraph">
-<p>TODO</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_fizzbuzz_ui">fizzbuzz-ui</h3>
-<div class="paragraph">
-<p>TODO</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_fizzbuzz_docs">fizzbuzz-docs</h3>
-<div class="paragraph">
-<p>TODO</p>
+<p>This software has been released under BSD 3-Clause License</p>
 </div>
 </div>
 </div>
@@ -1132,7 +1030,7 @@ browse to the url: <code><a href="http://localhost:8080/" class="bare">http://lo
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-02-19 02:12:46 +0100
+Last updated 2021-02-19 02:33:25 +0100
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
