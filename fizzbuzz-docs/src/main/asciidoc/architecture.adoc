@@ -1,18 +1,8 @@
-== Development Notes
-
-- Step 1: Two if are still readable and manageable complexities so no refactoring toward a more oo design
-- Step 2: The new feature require a modification in the design. We can use the OCP to transform the code so that we can add this rule (and possibly new ones) without changing the fizzbuzz engine.
-- GOOS by Example: double cycle of TDD one for the feature one for the units with London Style. I tried an outside in approach using a library to test the specification in a BBD style.
-- UseCase class define the entry point of the application.
-- ubiquitous language: fizzbuzz word is a translated item, the mapper translate a number in a word, the reporter create a report out of a list of words and a generator generates words after a sequence of numbers until an end range
-
-== Continuous Integration
-
-- Created some github actions configuration to run the code and build it to each and every push
-
 == Architecture
 
 Generally speaking, I use a DDD approach where the domain module containing the business logic is the bounded context and is connected through the outside world using module adapters (hexagonal/port and adapters architecture).
+
+image::images/ports-and-adapters-architecture.svg[]
 
 The software is composed by the following modules:
 
@@ -23,16 +13,16 @@ The software is composed by the following modules:
 - fizzbuzz-docs
 
 === fizzbuzz-domain
-Where the domain logic resides
+Is the inner part of the application that sets the behavior of it.
 
 === fizzbuzz-cli
-TODO
+Is one of the possible primary driver that accepts input and provide outputs. It makes use of the command line to give input and output to the domain.
 
 === fizzbuzz-api
-TODO
+Is another primary driver that accepts input and provide outputs. It makes use of an Restful API to give input and output to the domain.
 
 === fizzbuzz-ui
-TODO
+Is the HID to access the API and so give the chance to the humans to access the application
 
 === fizzbuzz-docs
-TODO
+This documentation.

@@ -1,0 +1,43 @@
+== Development
+
+=== Tech Stack
+The technologies involved in the development of the application are:
+
+==== Backend
+- Java
+- quarkus.io
+- vert.x
+- resteasy
+
+==== Frontend
+- JavaScript
+- reactjs.org
+- nextjs.org
+- tailwind.css
+- axios
+
+=== Continuous Integration
+To enforce good practices and to verify the application increments, some github action has been set up to build the code on a CI server at every push.
+
+=== Static Analysis
+Copying the configuration from Activity project, it has been set up a ``checkstyle`` rule engine.
+
+== SDLC
+
+The application has been developed adding increments of functionalities.
+
+The driver has been the idea of avoid to anticipate the requirements and refactor before each step in order to better welcome the upcoming requirements.
+
+=== Test Driven Design
+It has been used a two cycle TDD: an outer cycle as an acceptance test that states the feature need, and an inner cycle to reach incrementally the completion of the feature (unit test).
+
+image::images/tdd-with-acceptance-tests.svg[]
+
+To create the acceptance test I used concordion, a tool similar to fitness to execute the documentation in a BDD style.
+
+This tool gave me the chance to develop the software in an outside in style.
+
+=== Notes on the implementation
+- Step 1: The implementation of the FizzBuzz is quite simple and uses only two "ifs". Since the code is still readable, I avoided refactoring the solution towards a more OO design.
+- Step 2: The new feature require a modification in the design. This is clear example of the usefulness of the OCP to add a behaviour just adding a class. This time it is necessary to refactor the code to an OO design to take advantage of the OCP.
+- Ubiquitous language: one of the more difficult part of the development is the abstract nature of fizzbuzz. Without a real model to create it is difficult to set the correct abstractions. I have set some terms to ease my life: *word* is the result of a mapping action, while *reporter* is the object capable to create reports.

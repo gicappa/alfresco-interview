@@ -1,2 +1,4 @@
 include::README.adoc[]
+include::specifications.adoc[]
+include::development.adoc[]
 include::architecture.adoc[]
