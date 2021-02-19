@@ -738,45 +738,18 @@ body { background-image: url('../images/maker/body-bg.png?1547219607'); padding-
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>FizzBuzz</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_the_problem">The problem</a></li>
-<li><a href="#_step_1">Step 1</a>
+<li><a href="#_fizzbuzz">FizzBuzz</a>
 <ul class="sectlevel2">
-<li><a href="#_requirements">Requirements</a></li>
-<li><a href="#_example">Example</a></li>
+<li><a href="#_the_interview_exercise">The interview exercise</a></li>
+<li><a href="#_installation">Installation</a></li>
+<li><a href="#_creating_a_native_executable">Creating a native executable</a></li>
+<li><a href="#_using_fizzbuzz">Using FizzBuzz</a></li>
+<li><a href="#_copyright">Copyright</a></li>
 </ul>
 </li>
-<li><a href="#_step_2">Step 2</a>
-<ul class="sectlevel2">
-<li><a href="#_requirements_2">Requirements</a></li>
-<li><a href="#_example_2">Example</a></li>
-</ul>
-</li>
-<li><a href="#_step_3">Step 3</a>
-<ul class="sectlevel2">
-<li><a href="#_requirements_3">Requirements</a></li>
-<li><a href="#_example_3">Example</a></li>
-</ul>
-</li>
-<li><a href="#_step_4">Step 4</a>
-<ul class="sectlevel2">
-<li><a href="#_requirements_4">Requirements</a></li>
-</ul>
-</li>
-<li><a href="#_step_5">Step 5</a>
-<ul class="sectlevel2">
-<li><a href="#_requirements_5">Requirements</a></li>
-</ul>
-</li>
-<li><a href="#_full_stack_bonus">Full Stack bonus!</a>
-<ul class="sectlevel2">
-<li><a href="#_requirements_6">Requirements</a></li>
-</ul>
-</li>
-<li><a href="#_development_notes">Development Notes</a></li>
 <li><a href="#_continuous_integration">Continuous Integration</a></li>
 <li><a href="#_architecture">Architecture</a>
 <ul class="sectlevel2">
@@ -792,166 +765,276 @@ body { background-image: url('../images/maker/body-bg.png?1547219607'); padding-
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_the_problem">The problem</h2>
+<h2 id="_fizzbuzz">FizzBuzz</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This is a simple variation on the well known <a href="http://codingdojo.org/kata/FizzBuzz/" class="bare">http://codingdojo.org/kata/FizzBuzz/</a> kata exercise.</p>
+<p><a href="https://opensource.org/licenses/BSD-3-Clause"><span class="image"><img src="https://img.shields.io/badge/License-BSD%203&#8212;&#8203;Clause-blue.svg" alt="License"></span></a></p>
 </div>
 <div class="paragraph">
-<p>Please write code delivering the requirements of the steps that follow and execute them one by one - do one at a time please, and don’t be tempted to read the following one :).</p>
+<p>This is a simple variation on the well known
+<a href="http://codingdojo.org/kata/FizzBuzz/" class="bare">http://codingdojo.org/kata/FizzBuzz/</a> kata exercise.</p>
 </div>
-<div class="paragraph">
-<p>The code should be developed using TDD so test first, be as simple as possible,  self-explanatory and automatable with a build system of your choice.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_step_1">Step 1</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_requirements">Requirements</h3>
+<h3 id="_the_interview_exercise">The interview exercise</h3>
 <div class="paragraph">
-<p>Write code that produces the following output for each number in a contiguous range of integers:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>the number itself</p>
-</li>
-<li>
-<p>‘fizz’ for numbers that are multiples of 3</p>
-</li>
-<li>
-<p>‘buzz’ for numbers that are multiples of 5</p>
-</li>
-<li>
-<p>‘fizzbuzz’ for numbers that are multiples of 15</p>
-</li>
-</ol>
+<p>According to the instructions, the exercise have been developed in an
+iterative way, so the branch <code>main</code> contains only the specification
+<code>Step 1</code>.</p>
 </div>
 <div class="paragraph">
-<p>Being careful to avoid trailing spaces.</p>
+<p>The most part of the exercise is in the branch <code>alfresco</code> that contains
+all the remaining steps.</p>
+</div>
+<div class="paragraph">
+<p>The installation instruction will make reference to the more complete
+branch <code>alfresco</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_example">Example</h3>
+<h3 id="_installation">Installation</h3>
+<div class="sect3">
+<h4 id="_requirement">Requirement</h4>
 <div class="paragraph">
-<p>Running the program with a range from 1-20 should produce the following result:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="prettyprint highlight"><code>1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz 16 17 fizz 19 buzz</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Init a local git repository and create a commit with the solution.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_step_2">Step 2</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_requirements_2">Requirements</h3>
-<div class="paragraph">
-<p>Please enhance your existing FizzBuzz solution to perform the following requirements:</p>
+<p>To build, test and launch FizzBuzz the following software are required:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>If the number contains a three you must output the text ‘alfresco’, any other rule is skipped.</p>
+<p>A JDK 11+ distribution</p>
+</li>
+<li>
+<p>Docker 20.10.3</p>
+</li>
+<li>
+<p>Docker Compose 1.28.3</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Using the GraalVM (<a href="https://www.graalvm.org/" class="bare">https://www.graalvm.org/</a>), it will be possible
+to generate native versions of the FizzBuzz applicaton NOTE: The docker
+and docker compose version indicated are the ones used to develop and
+test the application. It is expected that the application works also
+with previous versions.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_build_the_java_application">Build the Java Application</h4>
+<div class="paragraph">
+<p>Clone the repository and switch to the branch <code>alfresco</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="shell">$ git clone https://github.com/gicappa/alfresco-interview.git
+$ git checkout -b alfresco</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is possible to build the code using the maven wrapper <code>./mvnw</code> or a
+preexisting maven installation (version 3.6+).</p>
+</div>
+<div class="paragraph">
+<p>Launch the build with the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="shell">$ ./mvnw clean verify</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The process starts until all the modules are built successfully, and the
+terminal shows a message similar to the following one:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="shell">...
+[INFO] FizzBuzz ........................................... SUCCESS [  1.482 s]
+[INFO] FizzBuzz Domain .................................... SUCCESS [ 11.146 s]
+[INFO] FizzBuzz UI ........................................ SUCCESS [ 24.443 s]
+[INFO] FizzBuzz API ....................................... SUCCESS [ 31.708 s]
+[INFO] FizzBuzz Docs ...................................... SUCCESS [  4.527 s]
+[INFO] FizzBuzz CLI ....................................... SUCCESS [ 10.913 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:25 min
+[INFO] Finished at: 2021-02-19T00:42:53+01:00
+[INFO] ------------------------------------------------------------------------</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All the necessary jar files are generated.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_build_the_docker_images">Build the Docker images</h4>
+<div class="paragraph">
+<p>Once the Java part is successfully built, it is possible to build and
+package the docker image using docker compose:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="shell">$ docker-compose build</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This process can take some time since it needs to download and build the
+docker image that will contain the final application of the exercise.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creating_an_uber_jar">Creating an uber-jar</h4>
+<div class="paragraph">
+<p>By default, the Java project will package the application in a
+<code>fast-jar</code> format, that allows a quicker startup time for the docker
+container.</p>
+</div>
+<div class="paragraph">
+<p>It is also possible to build an <code>uber-jar</code> that is a jar that contains
+the application and all its dependencies so to be easier to be installed
+and launched as a stand alone server.</p>
+</div>
+<div class="paragraph">
+<p>To build the <code>uber-jar</code> package:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="shell">$ ./mvnw verify -Dquarkus.package.type=uber-jar</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_a_native_executable">Creating a native executable</h3>
+<div class="paragraph">
+<p>You can create a native executable using:
+<code>shell script ./mvnw package -Pnative</code></p>
+</div>
+<div class="paragraph">
+<p>Or, if you don’t have GraalVM installed, you can run the native
+executable build in a container using:
+<code>shell script ./mvnw package -Pnative -Dquarkus.native.container-build=true</code></p>
+</div>
+<div class="sect3">
+<h4 id="_build_result">Build Result</h4>
+<div class="paragraph">
+<p>At the end of the build process, there eventually are two jars and one
+docker image and a native executable application available to the user:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>fizzbuzz-cli.jar</p>
+</li>
+<li>
+<p>fizzbuzz-api-1.0-SNAPSHOT-runner.jar (the <code>uber-jar</code>)</p>
+</li>
+<li>
+<p>alfresco/fizzbuzz-api (docker image)</p>
+</li>
+<li>
+<p>fizzbuzz-api-1.0-SNAPSHOT-runner (native)</p>
 </li>
 </ul>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="_example_2">Example</h3>
+<h3 id="_using_fizzbuzz">Using FizzBuzz</h3>
+<div class="sect3">
+<h4 id="_launching_the_cli_application">Launching the CLI application</h4>
 <div class="paragraph">
-<p>running the program with a range from 1-20 should produce the following result:</p>
+<p>Executing the following command from the terminal to launch the FizzBuzz
+application:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code>1 2 alfresco 4 buzz fizz 7 8 fizz buzz 11 fizz alfresco 14 fizzbuzz 16 17 fizz 19 buzz</code></pre>
+<pre class="prettyprint highlight"><code data-lang="shell">$ java -jar fizzbuzz-cli/target/fizzbuzz-cli.jar                                                            [2:01:58]
+usage: java alfresco.FizzBuzzMain [arg]
+   arg - (required) number of fizzbuzz words to generate</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Create a branch for the alfresco variation and then a commit with the solution.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_step_3">Step 3</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_requirements_3">Requirements</h3>
-<div class="paragraph">
-<p>Produce a report at the end of the output showing how many times the following were printed:</p>
+<p>The application take the number of fizzbuzz word to generate as an input
+parameter. For instance, to obtain 10 fizzbuzz items:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code>fizz
-buzz
-fizzbuzz
-alfresco
-an integer</code></pre>
+<pre class="prettyprint highlight"><code data-lang="shell">$ java -jar fizzbuzz-cli/target/fizzbuzz-cli.jar 10
+1 2 alfresco 4 buzz fizz 7 8 fizz buzz fizz: 2 buzz: 2 alfresco: 1 integer: 5</code></pre>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_example_3">Example</h3>
+<div class="sect3">
+<h4 id="_launching_the_uber_jar">Launching the Uber JAR</h4>
 <div class="paragraph">
-<p>Running the program with a range from 1-20 should produce the following result:</p>
+<p>Executing the following command from the terminal to start up the
+FizzBuzz server:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code>1 2 alfresco 4 buzz fizz 7 8 fizz buzz 11 fizz alfresco 14 fizzbuzz 16 17 fizz 19 buzz fizz: 4 buzz: 3 fizzbuzz: 1 alfresco: 2 integer: 10</code></pre>
+<pre class="prettyprint highlight"><code data-lang="shell">$ java -jar fizzbuzz-api/target/fizzbuzz-api-1.0-SNAPSHOT-runner.jar                                        [1:53:04]
+__  ____  __  _____   ___  __ ____  ______
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/
+ -/ /_/ / /_/ / __ |/ , _/ ,&lt; / /_/ /\ \
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/
+2021-02-19 01:55:30,297 WARN  [io.qua.run.con.ConfigChangeRecorder] (main) Build time property cannot be changed at runtime:
+ - quarkus.package.type was 'uber-jar' at build time and is now 'fast-jar'
+2021-02-19 01:55:30,527 INFO  [io.quarkus] (main) fizzbuzz-api 1.0-SNAPSHOT on JVM (powered by Quarkus 1.11.2.Final) started in 5.944s. Listening on: http://0.0.0.0:8080
+2021-02-19 01:55:30,529 INFO  [io.quarkus] (main) Profile prod activated.
+2021-02-19 01:55:30,529 INFO  [io.quarkus] (main) Installed features: [cdi, resteasy, resteasy-jackson, smallrye-openapi, swagger-ui]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>(Integer is 10 because there were 10 numbers in the output that were not altered).</p>
+<p>Once the server has started, access the url: <code><a href="http://localhost:8080/" class="bare">http://localhost:8080/</a></code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_launching_the_docker_container">Launching the docker container</h4>
+<div class="paragraph">
+<p>Launch the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="shell">$ docker-compose up</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>to launch the docker container. Again, to access the web application
+browse to the url: <code><a href="http://localhost:8080/" class="bare">http://localhost:8080/</a></code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_launching_the_native_application">Launching the native application:</h4>
+<div class="paragraph">
+<p>Launch the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code data-lang="shell">$ ./fizzbuzz-api/target/fizzbuzz-api-1.0-SNAPSHOT-runner</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>to launch the docker container. Again, to access the web application
+browse to the url: <code><a href="http://localhost:8080/" class="bare">http://localhost:8080/</a></code></p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_step_4">Step 4</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_requirements_4">Requirements</h3>
+<h3 id="_copyright">Copyright</h3>
 <div class="paragraph">
-<p>Wrap this in a RESTful API for a fizzbuzz integer range resource using Spring Boot or any other technology you are familiar with, and create an integration test for a successful run and for an invalid input, for example a string rather than a number.</p>
+<p>This software has been released under BSD 3-Clause License
+== Development Notes</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_step_5">Step 5</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_requirements_5">Requirements</h3>
-<div class="paragraph">
-<p>Create a docker image with your REST API server and launch a container, then execute the same integration test as in Step 4.
-Step 6</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_full_stack_bonus">Full Stack bonus!</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_requirements_6">Requirements</h3>
-<div class="paragraph">
-<p>Create a simple JavaScript user interface providing a form for the input number calling the REST API and printing the result without page reload.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_development_notes">Development Notes</h2>
-<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -970,6 +1053,7 @@ Step 6</p>
 <p>ubiquitous language: fizzbuzz word is a translated item, the mapper translate a number in a word, the reporter create a report out of a list of words and a generator generates words after a sequence of numbers until an end range</p>
 </li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -1048,7 +1132,7 @@ Step 6</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-02-07 19:39:17 +0100
+Last updated 2021-02-19 02:12:46 +0100
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
